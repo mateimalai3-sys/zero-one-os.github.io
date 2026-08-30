@@ -6,51 +6,12 @@
 
 <title>ZERO ONE OS</title>
 
-<meta
-    name="description"
-    content="ZERO ONE OS — The future is open."
->
+<meta name="description" content="ZERO ONE OS — The future is open.">
 
 <style>
 
 /* =========================================================
-   ZERO ONE OS
-   MODERN WEBSITE
-   ========================================================= */
-
-@import url(
-    'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap'
-);
-
-
-/* =========================================================
-   VARIABLES
-   ========================================================= */
-
-:root {
-
-    --background: #02060b;
-    --background-2: #040a12;
-
-    --blue: #008cff;
-    --blue-light: #19c8ff;
-    --blue-dark: #0055ff;
-
-    --white: #f5f9ff;
-    --text: #8ca1b1;
-    --muted: #526675;
-
-    --border: rgba(0, 170, 255, 0.13);
-    --border-hover: rgba(0, 190, 255, 0.4);
-
-    --glass: rgba(5, 15, 25, 0.65);
-
-    --radius: 24px;
-}
-
-
-/* =========================================================
-   RESET
+   ZERO ONE OS — COMPLETE WEBSITE
    ========================================================= */
 
 * {
@@ -64,117 +25,104 @@ html {
 }
 
 body {
-
     min-height: 100vh;
+    overflow-x: hidden;
+
+    font-family:
+        Inter,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: #f4f9ff;
 
     background:
         radial-gradient(
-            circle at 50% -15%,
-            rgba(0, 145, 255, 0.18),
-            transparent 35%
+            circle at 50% -10%,
+            rgba(0, 140, 255, .20),
+            transparent 38%
         ),
         radial-gradient(
-            circle at 0% 60%,
-            rgba(0, 80, 255, 0.06),
-            transparent 30%
+            circle at 0% 50%,
+            rgba(0, 80, 255, .08),
+            transparent 35%
         ),
-        var(--background);
-
-    color: var(--white);
-
-    font-family: Inter, Arial, sans-serif;
-
-    overflow-x: hidden;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-button {
-    font-family: inherit;
+        #02060b;
 }
 
 
 /* =========================================================
-   BACKGROUND GRID
+   BACKGROUND
    ========================================================= */
 
-.background-grid {
-
+.background {
     position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+}
 
+.grid {
+    position: absolute;
     inset: 0;
 
-    z-index: -10;
-
-    pointer-events: none;
-
     background-image:
-
         linear-gradient(
-            rgba(0, 150, 255, 0.035) 1px,
+            rgba(0, 160, 255, .035) 1px,
             transparent 1px
         ),
-
         linear-gradient(
             90deg,
-            rgba(0, 150, 255, 0.035) 1px,
+            rgba(0, 160, 255, .035) 1px,
             transparent 1px
         );
 
-    background-size: 70px 70px;
+    background-size: 65px 65px;
 
     mask-image:
         linear-gradient(
             to bottom,
             black,
-            transparent 85%
+            transparent 90%
         );
 }
 
+.glow {
+    position: absolute;
 
-/* =========================================================
-   GLOW ORBS
-   ========================================================= */
-
-.orb {
-
-    position: fixed;
+    width: 450px;
+    height: 450px;
 
     border-radius: 50%;
 
-    pointer-events: none;
+    filter: blur(120px);
 
-    filter: blur(100px);
-
-    opacity: 0.08;
-
-    z-index: -8;
-
-}
-
-.orb-one {
-
-    width: 350px;
-    height: 350px;
+    opacity: .10;
 
     background: #008cff;
 
-    top: 10%;
-    left: -150px;
+    animation: floatGlow 10s ease-in-out infinite;
 }
 
-.orb-two {
+.glow.one {
+    top: -220px;
+    left: -180px;
+}
 
-    width: 300px;
-    height: 300px;
+.glow.two {
+    right: -200px;
+    top: 40%;
 
-    background: #00d9ff;
+    background: #00c8ff;
 
-    right: -120px;
-    top: 45%;
+    animation-delay: -4s;
+}
+
+@keyframes floatGlow {
+    50% {
+        transform: translateY(60px) scale(1.12);
+    }
 }
 
 
@@ -183,20 +131,17 @@ button {
    ========================================================= */
 
 #particles {
-
     position: fixed;
-
     inset: 0;
-
-    z-index: -5;
 
     pointer-events: none;
 
     overflow: hidden;
+
+    z-index: -5;
 }
 
 .particle {
-
     position: absolute;
 
     width: 2px;
@@ -204,23 +149,22 @@ button {
 
     border-radius: 50%;
 
-    background: #00c8ff;
+    background: #00bfff;
 
-    opacity: 0.25;
+    opacity: .25;
 
-    animation: particleMove linear infinite;
+    animation:
+        particleMove linear infinite;
 }
 
 @keyframes particleMove {
-
     from {
-        transform: translateY(110vh);
+        transform: translateY(105vh);
     }
 
     to {
         transform: translateY(-10vh);
     }
-
 }
 
 
@@ -229,7 +173,6 @@ button {
    ========================================================= */
 
 .navbar {
-
     position: fixed;
 
     top: 18px;
@@ -237,158 +180,137 @@ button {
 
     transform: translateX(-50%);
 
-    width: min(
-        1150px,
-        calc(100% - 30px)
-    );
+    width:
+        min(
+            1150px,
+            calc(100% - 30px)
+        );
 
-    height: 66px;
+    height: 64px;
+
+    padding:
+        0 10px 0 18px;
 
     display: flex;
-
     align-items: center;
-
     justify-content: space-between;
 
-    padding: 0 12px 0 20px;
-
-    z-index: 1000;
-
     border:
-
         1px solid
-        rgba(150, 220, 255, 0.11);
+        rgba(0, 180, 255, .14);
 
     border-radius: 18px;
 
     background:
-
-        rgba(3, 9, 16, 0.62);
+        rgba(3, 10, 17, .65);
 
     backdrop-filter: blur(25px);
 
-    transition: 0.3s ease;
+    z-index: 1000;
 
+    transition: .3s ease;
 }
 
 .navbar.scrolled {
-
     background:
-
-        rgba(3, 9, 16, 0.9);
+        rgba(2, 8, 14, .92);
 
     border-color:
-
-        rgba(0, 170, 255, 0.22);
+        rgba(0, 180, 255, .27);
 
     box-shadow:
-
-        0 15px 60px
-        rgba(0, 0, 0, 0.35);
-
+        0 20px 70px
+        rgba(0, 0, 0, .35);
 }
 
 
-/* LOGO */
+/* =========================================================
+   LOGO
+   ========================================================= */
 
 .logo {
-
     display: flex;
-
     align-items: center;
 
     gap: 10px;
 
-    font-size: 12px;
-
+    font-size: 11px;
     font-weight: 900;
 
     letter-spacing: 2px;
-
 }
 
 .logo-mark {
-
-    width: 37px;
-    height: 37px;
+    width: 38px;
+    height: 38px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 11px;
 
-    background:
+    color: white;
 
+    font-size: 11px;
+    font-weight: 900;
+
+    background:
         linear-gradient(
             135deg,
-            #08b8ff,
+            #09b9ff,
             #0062ff
         );
 
     box-shadow:
-
-        0 0 25px
-        rgba(0, 140, 255, 0.3);
-
-    font-size: 9px;
-
-    color: white;
-
+        0 0 28px
+        rgba(0, 140, 255, .35);
 }
 
-.logo-blue {
+.logo-one {
     color: #00bfff;
 }
 
 
-/* NAV LINKS */
+/* =========================================================
+   NAV LINKS
+   ========================================================= */
 
 .nav-links {
-
     display: flex;
-
     align-items: center;
 
-    gap: 30px;
+    gap: 28px;
 
     list-style: none;
-
 }
 
 .nav-links a {
-
-    color: #718695;
+    color: #6f8492;
 
     font-size: 10px;
-
     font-weight: 700;
 
-    transition: 0.2s;
-
+    transition: .2s;
 }
 
 .nav-links a:hover {
-
     color: white;
-
 }
 
-.nav-button {
-
-    padding: 10px 16px;
+.nav-download {
+    padding:
+        10px 15px;
 
     border-radius: 10px;
 
-    border:
-        1px solid
-        rgba(0, 180, 255, 0.25);
+    color: #a8eaff !important;
 
     background:
-        rgba(0, 140, 255, 0.07);
+        rgba(0, 150, 255, .07);
 
-    color: #a9e8ff !important;
-
+    border:
+        1px solid
+        rgba(0, 180, 255, .20);
 }
 
 
@@ -397,13 +319,10 @@ button {
    ========================================================= */
 
 .hero {
-
     min-height: 100vh;
 
     display: flex;
-
     justify-content: center;
-
     align-items: center;
 
     padding:
@@ -411,107 +330,93 @@ button {
         100px;
 
     text-align: center;
-
 }
 
 .hero-content {
-
-    width: min(
-        1000px,
-        100%
-    );
-
+    width:
+        min(
+            1000px,
+            100%
+        );
 }
 
-
-/* STATUS */
-
 .status {
-
     display: inline-flex;
-
     align-items: center;
 
     gap: 9px;
 
-    padding: 8px 13px;
+    padding:
+        8px 13px;
 
     border-radius: 999px;
 
-    border:
-        1px solid
-        rgba(0, 190, 255, 0.18);
+    color: #75ddff;
 
     background:
-        rgba(0, 140, 255, 0.05);
+        rgba(0, 150, 255, .05);
 
-    color: #78dcff;
+    border:
+        1px solid
+        rgba(0, 190, 255, .18);
 
     font-size: 9px;
-
-    font-weight: 800;
+    font-weight: 900;
 
     letter-spacing: 2px;
-
 }
 
 .status-dot {
-
     width: 6px;
     height: 6px;
 
     border-radius: 50%;
 
-    background: #00dcff;
+    background: #00ddff;
 
     box-shadow:
-        0 0 15px #00dcff;
+        0 0 16px
+        #00ddff;
 
     animation:
         statusPulse 1.5s infinite;
-
 }
 
 @keyframes statusPulse {
-
     50% {
-
-        opacity: 0.25;
-
-        transform: scale(0.6);
-
+        transform: scale(.55);
+        opacity: .35;
     }
-
 }
 
 
-/* TITLE */
+/* =========================================================
+   HERO TITLE
+   ========================================================= */
 
 .hero h1 {
-
     margin-top: 32px;
 
     font-size:
         clamp(
-            70px,
+            68px,
             14vw,
             155px
         );
 
-    line-height: 0.82;
+    line-height: .82;
 
     font-weight: 900;
 
     letter-spacing: -10px;
 
     background:
-
         linear-gradient(
             180deg,
             #ffffff 0%,
-            #e9f8ff 30%,
-            #72dcff 60%,
-            #0068ff 100%
+            #e9f9ff 30%,
+            #6bdcff 65%,
+            #0065ff 100%
         );
 
     -webkit-background-clip: text;
@@ -520,148 +425,118 @@ button {
     color: transparent;
 
     filter:
-
         drop-shadow(
             0 0 35px
-            rgba(0, 150, 255, 0.15)
+            rgba(0, 150, 255, .16)
         );
-
 }
 
-
-/* TAGLINE */
-
 .tagline {
-
     margin-top: 30px;
 
     font-size:
         clamp(
             20px,
             4vw,
-            32px
+            31px
         );
 
-    color: #d6f2ff;
+    color: #d8f3ff;
 
     font-weight: 500;
-
 }
 
 .tagline span {
-
-    color: #00bfff;
-
+    color: #00c6ff;
 }
 
-
-/* DESCRIPTION */
-
 .description {
-
     max-width: 650px;
 
     margin:
         20px auto 0;
 
-    color: #687e8e;
+    color: #647b8b;
 
     font-size: 13px;
 
     line-height: 1.8;
-
 }
 
 
-/* HERO BUTTONS */
+/* =========================================================
+   BUTTONS
+   ========================================================= */
 
 .hero-buttons {
-
     margin-top: 32px;
 
     display: flex;
-
     justify-content: center;
 
     gap: 12px;
 
     flex-wrap: wrap;
-
 }
 
 .button {
+    min-width: 160px;
 
-    min-width: 155px;
-
-    padding: 14px 22px;
+    padding:
+        14px 22px;
 
     display: inline-flex;
 
-    justify-content: center;
-
     align-items: center;
+    justify-content: center;
 
     border-radius: 12px;
 
     font-size: 10px;
-
     font-weight: 800;
 
-    transition:
-        0.3s ease;
-
+    transition: .3s ease;
 }
 
 .button:hover {
-
     transform:
         translateY(-4px);
-
 }
 
 .button-primary {
-
     color: white;
 
     background:
-
         linear-gradient(
             135deg,
-            #00aaff,
+            #08aaff,
             #005cff
         );
 
     border:
         1px solid
-        rgba(190, 245, 255, 0.4);
+        rgba(190, 245, 255, .45);
 
     box-shadow:
-
-        0 12px 40px
-        rgba(0, 110, 255, 0.25);
-
+        0 15px 45px
+        rgba(0, 110, 255, .25);
 }
 
 .button-primary:hover {
-
     box-shadow:
-
-        0 18px 55px
-        rgba(0, 140, 255, 0.42);
-
+        0 20px 60px
+        rgba(0, 140, 255, .42);
 }
 
 .button-secondary {
+    color: #a5c7d8;
 
-    color: #a7c7d7;
+    background:
+        rgba(0, 140, 255, .04);
 
     border:
         1px solid
-        rgba(0, 160, 255, 0.16);
-
-    background:
-        rgba(0, 140, 255, 0.04);
-
+        rgba(0, 160, 255, .17);
 }
 
 
@@ -670,11 +545,11 @@ button {
    ========================================================= */
 
 .stats {
-
-    width: min(
-        750px,
-        100%
-    );
+    width:
+        min(
+            750px,
+            100%
+        );
 
     margin:
         65px auto 0;
@@ -686,45 +561,37 @@ button {
 
     border:
         1px solid
-        rgba(0, 160, 255, 0.12);
+        rgba(0, 160, 255, .12);
 
     border-radius: 18px;
 
     overflow: hidden;
 
     background:
-        rgba(5, 13, 21, 0.55);
+        rgba(5, 13, 22, .55);
 
     backdrop-filter: blur(15px);
-
 }
 
 .stat {
-
     padding: 22px;
 
     border-right:
         1px solid
-        rgba(0, 150, 255, 0.08);
-
+        rgba(0, 150, 255, .08);
 }
 
 .stat:last-child {
-
     border-right: none;
-
 }
 
 .stat strong {
-
     display: block;
 
     font-size: 17px;
-
 }
 
 .stat small {
-
     display: block;
 
     margin-top: 5px;
@@ -732,11 +599,9 @@ button {
     color: #526775;
 
     font-size: 8px;
-
     font-weight: 800;
 
     letter-spacing: 1.5px;
-
 }
 
 
@@ -745,7 +610,6 @@ button {
    ========================================================= */
 
 .section {
-
     width:
         min(
             1120px,
@@ -756,59 +620,49 @@ button {
 
     padding:
         120px 0;
-
 }
 
 .section-title {
-
     margin-bottom: 55px;
 
     text-align: center;
-
 }
 
 .kicker {
-
     color: #00cfff;
 
     font-size: 9px;
-
     font-weight: 900;
 
     letter-spacing: 3px;
-
 }
 
 .section-title h2 {
-
     margin-top: 12px;
 
     font-size:
         clamp(
             40px,
             6vw,
-            66px
+            65px
         );
 
-    line-height: 0.95;
+    line-height: .95;
 
     letter-spacing: -4px;
-
 }
 
 .section-title p {
-
     max-width: 600px;
 
     margin:
         18px auto 0;
 
-    color: #617684;
+    color: #607684;
 
     font-size: 12px;
 
     line-height: 1.8;
-
 }
 
 
@@ -817,123 +671,76 @@ button {
    ========================================================= */
 
 .features {
-
     display: grid;
 
     grid-template-columns:
         repeat(3, 1fr);
 
     gap: 15px;
-
 }
 
 .feature {
-
     position: relative;
 
-    min-height: 240px;
+    min-height: 235px;
 
     padding: 30px;
 
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-
-        linear-gradient(
-            145deg,
-            rgba(10, 24, 39, 0.72),
-            rgba(3, 9, 15, 0.7)
-        );
-
     overflow: hidden;
 
+    border:
+        1px solid
+        rgba(0, 160, 255, .13);
+
+    border-radius: 24px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(9, 24, 39, .72),
+            rgba(3, 9, 15, .72)
+        );
+
     transition:
-        0.35s ease;
-
-}
-
-.feature::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    right: -100px;
-    top: -100px;
-
-    border-radius: 50%;
-
-    background: #008cff;
-
-    filter: blur(70px);
-
-    opacity: 0.08;
-
-    transition: 0.4s;
-
+        .35s ease;
 }
 
 .feature:hover {
-
     transform:
         translateY(-8px);
 
     border-color:
-        var(--border-hover);
-
+        rgba(0, 190, 255, .4);
 }
-
-.feature:hover::before {
-
-    opacity: 0.22;
-
-}
-
-
-/* FEATURE ICON */
 
 .feature-icon {
-
     width: 48px;
     height: 48px;
 
     display: grid;
-
     place-items: center;
 
     border-radius: 14px;
 
     color: #00cfff;
 
+    background:
+        rgba(0, 150, 255, .07);
+
     border:
         1px solid
-        rgba(0, 180, 255, 0.2);
+        rgba(0, 180, 255, .20);
 
-    background:
-        rgba(0, 150, 255, 0.07);
-
-    font-size: 20px;
-
+    font-size: 19px;
 }
 
 .feature h3 {
-
     margin-top: 22px;
 
     font-size: 16px;
-
 }
 
 .feature p {
-
     margin-top: 10px;
 
     color: #607482;
@@ -941,191 +748,124 @@ button {
     font-size: 11px;
 
     line-height: 1.8;
-
 }
 
 
 /* =========================================================
-   VERSION SECTION
+   VERSIONS
    ========================================================= */
 
 .versions {
-
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
     gap: 14px;
-
 }
 
-
-/* VERSION CARD */
-
 .version {
-
     position: relative;
 
-    min-height: 350px;
+    min-height: 355px;
 
     padding: 26px;
 
+    overflow: hidden;
+
     border:
         1px solid
-        rgba(0, 160, 255, 0.13);
+        rgba(0, 160, 255, .13);
 
     border-radius: 22px;
 
     background:
-        rgba(6, 15, 24, 0.72);
-
-    overflow: hidden;
+        rgba(5, 14, 23, .75);
 
     transition:
-        0.35s ease;
-
-}
-
-.version::after {
-
-    content: "";
-
-    position: absolute;
-
-    width: 180px;
-    height: 180px;
-
-    right: -100px;
-    bottom: -100px;
-
-    border-radius: 50%;
-
-    background: #008cff;
-
-    filter: blur(80px);
-
-    opacity: 0;
-
-    transition: 0.4s;
-
+        .35s ease;
 }
 
 .version:hover {
-
     transform:
         translateY(-9px);
 
     border-color:
-        rgba(0, 180, 255, 0.35);
-
-}
-
-.version:hover::after {
-
-    opacity: 0.12;
-
-}
-
-
-/* RELEASE */
-
-.version.release {
-
-    border-color:
-        rgba(0, 210, 255, 0.32);
-
-    background:
-
-        radial-gradient(
-            circle at 100% 0%,
-            rgba(0, 220, 255, 0.12),
-            transparent 50%
-        ),
-
-        rgba(6, 16, 25, 0.82);
+        rgba(0, 190, 255, .38);
 
     box-shadow:
-
-        0 25px 80px
-        rgba(0, 130, 255, 0.08);
-
+        0 25px 70px
+        rgba(0, 100, 255, .07);
 }
 
+.version.release {
+    border-color:
+        rgba(0, 210, 255, .34);
 
-/* VERSION NUMBER */
+    background:
+        radial-gradient(
+            circle at 100% 0%,
+            rgba(0, 220, 255, .12),
+            transparent 52%
+        ),
+        rgba(5, 15, 24, .82);
+}
 
 .version-number {
-
-    font-size: 40px;
+    font-size: 42px;
 
     font-weight: 900;
 
     letter-spacing: -3px;
-
 }
 
 .version-name {
-
     margin-top: 5px;
 
-    color: #6c8392;
+    color: #718896;
 
     font-size: 9px;
-
     font-weight: 900;
 
     letter-spacing: 1.8px;
-
 }
 
-
-/* BADGE */
-
 .badge {
-
     display: inline-block;
 
     margin-top: 20px;
 
-    padding: 6px 10px;
+    padding:
+        6px 10px;
 
     border-radius: 7px;
 
-    color: #72d8ff;
+    color: #73dcff;
+
+    background:
+        rgba(0, 150, 255, .06);
 
     border:
         1px solid
-        rgba(0, 170, 255, 0.2);
-
-    background:
-        rgba(0, 150, 255, 0.06);
+        rgba(0, 170, 255, .20);
 
     font-size: 8px;
-
     font-weight: 900;
 
     letter-spacing: 1px;
-
 }
 
 .release .badge {
-
-    color: #00edff;
+    color: #00efff;
 
     border-color:
-        rgba(0, 230, 255, 0.3);
+        rgba(0, 230, 255, .3);
 
     background:
-        rgba(0, 220, 255, 0.08);
-
+        rgba(0, 220, 255, .08);
 }
 
-
-/* DESCRIPTION */
-
 .version p {
-
     margin-top: 18px;
 
     color: #607482;
@@ -1133,109 +873,96 @@ button {
     font-size: 11px;
 
     line-height: 1.8;
-
 }
 
-
-/* VERSION BUTTON */
-
 .version-button {
-
     position: absolute;
 
     left: 26px;
     right: 26px;
     bottom: 26px;
 
-    padding: 12px;
+    padding:
+        12px;
 
     text-align: center;
 
     border-radius: 10px;
 
-    border:
-        1px solid
-        rgba(0, 150, 255, 0.16);
+    color: #9edff2;
 
     background:
-        rgba(0, 140, 255, 0.05);
+        rgba(0, 140, 255, .05);
 
-    color: #9ddff2;
+    border:
+        1px solid
+        rgba(0, 150, 255, .16);
 
     font-size: 9px;
-
     font-weight: 800;
 
-    transition: 0.25s;
-
+    transition: .25s;
 }
 
 .version-button:hover {
-
-    background:
-        rgba(0, 150, 255, 0.12);
-
-    border-color:
-        rgba(0, 190, 255, 0.35);
-
-}
-
-.release .version-button {
-
     color: white;
 
     background:
+        rgba(0, 150, 255, .12);
 
+    border-color:
+        rgba(0, 190, 255, .35);
+}
+
+.release .version-button {
+    color: white;
+
+    background:
         linear-gradient(
             135deg,
-            #009eff,
-            #005dff
+            #009fff,
+            #005cff
         );
 
     border-color:
-        rgba(180, 245, 255, 0.4);
-
+        rgba(180, 245, 255, .45);
 }
 
 
 /* =========================================================
-   BIG SHOWCASE
+   SHOWCASE
    ========================================================= */
 
 .showcase {
-
     position: relative;
 
     min-height: 430px;
 
     display: flex;
 
-    justify-content: center;
-
     align-items: center;
+    justify-content: center;
 
     overflow: hidden;
 
+    text-align: center;
+
     border:
         1px solid
-        rgba(0, 160, 255, 0.15);
+        rgba(0, 160, 255, .15);
 
     border-radius: 30px;
 
     background:
-
         radial-gradient(
             circle at 50% 0%,
-            rgba(0, 130, 255, 0.16),
-            transparent 52%
+            rgba(0, 130, 255, .16),
+            transparent 55%
         ),
-
-        rgba(5, 13, 22, 0.72);
-
+        rgba(5, 13, 22, .72);
 }
 
 .showcase::before {
-
     content: "";
 
     position: absolute;
@@ -1247,56 +974,40 @@ button {
 
     border:
         1px solid
-        rgba(0, 180, 255, 0.08);
+        rgba(0, 180, 255, .08);
 
     box-shadow:
-
         0 0 100px
-        rgba(0, 140, 255, 0.08);
+        rgba(0, 140, 255, .08);
 
     animation:
         showcasePulse 5s infinite ease-in-out;
-
 }
 
 @keyframes showcasePulse {
-
     50% {
-
         transform: scale(1.08);
-
-        opacity: 0.5;
-
+        opacity: .5;
     }
-
 }
 
 .showcase-content {
-
     position: relative;
-
     z-index: 2;
 
-    text-align: center;
-
     padding: 40px;
-
 }
 
 .showcase-label {
-
     color: #00dfff;
 
     font-size: 9px;
-
     font-weight: 900;
 
     letter-spacing: 3px;
-
 }
 
 .showcase h2 {
-
     margin-top: 18px;
 
     font-size:
@@ -1307,11 +1018,9 @@ button {
         );
 
     letter-spacing: -5px;
-
 }
 
 .showcase p {
-
     max-width: 600px;
 
     margin:
@@ -1322,62 +1031,52 @@ button {
     font-size: 12px;
 
     line-height: 1.8;
-
 }
 
 
 /* =========================================================
-   REQUIREMENTS
+   SYSTEM REQUIREMENTS
    ========================================================= */
 
 .requirements {
-
     display: grid;
 
     grid-template-columns:
         repeat(4, 1fr);
 
     gap: 12px;
-
 }
 
 .requirement {
-
     padding: 25px;
 
     border:
         1px solid
-        rgba(0, 150, 255, 0.12);
+        rgba(0, 150, 255, .12);
 
     border-radius: 18px;
 
     background:
-        rgba(5, 13, 22, 0.62);
+        rgba(5, 13, 22, .62);
 
-    transition: 0.3s;
-
+    transition: .3s;
 }
 
 .requirement:hover {
-
     transform:
         translateY(-5px);
 
     border-color:
-        rgba(0, 180, 255, 0.3);
-
+        rgba(0, 180, 255, .3);
 }
 
 .requirement strong {
-
     display: block;
 
     font-size: 21px;
-
 }
 
 .requirement span {
-
     display: block;
 
     margin-top: 7px;
@@ -1385,11 +1084,9 @@ button {
     color: #596e7c;
 
     font-size: 8px;
-
     font-weight: 800;
 
     letter-spacing: 1.2px;
-
 }
 
 
@@ -1398,81 +1095,67 @@ button {
    ========================================================= */
 
 .faq {
-
     max-width: 850px;
 
     margin: auto;
-
 }
 
 .faq-item {
-
     margin-bottom: 9px;
 
     overflow: hidden;
 
     border:
         1px solid
-        rgba(0, 150, 255, 0.12);
+        rgba(0, 150, 255, .12);
 
     border-radius: 14px;
 
     background:
-        rgba(5, 13, 22, 0.55);
-
+        rgba(5, 13, 22, .55);
 }
 
 .faq-question {
-
     width: 100%;
 
     display: flex;
-
-    align-items: center;
-
     justify-content: space-between;
+    align-items: center;
 
     padding: 19px;
 
     border: none;
 
-    background: none;
-
     color: white;
+
+    background: none;
 
     text-align: left;
 
     cursor: pointer;
 
     font-size: 11px;
-
     font-weight: 700;
-
 }
 
 .faq-plus {
-
     color: #00cfff;
 
     font-size: 18px;
 
-    transition: 0.3s;
-
+    transition: .3s;
 }
 
 .faq-answer {
-
     max-height: 0;
 
     overflow: hidden;
 
     transition:
-        max-height 0.35s ease;
-
+        max-height .35s ease;
 }
 
 .faq-answer p {
-
     padding:
         0 19px 19px;
 
@@ -1481,31 +1164,25 @@ button {
     font-size: 11px;
 
     line-height: 1.8;
-
 }
 
 .faq-item.open
 .faq-answer {
-
     max-height: 180px;
-
 }
 
 .faq-item.open
 .faq-plus {
-
     transform:
         rotate(45deg);
-
 }
 
 
 /* =========================================================
-   CTA
+   DOWNLOAD CTA
    ========================================================= */
 
 .cta {
-
     width:
         min(
             1050px,
@@ -1513,8 +1190,7 @@ button {
         );
 
     margin:
-        50px auto
-        120px;
+        50px auto 120px;
 
     padding:
         95px 30px;
@@ -1523,24 +1199,20 @@ button {
 
     border:
         1px solid
-        rgba(0, 180, 255, 0.24);
+        rgba(0, 180, 255, .24);
 
     border-radius: 30px;
 
     background:
-
         radial-gradient(
             circle at 50% 0%,
-            rgba(0, 150, 255, 0.17),
+            rgba(0, 150, 255, .17),
             transparent 60%
         ),
-
-        rgba(4, 12, 20, 0.8);
-
+        rgba(4, 12, 20, .8);
 }
 
 .cta h2 {
-
     margin-top: 12px;
 
     font-size:
@@ -1551,11 +1223,9 @@ button {
         );
 
     letter-spacing: -5px;
-
 }
 
 .cta p {
-
     max-width: 570px;
 
     margin:
@@ -1566,7 +1236,6 @@ button {
     font-size: 12px;
 
     line-height: 1.8;
-
 }
 
 
@@ -1575,7 +1244,6 @@ button {
    ========================================================= */
 
 footer {
-
     padding:
         45px 20px;
 
@@ -1583,45 +1251,38 @@ footer {
 
     border-top:
         1px solid
-        rgba(0, 150, 255, 0.08);
+        rgba(0, 150, 255, .08);
 
     color: #405360;
 
     font-size: 10px;
-
 }
 
 footer strong {
-
     color: #009dff;
-
 }
 
 
 /* =========================================================
-   SCROLL ANIMATION
+   REVEAL
    ========================================================= */
 
 .reveal {
-
     opacity: 0;
 
     transform:
         translateY(30px);
 
     transition:
-        opacity 0.8s ease,
-        transform 0.8s ease;
-
+        opacity .8s ease,
+        transform .8s ease;
 }
 
 .reveal.visible {
-
     opacity: 1;
 
     transform:
         translateY(0);
-
 }
 
 
@@ -1632,24 +1293,18 @@ footer strong {
 @media (max-width: 950px) {
 
     .features {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
     .versions {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
     .requirements {
-
         grid-template-columns:
             repeat(2, 1fr);
-
     }
 
 }
@@ -1658,86 +1313,61 @@ footer strong {
 @media (max-width: 650px) {
 
     .navbar {
-
         height: 60px;
-
     }
 
     .nav-links {
-
         gap: 5px;
-
     }
 
     .nav-links li {
-
         display: none;
-
     }
 
     .nav-links li:last-child {
-
         display: block;
-
     }
 
     .hero h1 {
-
-        letter-spacing:
-            -6px;
-
+        letter-spacing: -6px;
     }
 
     .stats {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
     .stat {
-
         border-right: none;
 
         border-bottom:
             1px solid
-            rgba(0, 150, 255, 0.08);
-
+            rgba(0, 150, 255, .08);
     }
 
     .stat:last-child {
-
         border-bottom: none;
-
     }
 
     .features,
     .versions,
     .requirements {
-
-        grid-template-columns:
-            1fr;
-
+        grid-template-columns: 1fr;
     }
 
     .section {
-
         width:
             calc(100% - 30px);
 
         padding:
             90px 0;
-
     }
 
     .cta {
-
         width:
             calc(100% - 30px);
 
         padding:
             70px 20px;
-
     }
 
 }
@@ -1750,11 +1380,8 @@ footer strong {
     *,
     *::before,
     *::after {
-
         animation: none !important;
-
         transition: none !important;
-
     }
 
 }
@@ -1770,16 +1397,21 @@ footer strong {
      BACKGROUND
      ======================================================= -->
 
-<div class="background-grid"></div>
+<div class="background">
 
-<div class="orb orb-one"></div>
-<div class="orb orb-two"></div>
+    <div class="grid"></div>
+
+    <div class="glow one"></div>
+
+    <div class="glow two"></div>
+
+</div>
 
 <div id="particles"></div>
 
 
 <!-- =======================================================
-     NAVIGATION
+     NAVBAR
      ======================================================= -->
 
 <nav class="navbar" id="navbar">
@@ -1787,11 +1419,11 @@ footer strong {
     <a href="#" class="logo">
 
         <div class="logo-mark">
-            Z1
+            01
         </div>
 
         ZERO
-        <span class="logo-blue">
+        <span class="logo-one">
             ONE
         </span>
 
@@ -1826,8 +1458,8 @@ footer strong {
 
         <li>
             <a
-                href="#download"
-                class="nav-button"
+                href="#versions"
+                class="nav-download"
             >
                 Download
             </a>
@@ -1845,7 +1477,6 @@ footer strong {
 <header class="hero">
 
     <div class="hero-content reveal">
-
 
         <div class="status">
 
@@ -1873,10 +1504,9 @@ footer strong {
 
         <p class="description">
 
-            ZERO ONE OS is a modern Linux-based
-            operating system designed for speed,
-            freedom and a completely new desktop
-            experience.
+            A modern Linux-based operating system
+            designed for speed, freedom and a
+            completely new desktop experience.
 
         </p>
 
@@ -1942,7 +1572,6 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </header>
@@ -1957,7 +1586,6 @@ footer strong {
     id="features"
 >
 
-
     <div class="section-title reveal">
 
         <div class="kicker">
@@ -1969,11 +1597,9 @@ footer strong {
         </h2>
 
         <p>
-
             A clean operating system experience
             designed around performance,
             customization and simplicity.
-
         </p>
 
     </div>
@@ -1993,11 +1619,9 @@ footer strong {
             </h3>
 
             <p>
-
                 A lightweight foundation that
                 keeps your computer responsive
                 while you work, play and create.
-
             </p>
 
         </article>
@@ -2014,11 +1638,9 @@ footer strong {
             </h3>
 
             <p>
-
                 A futuristic desktop experience
                 with clean interfaces and a
                 minimal visual style.
-
             </p>
 
         </article>
@@ -2035,11 +1657,9 @@ footer strong {
             </h3>
 
             <p>
-
                 Built around the Linux ecosystem,
-                giving you control over your own
-                computer.
-
+                giving you control over your
+                own computer.
             </p>
 
         </article>
@@ -2056,11 +1676,9 @@ footer strong {
             </h3>
 
             <p>
-
                 Customize your desktop,
                 applications and workflow
                 however you want.
-
             </p>
 
         </article>
@@ -2077,11 +1695,9 @@ footer strong {
             </h3>
 
             <p>
-
                 Your computer belongs to you.
                 ZERO ONE focuses on control
                 and privacy.
-
             </p>
 
         </article>
@@ -2098,11 +1714,9 @@ footer strong {
             </h3>
 
             <p>
-
                 ZERO ONE keeps evolving with
                 new builds, improvements and
                 ideas.
-
             </p>
 
         </article>
@@ -2122,7 +1736,6 @@ footer strong {
     id="versions"
 >
 
-
     <div class="section-title reveal">
 
         <div class="kicker">
@@ -2134,10 +1747,8 @@ footer strong {
         </h2>
 
         <p>
-
-            Four versions of ZERO ONE OS.
-            From early testing to the stable release.
-
+            Four ZERO ONE OS builds,
+            from early testing to the stable release.
         </p>
 
     </div>
@@ -2151,7 +1762,7 @@ footer strong {
         <article class="version reveal">
 
             <div class="version-number">
-                01
+                A1
             </div>
 
             <div class="version-name">
@@ -2163,10 +1774,8 @@ footer strong {
             </div>
 
             <p>
-
                 The first experimental ZERO ONE OS
                 build. The beginning of the project.
-
             </p>
 
             <a
@@ -2184,7 +1793,7 @@ footer strong {
         <article class="version reveal">
 
             <div class="version-number">
-                02
+                A2
             </div>
 
             <div class="version-name">
@@ -2196,11 +1805,9 @@ footer strong {
             </div>
 
             <p>
-
                 An improved experimental build
                 with additional features and
                 system improvements.
-
             </p>
 
             <a
@@ -2230,11 +1837,8 @@ footer strong {
             </div>
 
             <p>
-
                 A more mature build prepared for
-                wider testing before the final
-                release.
-
+                wider testing before the final release.
             </p>
 
             <a
@@ -2264,10 +1868,8 @@ footer strong {
             </div>
 
             <p>
-
                 The recommended ZERO ONE OS
                 version for everyday use.
-
             </p>
 
             <a
@@ -2291,7 +1893,6 @@ footer strong {
 
 <section class="section">
 
-
     <div class="showcase reveal">
 
         <div class="showcase-content">
@@ -2305,11 +1906,8 @@ footer strong {
             </h2>
 
             <p>
-
                 A modern operating system experience
-                continuously evolving with every
-                release.
-
+                continuously evolving with every release.
             </p>
 
             <div class="hero-buttons">
@@ -2339,7 +1937,6 @@ footer strong {
     id="requirements"
 >
 
-
     <div class="section-title reveal">
 
         <div class="kicker">
@@ -2351,10 +1948,8 @@ footer strong {
         </h2>
 
         <p>
-
             ZERO ONE OS is designed to run
             on modern 64-bit computers.
-
         </p>
 
     </div>
@@ -2429,7 +2024,6 @@ footer strong {
     id="faq"
 >
 
-
     <div class="section-title reveal">
 
         <div class="kicker">
@@ -2441,10 +2035,7 @@ footer strong {
         </h2>
 
         <p>
-
-            Some quick answers about
-            ZERO ONE OS.
-
+            Some quick answers about ZERO ONE OS.
         </p>
 
     </div>
@@ -2468,12 +2059,10 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-
                     ZERO ONE OS is a Linux-based
                     operating system project focused
                     on a modern and customizable
                     desktop experience.
-
                 </p>
 
             </div>
@@ -2496,12 +2085,9 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-
                     The Release version is recommended
                     for everyday use. Alpha and Beta
-                    versions are mainly intended for
-                    testing.
-
+                    versions are mainly intended for testing.
                 </p>
 
             </div>
@@ -2524,11 +2110,8 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-
-                    The website currently lists
-                    3 GB or more of RAM as the
-                    minimum target.
-
+                    The current system requirements list
+                    3 GB or more of RAM.
                 </p>
 
             </div>
@@ -2551,11 +2134,9 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-
-                    ZERO ONE OS currently has four
-                    builds listed here: Alpha 1,
-                    Alpha 2, Beta 1 and Release 1.0.
-
+                    There are four builds:
+                    Alpha 1, Alpha 2, Beta 1
+                    and Release 1.0.
                 </p>
 
             </div>
@@ -2569,7 +2150,7 @@ footer strong {
 
 
 <!-- =======================================================
-     DOWNLOAD CTA
+     DOWNLOAD
      ======================================================= -->
 
 <section
@@ -2577,24 +2158,17 @@ footer strong {
     id="download"
 >
 
-
     <div class="kicker">
         ZERO ONE OS
     </div>
-
 
     <h2>
         The future is open.
     </h2>
 
-
     <p>
-
-        Choose your build and experience
-        ZERO ONE OS.
-
+        Choose your build and experience ZERO ONE OS.
     </p>
-
 
     <div class="hero-buttons">
 
@@ -2606,7 +2180,6 @@ footer strong {
         </a>
 
     </div>
-
 
 </section>
 
@@ -2628,15 +2201,10 @@ footer strong {
 </footer>
 
 
-<!-- =======================================================
-     JAVASCRIPT
-     ======================================================= -->
-
 <script>
 
-
 /* =========================================================
-   NAVBAR SCROLL
+   NAVBAR
    ========================================================= */
 
 const navbar =
@@ -2647,17 +2215,9 @@ window.addEventListener(
     () => {
 
         if (window.scrollY > 30) {
-
-            navbar.classList.add(
-                "scrolled"
-            );
-
+            navbar.classList.add("scrolled");
         } else {
-
-            navbar.classList.remove(
-                "scrolled"
-            );
-
+            navbar.classList.remove("scrolled");
         }
 
     }
@@ -2669,21 +2229,12 @@ window.addEventListener(
    ========================================================= */
 
 const particles =
-    document.getElementById(
-        "particles"
-    );
+    document.getElementById("particles");
 
-
-for (
-    let i = 0;
-    i < 40;
-    i++
-) {
+for (let i = 0; i < 45; i++) {
 
     const particle =
-        document.createElement(
-            "div"
-        );
+        document.createElement("div");
 
     particle.className =
         "particle";
@@ -2698,12 +2249,9 @@ for (
         -Math.random() * 25 + "s";
 
     particle.style.opacity =
-        0.08 + Math.random() * 0.3;
+        .08 + Math.random() * .25;
 
-    particles.appendChild(
-        particle
-    );
-
+    particles.appendChild(particle);
 }
 
 
@@ -2712,10 +2260,7 @@ for (
    ========================================================= */
 
 const revealElements =
-    document.querySelectorAll(
-        ".reveal"
-    );
-
+    document.querySelectorAll(".reveal");
 
 const observer =
     new IntersectionObserver(
@@ -2730,9 +2275,7 @@ const observer =
 
                         entry.target
                             .classList
-                            .add(
-                                "visible"
-                            );
+                            .add("visible");
 
                         observer.unobserve(
                             entry.target
@@ -2745,17 +2288,14 @@ const observer =
 
         },
         {
-            threshold: 0.12
+            threshold: .12
         }
     );
-
 
 revealElements.forEach(
     (element) => {
 
-        observer.observe(
-            element
-        );
+        observer.observe(element);
 
     }
 );
@@ -2770,7 +2310,6 @@ const faqQuestions =
         ".faq-question"
     );
 
-
 faqQuestions.forEach(
     (question) => {
 
@@ -2781,7 +2320,7 @@ faqQuestions.forEach(
                 const item =
                     question.parentElement;
 
-                const isOpen =
+                const alreadyOpen =
                     item.classList.contains(
                         "open"
                     );
@@ -2802,7 +2341,7 @@ faqQuestions.forEach(
                     );
 
 
-                if (!isOpen) {
+                if (!alreadyOpen) {
 
                     item.classList.add(
                         "open"
@@ -2818,7 +2357,7 @@ faqQuestions.forEach(
 
 
 /* =========================================================
-   BUTTON CLICK ANIMATION
+   BUTTON PRESS EFFECT
    ========================================================= */
 
 document
@@ -2854,32 +2393,6 @@ document
         }
     );
 
-
-/* =========================================================
-   TAB TITLE
-   ========================================================= */
-
-const originalTitle =
-    document.title;
-
-document.addEventListener(
-    "visibilitychange",
-    () => {
-
-        if (document.hidden) {
-
-            document.title =
-                "ZERO ONE OS";
-
-        } else {
-
-            document.title =
-                originalTitle;
-
-        }
-
-    }
-);
 
 </script>
 

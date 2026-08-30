@@ -462,4 +462,1378 @@
 
             border-bottom: 1px solid rgba(0, 170, 255, 0.12);
 
-            background: rgba(0, 120, 220, 0.
+            background: rgba(0, 120, 220, 0.04);
+        }
+
+        .window-dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .window-dots span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #23455d;
+        }
+
+        .window-title {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+
+            color: #66849b;
+            font-size: 11px;
+            letter-spacing: 1px;
+        }
+
+        .desktop {
+            height: calc(100% - 48px);
+            display: flex;
+        }
+
+        .sidebar {
+            width: 65px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+            padding-top: 18px;
+            gap: 15px;
+
+            border-right: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .side-icon {
+            width: 37px;
+            height: 37px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 10px;
+
+            color: #58788e;
+            font-size: 15px;
+
+            transition: 0.2s;
+        }
+
+        .side-icon.active,
+        .side-icon:hover {
+            color: #00baff;
+            background: rgba(0, 150, 255, 0.1);
+            box-shadow: 0 0 20px rgba(0, 150, 255, 0.12);
+        }
+
+        .desktop-main {
+            flex: 1;
+            padding: 28px;
+            text-align: left;
+        }
+
+        .desktop-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .desktop-header h3 {
+            font-size: 23px;
+        }
+
+        .desktop-header span {
+            color: #58778d;
+            font-size: 11px;
+        }
+
+        .desktop-cards {
+            display: grid;
+            grid-template-columns: 1.4fr 1fr;
+            gap: 16px;
+            margin-top: 22px;
+        }
+
+        .desktop-card {
+            min-height: 130px;
+
+            padding: 20px;
+
+            border-radius: 14px;
+            border: 1px solid rgba(0, 170, 255, 0.13);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 150, 255, 0.08),
+                    rgba(0, 20, 35, 0.4)
+                );
+        }
+
+        .desktop-card.large {
+            grid-row: span 2;
+        }
+
+        .desktop-card .small {
+            color: #5f8298;
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .desktop-card strong {
+            display: block;
+            margin-top: 13px;
+            font-size: 25px;
+            color: #dff7ff;
+        }
+
+        .bar {
+            height: 5px;
+            margin-top: 16px;
+
+            border-radius: 99px;
+
+            background: #0c2233;
+            overflow: hidden;
+        }
+
+        .bar span {
+            display: block;
+            width: 72%;
+            height: 100%;
+
+            background: linear-gradient(
+                90deg,
+                #0066ff,
+                #00e5ff
+            );
+
+            box-shadow: 0 0 15px #00aaff;
+        }
+
+        /* =========================================================
+           SECTIONS
+        ========================================================= */
+
+        section {
+            width: min(1150px, calc(100% - 40px));
+            margin: auto;
+            padding: 120px 0;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 55px;
+        }
+
+        .section-heading .label {
+            color: #00aaff;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+        }
+
+        .section-heading h2 {
+            margin-top: 12px;
+            font-size: clamp(35px, 5vw, 55px);
+            letter-spacing: -2px;
+        }
+
+        .section-heading p {
+            max-width: 600px;
+            margin: 15px auto 0;
+            color: #71879b;
+            line-height: 1.7;
+        }
+
+        /* =========================================================
+           FEATURES
+        ========================================================= */
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+        }
+
+        .feature {
+            position: relative;
+
+            padding: 30px;
+
+            min-height: 230px;
+
+            border-radius: 20px;
+            border: 1px solid var(--border);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(0, 150, 255, 0.07),
+                    rgba(3, 12, 22, 0.7)
+                );
+
+            overflow: hidden;
+
+            transition:
+                transform 0.3s,
+                border-color 0.3s,
+                box-shadow 0.3s;
+        }
+
+        .feature::before {
+            content: "";
+
+            position: absolute;
+
+            width: 130px;
+            height: 130px;
+
+            top: -70px;
+            right: -70px;
+
+            background: #008cff;
+            filter: blur(70px);
+            opacity: 0.13;
+        }
+
+        .feature:hover {
+            transform: translateY(-8px);
+            border-color: rgba(0, 180, 255, 0.55);
+            box-shadow: 0 20px 50px rgba(0, 100, 255, 0.1);
+        }
+
+        .feature-icon {
+            width: 48px;
+            height: 48px;
+
+            display: grid;
+            place-items: center;
+
+            border-radius: 13px;
+
+            color: #00c8ff;
+
+            background: rgba(0, 150, 255, 0.08);
+            border: 1px solid rgba(0, 170, 255, 0.2);
+
+            font-size: 20px;
+
+            box-shadow: inset 0 0 20px rgba(0, 150, 255, 0.05);
+        }
+
+        .feature h3 {
+            margin-top: 22px;
+            font-size: 19px;
+        }
+
+        .feature p {
+            margin-top: 10px;
+            color: #71879b;
+            line-height: 1.7;
+            font-size: 14px;
+        }
+
+        /* =========================================================
+           TERMINAL
+        ========================================================= */
+
+        .terminal {
+            max-width: 900px;
+            margin: auto;
+
+            border-radius: 18px;
+            overflow: hidden;
+
+            border: 1px solid rgba(0, 170, 255, 0.22);
+
+            background: #02070d;
+
+            box-shadow:
+                0 30px 80px rgba(0, 0, 0, 0.35),
+                0 0 50px rgba(0, 130, 255, 0.06);
+        }
+
+        .terminal-top {
+            height: 45px;
+
+            display: flex;
+            align-items: center;
+
+            padding: 0 16px;
+
+            background: #07121d;
+            border-bottom: 1px solid rgba(0, 170, 255, 0.1);
+        }
+
+        .terminal-top .dots {
+            display: flex;
+            gap: 7px;
+        }
+
+        .terminal-top .dots span {
+            width: 9px;
+            height: 9px;
+            border-radius: 50%;
+            background: #284257;
+        }
+
+        .terminal-name {
+            margin-left: 15px;
+            color: #5d778b;
+            font-size: 11px;
+        }
+
+        .terminal-body {
+            padding: 28px;
+
+            min-height: 260px;
+
+            font-family:
+                "Cascadia Code",
+                "SFMono-Regular",
+                Consolas,
+                monospace;
+
+            font-size: 13px;
+            line-height: 1.9;
+
+            color: #81a0b5;
+        }
+
+        .terminal-body .blue {
+            color: #00b7ff;
+        }
+
+        .terminal-body .cyan {
+            color: #00e5ff;
+        }
+
+        .terminal-body .white {
+            color: white;
+        }
+
+        .cursor {
+            display: inline-block;
+            width: 7px;
+            height: 15px;
+            background: #00baff;
+            vertical-align: middle;
+            margin-left: 4px;
+            animation: blink 1s infinite;
+            box-shadow: 0 0 10px #00baff;
+        }
+
+        @keyframes blink {
+            50% {
+                opacity: 0;
+            }
+        }
+
+        /* =========================================================
+           REQUIREMENTS
+        ========================================================= */
+
+        .requirements {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+        }
+
+        .requirement {
+            padding: 25px;
+
+            border-radius: 17px;
+            border: 1px solid var(--border);
+
+            background: rgba(0, 100, 180, 0.035);
+
+            text-align: center;
+        }
+
+        .requirement .symbol {
+            font-size: 24px;
+            color: #00baff;
+        }
+
+        .requirement strong {
+            display: block;
+            margin-top: 15px;
+        }
+
+        .requirement span {
+            display: block;
+            margin-top: 7px;
+            color: #71879b;
+            font-size: 13px;
+        }
+
+        /* =========================================================
+           DOWNLOAD
+        ========================================================= */
+
+        .download-box {
+            position: relative;
+
+            text-align: center;
+
+            padding: 75px 30px;
+
+            border-radius: 28px;
+
+            border: 1px solid rgba(0, 170, 255, 0.3);
+
+            background:
+                radial-gradient(
+                    circle at 50% 20%,
+                    rgba(0, 150, 255, 0.14),
+                    transparent 50%
+                ),
+                rgba(3, 10, 18, 0.7);
+
+            overflow: hidden;
+        }
+
+        .download-box::after {
+            content: "";
+
+            position: absolute;
+            width: 500px;
+            height: 2px;
+
+            left: 50%;
+            bottom: 0;
+
+            transform: translateX(-50%);
+
+            background: linear-gradient(
+                90deg,
+                transparent,
+                #00aaff,
+                transparent
+            );
+
+            box-shadow: 0 0 25px #00aaff;
+        }
+
+        .download-box h2 {
+            font-size: clamp(35px, 6vw, 60px);
+            letter-spacing: -2px;
+        }
+
+        .download-box p {
+            max-width: 560px;
+            margin: 18px auto 28px;
+            color: #71879b;
+            line-height: 1.7;
+        }
+
+        .version {
+            margin-top: 18px;
+            color: #486579;
+            font-size: 11px;
+        }
+
+        /* =========================================================
+           FOOTER
+        ========================================================= */
+
+        footer {
+            padding: 40px 20px;
+
+            text-align: center;
+
+            border-top: 1px solid rgba(0, 170, 255, 0.12);
+
+            color: #4e6576;
+            font-size: 13px;
+        }
+
+        footer strong {
+            color: #00aaff;
+        }
+
+        /* =========================================================
+           SCROLL REVEAL
+        ========================================================= */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(35px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* =========================================================
+           RESPONSIVE
+        ========================================================= */
+
+        @media (max-width: 850px) {
+
+            nav ul li:nth-child(1),
+            nav ul li:nth-child(2) {
+                display: none;
+            }
+
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .requirements {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .os-window {
+                height: 400px;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            nav {
+                top: 10px;
+                height: 58px;
+            }
+
+            nav ul {
+                gap: 5px;
+            }
+
+            nav ul a {
+                font-size: 11px;
+            }
+
+            .hero {
+                padding-top: 120px;
+            }
+
+            .hero h1 {
+                font-size: 64px;
+                letter-spacing: -5px;
+            }
+
+            .os-window {
+                height: 300px;
+                margin-top: 50px;
+            }
+
+            .sidebar {
+                width: 48px;
+            }
+
+            .desktop-main {
+                padding: 16px;
+            }
+
+            .desktop-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .desktop-card.large {
+                grid-row: auto;
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .requirements {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            section {
+                padding: 80px 0;
+            }
+
+            .terminal-body {
+                padding: 20px;
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- =========================================================
+         BACKGROUND
+    ========================================================== -->
+
+    <div class="background">
+        <div class="grid"></div>
+        <div class="glow one"></div>
+        <div class="glow two"></div>
+    </div>
+
+
+    <!-- =========================================================
+         NAVIGATION
+    ========================================================== -->
+
+    <nav>
+
+        <a href="#" class="brand">
+
+            <div class="brand-icon">01</div>
+
+            <span>
+                ZERO <strong>ONE</strong>
+            </span>
+
+        </a>
+
+        <ul>
+
+            <li>
+                <a href="#features">Features</a>
+            </li>
+
+            <li>
+                <a href="#terminal">Terminal</a>
+            </li>
+
+            <li>
+                <a href="#requirements">Requirements</a>
+            </li>
+
+            <li>
+                <a href="#download" class="nav-download">
+                    Download
+                </a>
+            </li>
+
+        </ul>
+
+    </nav>
+
+
+    <!-- =========================================================
+         HERO
+    ========================================================== -->
+
+    <header class="hero">
+
+        <div class="status">
+            <span class="status-dot"></span>
+            ZERO ONE OS — SYSTEM ONLINE
+        </div>
+
+        <h1>ZERO ONE</h1>
+
+        <h2>
+            The future starts here.
+        </h2>
+
+        <p class="hero-description">
+            A modern Linux-based operating system built for speed,
+            customization and a beautiful desktop experience.
+            Designed to be different.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#download" class="btn primary">
+                ↓ Download ZERO ONE OS
+            </a>
+
+            <a
+                href="https://github.com/mateimalai3-sys/ZERO-ONE-OS"
+                class="btn secondary"
+                target="_blank"
+            >
+                ◈ View on GitHub
+            </a>
+
+        </div>
+
+
+        <!-- OS MOCKUP -->
+
+        <div class="os-window">
+
+            <div class="window-top">
+
+                <div class="window-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="window-title">
+                    ZERO ONE OS
+                </div>
+
+            </div>
+
+
+            <div class="desktop">
+
+                <aside class="sidebar">
+
+                    <div class="side-icon active">⌂</div>
+                    <div class="side-icon">▣</div>
+                    <div class="side-icon">◈</div>
+                    <div class="side-icon">⚙</div>
+
+                </aside>
+
+
+                <main class="desktop-main">
+
+                    <div class="desktop-header">
+
+                        <h3>
+                            Welcome back.
+                        </h3>
+
+                        <span>
+                            ZERO ONE DESKTOP
+                        </span>
+
+                    </div>
+
+
+                    <div class="desktop-cards">
+
+                        <div class="desktop-card large">
+
+                            <span class="small">
+                                System
+                            </span>
+
+                            <strong>
+                                ZERO ONE
+                            </strong>
+
+                            <div class="bar">
+                                <span></span>
+                            </div>
+
+                            <span
+                                style="
+                                    display:block;
+                                    margin-top:12px;
+                                    color:#58788e;
+                                    font-size:10px;
+                                "
+                            >
+                                System running normally
+                            </span>
+
+                        </div>
+
+
+                        <div class="desktop-card">
+
+                            <span class="small">
+                                CPU
+                            </span>
+
+                            <strong>
+                                24%
+                            </strong>
+
+                        </div>
+
+
+                        <div class="desktop-card">
+
+                            <span class="small">
+                                Memory
+                            </span>
+
+                            <strong>
+                                3.2 GB
+                            </strong>
+
+                        </div>
+
+                    </div>
+
+                </main>
+
+            </div>
+
+        </div>
+
+    </header>
+
+
+    <!-- =========================================================
+         FEATURES
+    ========================================================== -->
+
+    <section id="features">
+
+        <div class="section-heading reveal">
+
+            <div class="label">
+                Why ZERO ONE
+            </div>
+
+            <h2>
+                Built different.
+            </h2>
+
+            <p>
+                Everything is designed around performance,
+                simplicity and control.
+            </p>
+
+        </div>
+
+
+        <div class="features">
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    ⚡
+                </div>
+
+                <h3>
+                    Blazing Fast
+                </h3>
+
+                <p>
+                    A lightweight environment focused on responsive
+                    performance and fast startup times.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    🔒
+                </div>
+
+                <h3>
+                    Secure
+                </h3>
+
+                <p>
+                    Built on a solid Linux foundation with security
+                    and user control at its core.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    ◈
+                </div>
+
+                <h3>
+                    Modern
+                </h3>
+
+                <p>
+                    A futuristic desktop experience with a clean
+                    interface and ZERO ONE visual identity.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    ⚙
+                </div>
+
+                <h3>
+                    Customizable
+                </h3>
+
+                <p>
+                    Configure your system and create an environment
+                    that works exactly how you want.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    🐧
+                </div>
+
+                <h3>
+                    Linux Powered
+                </h3>
+
+                <p>
+                    Powered by the Linux ecosystem and its huge
+                    collection of software and tools.
+                </p>
+
+            </article>
+
+
+            <article class="feature reveal">
+
+                <div class="feature-icon">
+                    🚀
+                </div>
+
+                <h3>
+                    Ready for the Future
+                </h3>
+
+                <p>
+                    ZERO ONE OS is designed to evolve with new
+                    features, improvements and updates.
+                </p>
+
+            </article>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         TERMINAL
+    ========================================================== -->
+
+    <section id="terminal">
+
+        <div class="section-heading reveal">
+
+            <div class="label">
+                Under the hood
+            </div>
+
+            <h2>
+                Powerful terminal.
+            </h2>
+
+            <p>
+                Full control when you need it.
+            </p>
+
+        </div>
+
+
+        <div class="terminal reveal">
+
+            <div class="terminal-top">
+
+                <div class="dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="terminal-name">
+                    zero-one@system
+                </div>
+
+            </div>
+
+
+            <div class="terminal-body">
+
+                <div>
+                    <span class="blue">
+                        zero-one@system
+                    </span>:~$
+                    <span class="white">
+                        fastfetch
+                    </span>
+                </div>
+
+                <div>
+                    <span class="cyan">
+                        ███████╗███████╗██████╗  ██████╗
+                    </span>
+                </div>
+
+                <div>
+                    <span class="cyan">
+                        ╚══███╔╝██╔════╝██╔══██╗██╔═══██╗
+                    </span>
+                </div>
+
+                <div>
+                    <span class="cyan">
+                        &nbsp;&nbsp;███╔╝ █████╗  ██████╔╝██║   ██║
+                    </span>
+                </div>
+
+                <div>
+                    <span class="cyan">
+                        &nbsp;███╔╝  ██╔══╝  ██╔══██╗██║   ██║
+                    </span>
+                </div>
+
+                <br>
+
+                <div>
+                    OS:
+                    <span class="white">
+                        ZERO ONE OS
+                    </span>
+                </div>
+
+                <div>
+                    Kernel:
+                    <span class="white">
+                        Linux
+                    </span>
+                </div>
+
+                <div>
+                    Desktop:
+                    <span class="white">
+                        KDE Plasma
+                    </span>
+                </div>
+
+                <div>
+                    Architecture:
+                    <span class="white">
+                        x86_64
+                    </span>
+                </div>
+
+                <br>
+
+                <div>
+                    <span class="blue">
+                        zero-one@system
+                    </span>:~$
+                    <span class="cursor"></span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         REQUIREMENTS
+    ========================================================== -->
+
+    <section id="requirements">
+
+        <div class="section-heading reveal">
+
+            <div class="label">
+                Hardware
+            </div>
+
+            <h2>
+                System requirements.
+            </h2>
+
+            <p>
+                ZERO ONE OS is designed to work on modern desktop
+                and laptop hardware.
+            </p>
+
+        </div>
+
+
+        <div class="requirements">
+
+            <div class="requirement reveal">
+
+                <div class="symbol">
+                    CPU
+                </div>
+
+                <strong>
+                    64-bit
+                </strong>
+
+                <span>
+                    x86_64 processor
+                </span>
+
+            </div>
+
+
+            <div class="requirement reveal">
+
+                <div class="symbol">
+                    RAM
+                </div>
+
+                <strong>
+                    4 GB+
+                </strong>
+
+                <span>
+                    Recommended
+                </span>
+
+            </div>
+
+
+            <div class="requirement reveal">
+
+                <div class="symbol">
+                    SSD
+                </div>
+
+                <strong>
+                    20 GB+
+                </strong>
+
+                <span>
+                    Free storage
+                </span>
+
+            </div>
+
+
+            <div class="requirement reveal">
+
+                <div class="symbol">
+                    GPU
+                </div>
+
+                <strong>
+                    OpenGL
+                </strong>
+
+                <span>
+                    Compatible graphics
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         DOWNLOAD
+    ========================================================== -->
+
+    <section id="download">
+
+        <div class="download-box reveal">
+
+            <h2>
+                Ready to enter ZERO ONE?
+            </h2>
+
+            <p>
+                Download the latest ZERO ONE OS release and
+                experience a new kind of desktop.
+            </p>
+
+
+            <div class="buttons">
+
+                <!--
+                    SCHIMBĂ LINKUL DE MAI JOS DACĂ AI UN
+                    LINK DIRECT CĂTRE ISO.
+                -->
+
+                <a
+                    class="btn primary"
+                    href="https://github.com/mateimalai3-sys/ZERO-ONE-OS/releases"
+                    target="_blank"
+                >
+                    ↓ Download ISO
+                </a>
+
+
+                <a
+                    class="btn secondary"
+                    href="https://github.com/mateimalai3-sys/ZERO-ONE-OS"
+                    target="_blank"
+                >
+                    ◈ GitHub
+                </a>
+
+            </div>
+
+
+            <div class="version">
+                ZERO ONE OS • 64-bit • Linux
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- =========================================================
+         FOOTER
+    ========================================================== -->
+
+    <footer>
+
+        © 2026
+        <strong>ZERO ONE OS</strong>
+        — Built for the future.
+
+    </footer>
+
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
+    <script>
+
+        /* =====================================================
+           SCROLL REVEAL
+        ===================================================== */
+
+        const revealElements =
+            document.querySelectorAll(".reveal");
+
+        const observer =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                        }
+
+                    });
+
+                },
+                {
+                    threshold: 0.12
+                }
+            );
+
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+
+
+        /* =====================================================
+           MOUSE PARALLAX FOR OS WINDOW
+        ===================================================== */
+
+        const osWindow =
+            document.querySelector(".os-window");
+
+
+        document.addEventListener("mousemove", event => {
+
+            if (window.innerWidth < 800) {
+                return;
+            }
+
+            const x =
+                (event.clientX / window.innerWidth - 0.5);
+
+            const y =
+                (event.clientY / window.innerHeight - 0.5);
+
+
+            osWindow.style.transform =
+                `
+                perspective(1200px)
+                rotateX(${3 - y * 5}deg)
+                rotateY(${x * 5}deg)
+                translateY(-2px)
+                `;
+
+        });
+
+
+        /* =====================================================
+           RESET OS WINDOW TRANSFORM
+        ===================================================== */
+
+        document.addEventListener("mouseleave", () => {
+
+            osWindow.style.transform =
+                `
+                perspective(1200px)
+                rotateX(3deg)
+                rotateY(0deg)
+                `;
+
+        });
+
+
+        /* =====================================================
+           DYNAMIC PAGE TITLE
+        ===================================================== */
+
+        const originalTitle =
+            document.title;
+
+        document.addEventListener(
+            "visibilitychange",
+            () => {
+
+                if (document.hidden) {
+
+                    document.title =
+                        "ZERO ONE OS — Come back ⚡";
+
+                } else {
+
+                    document.title =
+                        originalTitle;
+
+                }
+
+            }
+        );
+
+
+        /* =====================================================
+           DOWNLOAD BUTTON EFFECT
+        ===================================================== */
+
+        document.querySelectorAll(".primary")
+            .forEach(button => {
+
+                button.addEventListener(
+                    "click",
+                    () => {
+
+                        button.style.transform =
+                            "scale(0.97)";
+
+                        setTimeout(() => {
+
+                            button.style.transform =
+                                "";
+
+                        }, 120);
+
+                    }
+                );
+
+            });
+
+    </script>
+
+</body>
+</html>
+```

@@ -4,270 +4,207 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>ZERO ONE OS — The Future Is Open</title>
+<title>ZERO ONE OS</title>
 
-<meta
-    name="description"
-    content="ZERO ONE OS — A modern Linux-based operating system built for speed, freedom and the future."
->
+<meta name="description"
+content="ZERO ONE OS — A modern operating system built for the future.">
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
 
-/* =========================================================
-   ZERO ONE OS — NEXT GENERATION WEBSITE
-========================================================= */
+:root{
+    --bg:#02050a;
+    --bg2:#050b13;
+    --card:rgba(9,18,29,.58);
+    --card2:rgba(11,24,39,.78);
 
-:root {
-    --bg: #020408;
-    --bg-soft: #050b12;
-    --panel: rgba(7, 15, 25, .68);
-    --panel-hover: rgba(10, 22, 36, .82);
+    --blue:#008cff;
+    --blue2:#0066ff;
+    --cyan:#00d9ff;
 
-    --blue: #008cff;
-    --blue2: #0062ff;
-    --cyan: #00d9ff;
-    --white: #f4f9ff;
+    --white:#f5f9ff;
+    --text:#91a4b5;
+    --muted:#536675;
 
-    --text: #9caebe;
-    --muted: #536575;
+    --border:rgba(0,160,255,.14);
+    --border2:rgba(0,190,255,.35);
 
-    --border: rgba(0, 160, 255, .15);
-    --border-bright: rgba(0, 190, 255, .4);
-
-    --radius: 22px;
+    --radius:24px;
 }
 
-/* =========================================================
-   RESET
-========================================================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-html {
-    scroll-behavior: smooth;
+html{
+    scroll-behavior:smooth;
 }
 
-body {
-    background: var(--bg);
-    color: var(--white);
-    font-family:
-        Inter,
-        ui-sans-serif,
-        system-ui,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    overflow-x: hidden;
+body{
+    background:var(--bg);
+    color:var(--white);
+    font-family:Inter,Arial,sans-serif;
+    overflow-x:hidden;
 }
 
-a {
-    color: inherit;
-    text-decoration: none;
+a{
+    color:inherit;
+    text-decoration:none;
 }
 
-button {
-    font: inherit;
+button{
+    font-family:inherit;
 }
 
+/* ================= BACKGROUND ================= */
 
-/* =========================================================
-   BACKGROUND
-========================================================= */
-
-.background {
-    position: fixed;
-    inset: 0;
-    z-index: -10;
-    overflow: hidden;
-    pointer-events: none;
-}
-
-.background::before {
-    content: "";
-
-    position: absolute;
-    width: 900px;
-    height: 900px;
-
-    left: 50%;
-    top: -550px;
-
-    transform: translateX(-50%);
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    z-index:-10;
 
     background:
         radial-gradient(
-            circle,
-            rgba(0, 151, 255, .17),
-            rgba(0, 100, 255, .05) 35%,
-            transparent 70%
-        );
-
-    filter: blur(20px);
+            circle at 50% -10%,
+            rgba(0,130,255,.20),
+            transparent 32%
+        ),
+        radial-gradient(
+            circle at 0% 70%,
+            rgba(0,90,255,.07),
+            transparent 30%
+        ),
+        radial-gradient(
+            circle at 100% 80%,
+            rgba(0,210,255,.06),
+            transparent 30%
+        ),
+        #02050a;
 }
 
-.background::after {
-    content: "";
-
-    position: absolute;
-    inset: 0;
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-9;
+    pointer-events:none;
 
     background-image:
         linear-gradient(
-            rgba(0, 150, 255, .035) 1px,
+            rgba(0,150,255,.035) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0, 150, 255, .035) 1px,
+            rgba(0,150,255,.035) 1px,
             transparent 1px
         );
 
-    background-size: 70px 70px;
+    background-size:70px 70px;
 
     mask-image:
         linear-gradient(
             to bottom,
-            black 0%,
-            rgba(0,0,0,.5) 45%,
-            transparent 100%
+            black,
+            transparent 85%
         );
 }
 
-.orb {
-    position: absolute;
+/* ================= PARTICLES ================= */
 
-    width: 450px;
-    height: 450px;
-
-    border-radius: 50%;
-
-    filter: blur(130px);
-
-    opacity: .08;
+.particles{
+    position:fixed;
+    inset:0;
+    z-index:-5;
+    pointer-events:none;
+    overflow:hidden;
 }
 
-.orb.one {
-    background: #0077ff;
-    left: -250px;
-    top: 40%;
+.particle{
+    position:absolute;
+
+    width:2px;
+    height:2px;
+
+    border-radius:50%;
+
+    background:#00bfff;
+
+    opacity:.35;
+
+    animation:float linear infinite;
 }
 
-.orb.two {
-    background: #00d9ff;
-    right: -250px;
-    top: 65%;
+@keyframes float{
+    from{
+        transform:translateY(110vh);
+    }
+
+    to{
+        transform:translateY(-10vh);
+    }
 }
 
+/* ================= NAV ================= */
 
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
+.nav{
+    position:fixed;
 
-.progress {
-    position: fixed;
+    top:18px;
+    left:50%;
 
-    top: 0;
-    left: 0;
+    transform:translateX(-50%);
 
-    width: 0%;
-    height: 2px;
+    width:min(1160px,calc(100% - 30px));
+    height:66px;
 
-    z-index: 9999;
+    padding:0 12px 0 18px;
 
-    background:
-        linear-gradient(
-            90deg,
-            var(--blue),
-            var(--cyan)
-        );
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    z-index:1000;
+
+    border:1px solid rgba(150,220,255,.12);
+    border-radius:18px;
+
+    background:rgba(3,8,14,.58);
+
+    backdrop-filter:blur(25px);
+
+    transition:.3s;
+}
+
+.nav.scrolled{
+    background:rgba(3,8,14,.88);
+    border-color:rgba(0,170,255,.25);
 
     box-shadow:
-        0 0 15px
-        var(--cyan);
+        0 15px 50px rgba(0,0,0,.35);
 }
 
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+    font-size:13px;
+    font-weight:900;
 
-.nav {
-    position: fixed;
-
-    z-index: 1000;
-
-    top: 18px;
-    left: 50%;
-
-    transform: translateX(-50%);
-
-    width:
-        min(
-            1180px,
-            calc(100% - 30px)
-        );
-
-    height: 68px;
-
-    padding: 0 12px 0 20px;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    border:
-        1px solid
-        rgba(120, 210, 255, .12);
-
-    border-radius: 20px;
-
-    background:
-        rgba(2, 7, 13, .62);
-
-    backdrop-filter:
-        blur(24px)
-        saturate(150%);
-
-    box-shadow:
-        0 15px 50px
-        rgba(0,0,0,.3);
-
-    transition: .3s;
+    letter-spacing:1.5px;
 }
 
-.nav.scrolled {
-    background:
-        rgba(2, 7, 13, .9);
+.logo-box{
+    width:38px;
+    height:38px;
 
-    border-color:
-        rgba(0, 160, 255, .25);
-}
+    display:grid;
+    place-items:center;
 
-.brand {
-    display: flex;
-    align-items: center;
-    gap: 11px;
-
-    font-size: 14px;
-    font-weight: 900;
-
-    letter-spacing: 1.5px;
-}
-
-.brand-mark {
-    width: 36px;
-    height: 36px;
-
-    display: grid;
-    place-items: center;
-
-    border-radius: 10px;
+    border-radius:11px;
 
     background:
         linear-gradient(
@@ -276,219 +213,191 @@ button {
             #0055ff
         );
 
-    color: white;
-
-    font-size: 10px;
-
     box-shadow:
-        0 0 25px
-        rgba(0, 150, 255, .4);
+        0 0 25px rgba(0,140,255,.35);
+
+    font-size:10px;
 }
 
-.brand-name span {
-    color: var(--cyan);
+.logo span{
+    color:var(--cyan);
 }
 
-.nav-links {
-    display: flex;
-    align-items: center;
-    gap: 30px;
+.nav-links{
+    display:flex;
+    align-items:center;
+    gap:30px;
 
-    list-style: none;
+    list-style:none;
 }
 
-.nav-links a {
-    color: #708392;
+.nav-links a{
+    color:#718594;
+    font-size:11px;
+    font-weight:600;
 
-    font-size: 12px;
-    font-weight: 600;
-
-    transition: .2s;
+    transition:.2s;
 }
 
-.nav-links a:hover {
-    color: white;
+.nav-links a:hover{
+    color:white;
 }
 
-.nav-button {
-    padding:
-        11px 17px;
+.nav-download{
+    padding:10px 16px;
 
-    border-radius: 11px;
+    border-radius:10px;
 
-    border:
-        1px solid
-        rgba(0, 180, 255, .3);
+    color:#bfefff !important;
 
-    background:
-        rgba(0, 150, 255, .08);
+    border:1px solid rgba(0,180,255,.3);
 
-    color: #b9edff !important;
+    background:rgba(0,140,255,.08);
 }
 
+/* ================= HERO ================= */
 
-/* =========================================================
-   HERO
-========================================================= */
+.hero{
+    min-height:100vh;
 
-.hero {
-    min-height: 100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    text-align: center;
+    text-align:center;
 
     padding:
-        170px
-        20px
+        150px 20px
         100px;
 }
 
-.hero-content {
-    width: min(1000px, 100%);
+.hero-inner{
+    width:min(1000px,100%);
 }
 
-.eyebrow {
-    display: inline-flex;
-    align-items: center;
-    gap: 9px;
+.status{
+    display:inline-flex;
+    align-items:center;
+    gap:9px;
 
-    padding:
-        8px 13px;
+    padding:8px 13px;
 
-    border:
-        1px solid
-        rgba(0, 180, 255, .2);
+    border:1px solid rgba(0,190,255,.18);
+    border-radius:999px;
 
-    border-radius: 999px;
+    background:rgba(0,140,255,.05);
 
-    background:
-        rgba(0, 150, 255, .05);
+    color:#7cddff;
 
-    color: #78d8ff;
+    font-size:9px;
+    font-weight:800;
 
-    font-size: 10px;
-    font-weight: 800;
-
-    letter-spacing: 1.6px;
+    letter-spacing:2px;
 }
 
-.live-dot {
-    width: 6px;
-    height: 6px;
+.status-dot{
+    width:6px;
+    height:6px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: var(--cyan);
+    background:var(--cyan);
 
-    box-shadow:
-        0 0 12px
-        var(--cyan);
+    box-shadow:0 0 14px var(--cyan);
 
-    animation:
-        live 1.5s infinite;
+    animation:pulse 1.5s infinite;
 }
 
-@keyframes live {
-    50% {
-        opacity: .35;
-        transform: scale(.6);
+@keyframes pulse{
+    50%{
+        opacity:.3;
+        transform:scale(.6);
     }
 }
 
-.hero h1 {
-    margin-top: 32px;
+.hero h1{
+    margin-top:30px;
 
     font-size:
         clamp(
-            68px,
-            13vw,
-            150px
+            70px,
+            14vw,
+            155px
         );
 
-    line-height: .82;
+    line-height:.8;
 
-    letter-spacing:
-        clamp(-9px, -1vw, -4px);
+    font-weight:900;
 
-    font-weight: 950;
+    letter-spacing:-9px;
 
     background:
         linear-gradient(
             180deg,
             #ffffff 0%,
-            #e8f8ff 35%,
-            #6cddff 63%,
-            #0074ff 100%
+            #dff6ff 32%,
+            #65d9ff 62%,
+            #006dff 100%
         );
 
-    -webkit-background-clip: text;
-    background-clip: text;
+    -webkit-background-clip:text;
+    background-clip:text;
 
-    color: transparent;
+    color:transparent;
 
     filter:
         drop-shadow(
             0 0 35px
-            rgba(0, 160, 255, .18)
+            rgba(0,150,255,.16)
         );
 }
 
-.hero-subtitle {
-    margin-top: 28px;
+.hero-tagline{
+    margin-top:30px;
 
     font-size:
-        clamp(
-            21px,
-            4vw,
-            31px
-        );
+        clamp(20px,4vw,31px);
 
-    color: #c9edff;
+    font-weight:500;
 
-    font-weight: 400;
+    color:#c8eaff;
 }
 
-.hero-description {
-    max-width: 670px;
+.hero-description{
+    max-width:650px;
 
-    margin:
-        20px auto 0;
+    margin:20px auto 0;
 
-    color: #6d8190;
+    color:#687d8c;
 
-    line-height: 1.8;
+    font-size:13px;
 
-    font-size: 14px;
+    line-height:1.8;
 }
 
-.hero-actions {
-    display: flex;
-    justify-content: center;
+.buttons{
+    margin-top:32px;
 
-    gap: 12px;
+    display:flex;
+    justify-content:center;
+    gap:12px;
 
-    flex-wrap: wrap;
-
-    margin-top: 32px;
+    flex-wrap:wrap;
 }
 
-.button {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+.btn{
+    min-width:145px;
 
-    min-width: 145px;
+    padding:14px 20px;
 
-    padding:
-        14px 20px;
+    border-radius:12px;
 
-    border-radius: 12px;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
 
-    font-size: 12px;
-    font-weight: 800;
+    font-size:11px;
+    font-weight:800;
 
     transition:
         transform .25s,
@@ -496,1187 +405,826 @@ button {
         border .25s;
 }
 
-.button:hover {
-    transform:
-        translateY(-4px);
+.btn:hover{
+    transform:translateY(-4px);
 }
 
-.button-primary {
+.btn-primary{
+    color:white;
+
     background:
         linear-gradient(
             135deg,
             #00aaff,
-            #0061ff
+            #0060ff
         );
 
-    border:
-        1px solid
-        rgba(190, 245, 255, .45);
+    border:1px solid rgba(190,245,255,.4);
 
     box-shadow:
         0 10px 35px
-        rgba(0, 120, 255, .3);
+        rgba(0,110,255,.25);
 }
 
-.button-primary:hover {
+.btn-primary:hover{
     box-shadow:
-        0 15px 45px
-        rgba(0, 150, 255, .5);
+        0 15px 50px
+        rgba(0,140,255,.45);
 }
 
-.button-secondary {
-    border:
-        1px solid
-        rgba(0, 170, 255, .18);
+.btn-secondary{
+    color:#a9c9d8;
 
-    background:
-        rgba(0, 150, 255, .045);
+    background:rgba(0,140,255,.04);
 
-    color: #a9c9d8;
+    border:1px solid rgba(0,160,255,.16);
 }
 
+/* ================= HERO STATS ================= */
 
-/* =========================================================
-   HERO INFO
-========================================================= */
+.stats{
+    width:min(750px,100%);
 
-.hero-info {
-    margin:
-        70px auto 0;
+    margin:65px auto 0;
 
-    width:
-        min(
-            760px,
-            100%
-        );
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
 
-    display: grid;
+    border:1px solid rgba(0,160,255,.12);
 
-    grid-template-columns:
-        repeat(3, 1fr);
+    border-radius:18px;
 
-    border:
-        1px solid
-        rgba(0, 160, 255, .12);
+    overflow:hidden;
 
-    border-radius: 18px;
+    background:rgba(5,13,21,.5);
 
-    background:
-        rgba(4, 11, 18, .5);
-
-    backdrop-filter: blur(15px);
+    backdrop-filter:blur(15px);
 }
 
-.hero-stat {
-    padding: 20px;
+.stat{
+    padding:21px;
 
-    border-right:
-        1px solid
-        rgba(0, 160, 255, .09);
+    border-right:1px solid rgba(0,150,255,.09);
 }
 
-.hero-stat:last-child {
-    border-right: none;
+.stat:last-child{
+    border:none;
 }
 
-.hero-stat strong {
-    display: block;
+.stat strong{
+    display:block;
 
-    font-size: 18px;
-
-    color: white;
+    font-size:17px;
 }
 
-.hero-stat span {
-    display: block;
+.stat small{
+    display:block;
 
-    margin-top: 5px;
+    margin-top:5px;
 
-    font-size: 9px;
+    color:#536876;
 
-    color: #526877;
+    font-size:8px;
 
-    letter-spacing: 1.2px;
+    font-weight:800;
+
+    letter-spacing:1.5px;
 }
 
+/* ================= SECTIONS ================= */
 
-/* =========================================================
-   SECTIONS
-========================================================= */
+.section{
+    width:min(1120px,calc(100% - 40px));
 
-.section {
-    width:
-        min(
-            1120px,
-            calc(100% - 40px)
-        );
+    margin:auto;
 
-    margin: auto;
-
-    padding:
-        120px 0;
+    padding:120px 0;
 }
 
-.section-header {
-    margin-bottom: 55px;
+.section-heading{
+    margin-bottom:55px;
 }
 
-.section-header.center {
-    text-align: center;
+.center{
+    text-align:center;
 }
 
-.kicker {
-    color: var(--cyan);
+.kicker{
+    color:var(--cyan);
 
-    font-size: 9px;
+    font-size:9px;
+    font-weight:900;
 
-    font-weight: 900;
-
-    letter-spacing: 3px;
+    letter-spacing:3px;
 }
 
-.section-header h2 {
-    margin-top: 12px;
+.section-heading h2{
+    margin-top:12px;
 
     font-size:
         clamp(
             38px,
             6vw,
-            62px
+            64px
         );
 
-    letter-spacing: -3px;
+    letter-spacing:-4px;
 
-    line-height: .95;
+    line-height:.95;
 }
 
-.section-header p {
-    max-width: 620px;
+.section-heading p{
+    max-width:600px;
 
-    margin-top: 18px;
+    margin:18px auto 0;
 
-    color: #607382;
+    color:#617583;
 
-    line-height: 1.8;
+    font-size:13px;
 
-    font-size: 13px;
+    line-height:1.8;
 }
 
-.center p {
-    margin-left: auto;
-    margin-right: auto;
-}
+/* ================= FEATURE CARDS ================= */
 
-
-/* =========================================================
-   FEATURE GRID
-========================================================= */
-
-.features {
-    display: grid;
+.features{
+    display:grid;
 
     grid-template-columns:
-        repeat(3, 1fr);
+        repeat(3,1fr);
 
-    gap: 15px;
+    gap:15px;
 }
 
-.feature {
-    position: relative;
+.card{
+    position:relative;
 
-    min-height: 245px;
+    padding:30px;
 
-    padding: 28px;
+    min-height:235px;
 
-    overflow: hidden;
+    border:1px solid var(--border);
 
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
+    border-radius:var(--radius);
 
     background:
         linear-gradient(
             145deg,
-            rgba(8, 21, 34, .75),
-            rgba(3, 9, 15, .75)
+            rgba(10,24,39,.72),
+            rgba(3,9,15,.7)
         );
 
-    transition:
-        transform .35s,
-        border .35s,
-        background .35s;
+    overflow:hidden;
+
+    transition:.35s;
 }
 
-.feature::before {
-    content: "";
+.card::before{
+    content:"";
 
-    position: absolute;
+    position:absolute;
 
-    width: 160px;
-    height: 160px;
+    width:180px;
+    height:180px;
 
-    top: -100px;
-    right: -80px;
+    right:-100px;
+    top:-100px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    background: var(--blue);
+    background:#008cff;
 
-    filter: blur(70px);
+    filter:blur(70px);
 
-    opacity: .12;
+    opacity:.09;
 
-    transition: .4s;
+    transition:.4s;
 }
 
-.feature:hover {
-    transform:
-        translateY(-8px);
+.card:hover{
+    transform:translateY(-8px);
 
-    border-color:
-        var(--border-bright);
+    border-color:var(--border2);
 
-    background:
-        var(--panel-hover);
+    background:var(--card2);
 }
 
-.feature:hover::before {
-    opacity: .25;
+.card:hover::before{
+    opacity:.22;
 }
 
-.feature-icon {
-    width: 48px;
-    height: 48px;
+.icon{
+    width:48px;
+    height:48px;
 
-    display: grid;
-    place-items: center;
+    display:grid;
+    place-items:center;
 
-    border-radius: 14px;
+    border-radius:14px;
 
-    border:
-        1px solid
-        rgba(0, 170, 255, .2);
+    background:rgba(0,150,255,.07);
 
-    background:
-        rgba(0, 150, 255, .07);
+    border:1px solid rgba(0,180,255,.2);
 
-    color: var(--cyan);
+    color:#00cfff;
 
-    font-size: 20px;
+    font-size:20px;
 }
 
-.feature h3 {
-    margin-top: 22px;
+.card h3{
+    margin-top:22px;
 
-    font-size: 17px;
+    font-size:16px;
 }
 
-.feature p {
-    margin-top: 10px;
+.card p{
+    margin-top:10px;
 
-    color: #617482;
+    color:#607482;
 
-    font-size: 12px;
+    font-size:11px;
 
-    line-height: 1.8;
+    line-height:1.8;
 }
 
+/* ================= VERSION SECTION ================= */
 
-/* =========================================================
-   VERSIONS
-========================================================= */
+.version-container{
+    position:relative;
+}
 
-.version-grid {
-    display: grid;
+.version-grid{
+    display:grid;
 
     grid-template-columns:
-        repeat(2, 1fr);
+        repeat(4,1fr);
 
-    gap: 16px;
+    gap:14px;
 }
 
-.version {
-    position: relative;
+.version{
+    position:relative;
 
-    padding: 30px;
+    min-height:330px;
 
-    border:
-        1px solid
-        var(--border);
+    padding:25px;
 
-    border-radius:
-        var(--radius);
+    border:1px solid var(--border);
+
+    border-radius:22px;
 
     background:
-        rgba(5, 13, 22, .72);
+        rgba(6,15,24,.7);
 
-    overflow: hidden;
+    transition:.35s;
 
-    transition: .3s;
+    overflow:hidden;
 }
 
-.version:hover {
-    transform:
-        translateY(-7px);
+.version:hover{
+    transform:translateY(-9px);
 
     border-color:
-        rgba(0, 170, 255, .35);
+        rgba(0,180,255,.32);
 }
 
-.version.stable {
+.version.release{
     border-color:
-        rgba(0, 220, 255, .35);
+        rgba(0,210,255,.35);
 
     background:
         radial-gradient(
             circle at 100% 0%,
-            rgba(0, 220, 255, .12),
-            transparent 45%
+            rgba(0,220,255,.13),
+            transparent 50%
         ),
-        rgba(5, 15, 24, .82);
+        rgba(6,16,25,.8);
 
     box-shadow:
-        0 0 70px
-        rgba(0, 130, 255, .06);
+        0 20px 70px
+        rgba(0,130,255,.08);
 }
 
-.version-top {
-    display: flex;
+.version-number{
+    font-size:39px;
 
-    justify-content: space-between;
-    align-items: center;
+    font-weight:900;
+
+    letter-spacing:-2px;
 }
 
-.version-title {
-    font-size: 22px;
-    font-weight: 900;
+.version-name{
+    margin-top:5px;
+
+    color:#6d8493;
+
+    font-size:10px;
+
+    font-weight:800;
+
+    letter-spacing:1.5px;
 }
 
-.badge {
-    padding:
-        6px 9px;
+.badge{
+    display:inline-block;
 
-    border-radius: 7px;
+    margin-top:20px;
 
-    font-size: 8px;
-    font-weight: 900;
+    padding:6px 9px;
 
-    letter-spacing: 1px;
+    border-radius:7px;
 
-    color: #72cfff;
+    color:#6ed7ff;
 
-    border:
-        1px solid
-        rgba(0, 160, 255, .2);
+    border:1px solid rgba(0,170,255,.18);
 
-    background:
-        rgba(0, 150, 255, .07);
+    background:rgba(0,150,255,.06);
+
+    font-size:8px;
+    font-weight:900;
+
+    letter-spacing:1px;
 }
 
-.badge.stable-badge {
-    color: #00eaff;
+.release .badge{
+    color:#00edff;
 
-    border-color:
-        rgba(0, 230, 255, .35);
+    border-color:rgba(0,230,255,.3);
 
-    background:
-        rgba(0, 230, 255, .08);
+    background:rgba(0,220,255,.08);
 }
 
-.version-description {
-    margin-top: 17px;
+.version p{
+    margin-top:18px;
 
-    color: #627583;
+    color:#607482;
 
-    font-size: 12px;
+    font-size:11px;
 
-    line-height: 1.8;
+    line-height:1.8;
 }
 
-.version-tags {
-    display: flex;
+.version-link{
+    position:absolute;
 
-    flex-wrap: wrap;
+    left:25px;
+    right:25px;
+    bottom:25px;
 
-    gap: 7px;
+    padding:11px;
 
-    margin-top: 20px;
+    text-align:center;
+
+    border-radius:10px;
+
+    color:#9ddff2;
+
+    background:rgba(0,140,255,.05);
+
+    border:1px solid rgba(0,150,255,.15);
+
+    font-size:10px;
+    font-weight:800;
+
+    transition:.25s;
 }
 
-.version-tag {
-    padding:
-        6px 9px;
+.version-link:hover{
+    background:rgba(0,150,255,.12);
 
-    border-radius: 7px;
-
-    color: #566c7b;
-
-    background:
-        rgba(255,255,255,.025);
-
-    font-size: 9px;
+    border-color:rgba(0,180,255,.35);
 }
 
-.version-download {
-    display: block;
+.release .version-link{
+    color:white;
 
-    margin-top: 23px;
-
-    padding: 12px;
-
-    text-align: center;
-
-    border-radius: 10px;
-
-    background:
-        rgba(0, 150, 255, .055);
-
-    border:
-        1px solid
-        rgba(0, 150, 255, .16);
-
-    color: #a5dff3;
-
-    font-size: 11px;
-    font-weight: 800;
-
-    transition: .25s;
-}
-
-.version-download:hover {
-    background:
-        rgba(0, 150, 255, .13);
-
-    border-color:
-        rgba(0, 180, 255, .4);
-}
-
-.stable .version-download {
     background:
         linear-gradient(
             135deg,
             #009eff,
-            #005eff
+            #005dff
         );
 
-    color: white;
-
-    border-color:
-        rgba(180,240,255,.4);
-
-    box-shadow:
-        0 8px 25px
-        rgba(0,120,255,.22);
+    border-color:rgba(180,245,255,.4);
 }
 
+/* ================= SHOWCASE ================= */
 
-/* =========================================================
-   TERMINAL
-========================================================= */
+.showcase{
+    position:relative;
 
-.terminal {
-    max-width: 950px;
+    min-height:410px;
 
-    margin: auto;
+    border:1px solid rgba(0,160,255,.15);
 
-    overflow: hidden;
+    border-radius:30px;
 
-    border:
-        1px solid
-        rgba(0, 160, 255, .2);
-
-    border-radius: 20px;
-
-    background:
-        #02060b;
-
-    box-shadow:
-        0 30px 100px
-        rgba(0,0,0,.5);
-}
-
-.terminal-header {
-    height: 48px;
-
-    display: flex;
-    align-items: center;
-
-    padding: 0 17px;
-
-    border-bottom:
-        1px solid
-        rgba(0, 150, 255, .08);
-}
-
-.terminal-dots {
-    display: flex;
-    gap: 6px;
-}
-
-.terminal-dots i {
-    width: 8px;
-    height: 8px;
-
-    border-radius: 50%;
-
-    background:
-        #284151;
-}
-
-.terminal-name {
-    margin-left: 15px;
-
-    color: #536a79;
-
-    font-size: 10px;
-}
-
-.terminal-body {
-    padding: 30px;
-
-    font-family:
-        "SFMono-Regular",
-        Consolas,
-        monospace;
-
-    font-size: 12px;
-
-    line-height: 2;
-
-    color: #637887;
-}
-
-.green {
-    color: #00d9ff;
-}
-
-.command {
-    color: #e7f8ff;
-}
-
-.prompt {
-    color: #008dff;
-}
-
-.terminal-line {
-    opacity: 0;
-    transform: translateY(5px);
-
-    animation:
-        terminalLine .5s forwards;
-}
-
-.terminal-line:nth-child(2) {
-    animation-delay: .2s;
-}
-
-.terminal-line:nth-child(3) {
-    animation-delay: .4s;
-}
-
-.terminal-line:nth-child(4) {
-    animation-delay: .6s;
-}
-
-.terminal-line:nth-child(5) {
-    animation-delay: .8s;
-}
-
-.terminal-line:nth-child(6) {
-    animation-delay: 1s;
-}
-
-@keyframes terminalLine {
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-
-/* =========================================================
-   SYSTEM PANEL
-========================================================= */
-
-.system-panel {
-    display: grid;
-
-    grid-template-columns:
-        1.3fr .7fr;
-
-    gap: 16px;
-}
-
-.panel {
-    padding: 30px;
-
-    border:
-        1px solid
-        var(--border);
-
-    border-radius:
-        var(--radius);
-
-    background:
-        rgba(5, 14, 23, .7);
-}
-
-.panel h3 {
-    font-size: 17px;
-}
-
-.panel-description {
-    margin-top: 10px;
-
-    color: #607583;
-
-    font-size: 12px;
-
-    line-height: 1.7;
-}
-
-.requirements {
-    margin-top: 25px;
-}
-
-.requirement {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    padding:
-        14px 0;
-
-    border-bottom:
-        1px solid
-        rgba(0,150,255,.08);
-
-    font-size: 12px;
-}
-
-.requirement:last-child {
-    border-bottom: none;
-}
-
-.requirement span:first-child {
-    color: #607482;
-}
-
-.requirement strong {
-    color: #b5eaff;
-}
-
-.big-version {
-    margin-top: 25px;
-
-    font-size: 55px;
-
-    font-weight: 950;
-
-    letter-spacing: -4px;
-
-    background:
-        linear-gradient(
-            135deg,
-            white,
-            #00cfff,
-            #006dff
-        );
-
-    -webkit-background-clip: text;
-    background-clip: text;
-
-    color: transparent;
-}
-
-.stable-text {
-    color: #00dfff;
-
-    font-size: 10px;
-    font-weight: 900;
-
-    letter-spacing: 2px;
-}
-
-
-/* =========================================================
-   CHANGELOG
-========================================================= */
-
-.timeline {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.timeline-item {
-    position: relative;
-
-    display: grid;
-
-    grid-template-columns:
-        130px 1fr;
-
-    gap: 30px;
-
-    padding:
-        0 0 35px;
-}
-
-.timeline-item::before {
-    content: "";
-
-    position: absolute;
-
-    left: 129px;
-    top: 8px;
-    bottom: 0;
-
-    width: 1px;
-
-    background:
-        rgba(0,150,255,.13);
-}
-
-.timeline-item:last-child::before {
-    display: none;
-}
-
-.timeline-date {
-    color: #00aaff;
-
-    font-size: 10px;
-
-    font-weight: 900;
-
-    letter-spacing: 1px;
-
-    text-align: right;
-}
-
-.timeline-content {
-    position: relative;
-}
-
-.timeline-content::before {
-    content: "";
-
-    position: absolute;
-
-    left: -36px;
-    top: 2px;
-
-    width: 9px;
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: var(--blue);
-
-    box-shadow:
-        0 0 15px
-        var(--blue);
-}
-
-.timeline-content h3 {
-    font-size: 15px;
-}
-
-.timeline-content p {
-    margin-top: 7px;
-
-    color: #607381;
-
-    font-size: 11px;
-
-    line-height: 1.7;
-}
-
-
-/* =========================================================
-   FAQ
-========================================================= */
-
-.faq {
-    max-width: 850px;
-
-    margin: auto;
-}
-
-.faq-item {
-    margin-bottom: 9px;
-
-    border:
-        1px solid
-        rgba(0,150,255,.12);
-
-    border-radius: 14px;
-
-    background:
-        rgba(5,13,22,.6);
-
-    overflow: hidden;
-}
-
-.faq-question {
-    width: 100%;
-
-    padding: 18px;
-
-    display: flex;
-
-    justify-content: space-between;
-    align-items: center;
-
-    border: none;
-
-    color: white;
-
-    background: transparent;
-
-    cursor: pointer;
-
-    text-align: left;
-
-    font-size: 12px;
-    font-weight: 700;
-}
-
-.faq-plus {
-    color: var(--cyan);
-
-    font-size: 18px;
-
-    transition: .3s;
-}
-
-.faq-answer {
-    max-height: 0;
-
-    overflow: hidden;
-
-    transition:
-        max-height .35s ease;
-}
-
-.faq-answer p {
-    padding:
-        0 18px 18px;
-
-    color: #617482;
-
-    font-size: 11px;
-
-    line-height: 1.8;
-}
-
-.faq-item.open .faq-answer {
-    max-height: 150px;
-}
-
-.faq-item.open .faq-plus {
-    transform:
-        rotate(45deg);
-}
-
-
-/* =========================================================
-   CTA
-========================================================= */
-
-.cta {
-    width:
-        min(
-            1050px,
-            calc(100% - 40px)
-        );
-
-    margin:
-        80px auto
-        120px;
-
-    padding:
-        85px 30px;
-
-    text-align: center;
-
-    position: relative;
-
-    overflow: hidden;
-
-    border:
-        1px solid
-        rgba(0, 180, 255, .25);
-
-    border-radius: 30px;
+    overflow:hidden;
 
     background:
         radial-gradient(
-            circle at 50% 20%,
-            rgba(0, 157, 255, .16),
-            transparent 60%
+            circle at 50% 0%,
+            rgba(0,130,255,.16),
+            transparent 48%
         ),
-        rgba(4, 12, 20, .8);
+        rgba(5,13,22,.7);
 }
 
-.cta::before {
-    content: "";
+.showcase::before{
+    content:"";
 
-    position: absolute;
-
-    left: 10%;
-    right: 10%;
-    top: 0;
-
-    height: 1px;
+    position:absolute;
+    inset:0;
 
     background:
         linear-gradient(
-            90deg,
-            transparent,
-            #00ddff,
-            transparent
+            120deg,
+            transparent 20%,
+            rgba(0,180,255,.035),
+            transparent 80%
         );
 
-    box-shadow:
-        0 0 25px
-        #00ddff;
+    animation:shine 6s linear infinite;
 }
 
-.cta h2 {
+@keyframes shine{
+    from{
+        transform:translateX(-100%);
+    }
+
+    to{
+        transform:translateX(100%);
+    }
+}
+
+.showcase-content{
+    position:relative;
+
+    z-index:2;
+
+    min-height:410px;
+
+    display:flex;
+    flex-direction:column;
+
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    padding:40px;
+}
+
+.showcase-label{
+    color:#00dfff;
+
+    font-size:9px;
+
+    font-weight:900;
+
+    letter-spacing:3px;
+}
+
+.showcase h2{
+    margin-top:18px;
+
     font-size:
         clamp(
-            38px,
-            6vw,
-            65px
+            42px,
+            7vw,
+            75px
         );
 
-    letter-spacing: -4px;
+    letter-spacing:-5px;
 }
 
-.cta p {
-    max-width: 550px;
+.showcase p{
+    max-width:600px;
+
+    margin-top:15px;
+
+    color:#617584;
+
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+/* ================= SPECS ================= */
+
+.specs{
+    display:grid;
+
+    grid-template-columns:
+        repeat(4,1fr);
+
+    gap:12px;
+}
+
+.spec{
+    padding:24px;
+
+    border:1px solid var(--border);
+
+    border-radius:18px;
+
+    background:rgba(5,13,22,.62);
+}
+
+.spec strong{
+    display:block;
+
+    font-size:20px;
+}
+
+.spec span{
+    display:block;
+
+    margin-top:7px;
+
+    color:#596d7b;
+
+    font-size:9px;
+
+    font-weight:700;
+
+    letter-spacing:1px;
+}
+
+/* ================= FAQ ================= */
+
+.faq{
+    max-width:850px;
+
+    margin:auto;
+}
+
+.faq-item{
+    margin-bottom:9px;
+
+    border:1px solid rgba(0,150,255,.12);
+
+    border-radius:14px;
+
+    background:rgba(5,13,22,.55);
+
+    overflow:hidden;
+}
+
+.faq-question{
+    width:100%;
+
+    padding:19px;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    border:none;
+
+    color:white;
+
+    background:none;
+
+    cursor:pointer;
+
+    text-align:left;
+
+    font-size:11px;
+
+    font-weight:700;
+}
+
+.plus{
+    color:#00cfff;
+
+    font-size:18px;
+
+    transition:.3s;
+}
+
+.answer{
+    max-height:0;
+
+    overflow:hidden;
+
+    transition:max-height .35s;
+}
+
+.answer p{
+    padding:
+        0 19px 19px;
+
+    color:#607482;
+
+    font-size:11px;
+
+    line-height:1.8;
+}
+
+.faq-item.open .answer{
+    max-height:150px;
+}
+
+.faq-item.open .plus{
+    transform:rotate(45deg);
+}
+
+/* ================= CTA ================= */
+
+.cta{
+    width:min(1050px,calc(100% - 40px));
 
     margin:
-        18px auto 28px;
+        60px auto
+        120px;
 
-    color: #607381;
-
-    font-size: 13px;
-
-    line-height: 1.8;
-}
-
-
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
     padding:
-        45px 20px;
+        90px 30px;
 
-    border-top:
-        1px solid
-        rgba(0,150,255,.09);
+    text-align:center;
 
-    text-align: center;
+    border:1px solid rgba(0,180,255,.25);
 
-    color: #405360;
+    border-radius:30px;
 
-    font-size: 10px;
+    background:
+        radial-gradient(
+            circle at 50% 0%,
+            rgba(0,150,255,.18),
+            transparent 60%
+        ),
+        rgba(4,12,20,.8);
 
-    letter-spacing: .5px;
+    overflow:hidden;
 }
 
-footer strong {
-    color: #008fff;
+.cta h2{
+    font-size:
+        clamp(
+            40px,
+            7vw,
+            70px
+        );
+
+    letter-spacing:-5px;
 }
 
+.cta p{
+    max-width:570px;
 
-/* =========================================================
-   REVEAL
-========================================================= */
+    margin:18px auto 0;
 
-.reveal {
-    opacity: 0;
+    color:#607482;
 
-    transform:
-        translateY(30px);
+    font-size:12px;
+
+    line-height:1.8;
+}
+
+/* ================= FOOTER ================= */
+
+footer{
+    padding:45px 20px;
+
+    border-top:1px solid rgba(0,150,255,.08);
+
+    text-align:center;
+
+    color:#405360;
+
+    font-size:10px;
+}
+
+footer strong{
+    color:#008fff;
+}
+
+/* ================= REVEAL ================= */
+
+.reveal{
+    opacity:0;
+
+    transform:translateY(30px);
 
     transition:
         opacity .8s ease,
         transform .8s ease;
 }
 
-.reveal.visible {
-    opacity: 1;
+.reveal.show{
+    opacity:1;
 
-    transform:
-        translateY(0);
+    transform:translateY(0);
 }
 
+/* ================= RESPONSIVE ================= */
 
-/* =========================================================
-   RESPONSIVE
-========================================================= */
+@media(max-width:900px){
 
-@media(max-width: 850px) {
-
-    .nav-links li:nth-child(1),
-    .nav-links li:nth-child(2) {
-        display: none;
+    .features{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .features {
-        grid-template-columns:
-            repeat(2, 1fr);
+    .version-grid{
+        grid-template-columns:repeat(2,1fr);
     }
 
-    .system-panel {
-        grid-template-columns: 1fr;
+    .specs{
+        grid-template-columns:repeat(2,1fr);
     }
+
 }
 
-@media(max-width: 620px) {
+@media(max-width:650px){
 
-    .nav {
-        height: 60px;
-        top: 9px;
+    .nav{
+        height:60px;
     }
 
-    .nav-links {
-        gap: 5px;
+    .nav-links{
+        gap:5px;
     }
 
-    .nav-button {
-        padding: 9px 12px;
+    .nav-links li:not(:last-child){
+        display:none;
     }
 
-    .hero {
-        padding-top: 140px;
+    .hero h1{
+        letter-spacing:-6px;
     }
 
-    .hero h1 {
-        letter-spacing: -6px;
+    .stats{
+        grid-template-columns:1fr;
     }
 
-    .hero-info {
-        grid-template-columns: 1fr;
-    }
-
-    .hero-stat {
-        border-right: none;
+    .stat{
+        border-right:none;
 
         border-bottom:
             1px solid
-            rgba(0,160,255,.09);
+            rgba(0,150,255,.08);
     }
 
-    .hero-stat:last-child {
-        border-bottom: none;
+    .stat:last-child{
+        border-bottom:none;
     }
 
     .features,
-    .version-grid {
-        grid-template-columns: 1fr;
+    .version-grid,
+    .specs{
+        grid-template-columns:1fr;
     }
 
-    .timeline-item {
-        grid-template-columns: 80px 1fr;
-        gap: 20px;
+    .section{
+        width:calc(100% - 30px);
+
+        padding:90px 0;
     }
 
-    .timeline-item::before {
-        left: 79px;
-    }
+    .cta{
+        width:calc(100% - 30px);
 
-    .timeline-content::before {
-        left: -26px;
-    }
-
-    .terminal-body {
-        padding: 20px;
-
-        font-size: 9px;
-    }
-
-    .section {
-        width:
-            calc(100% - 30px);
-
-        padding:
-            90px 0;
-    }
-
-    .cta {
-        width:
-            calc(100% - 30px);
-
-        padding:
-            65px 20px;
+        padding:65px 20px;
     }
 
 }
 
-
-/* =========================================================
-   REDUCED MOTION
-========================================================= */
-
-@media(prefers-reduced-motion: reduce) {
+@media(prefers-reduced-motion:reduce){
 
     *,
     *::before,
-    *::after {
-        animation-duration: .01ms !important;
-        transition-duration: .01ms !important;
-        scroll-behavior: auto !important;
+    *::after{
+        animation:none!important;
+        transition:none!important;
     }
 
 }
-
 </style>
 </head>
 
-
 <body>
 
+<div class="grid"></div>
 
-<!-- =========================================================
-     BACKGROUND
-========================================================= -->
-
-<div class="background">
-    <div class="orb one"></div>
-    <div class="orb two"></div>
-</div>
-
-<div class="progress" id="progress"></div>
+<div class="particles" id="particles"></div>
 
 
-<!-- =========================================================
-     NAVBAR
-========================================================= -->
+<!-- NAV -->
 
 <nav class="nav" id="nav">
 
-    <a href="#" class="brand">
+    <a href="#" class="logo">
 
-        <div class="brand-mark">
+        <div class="logo-box">
             Z1
         </div>
 
-        <div class="brand-name">
-            ZERO <span>ONE</span>
-        </div>
+        ZERO <span>ONE</span>
 
     </a>
-
 
     <ul class="nav-links">
 
@@ -1693,12 +1241,6 @@ footer strong {
         </li>
 
         <li>
-            <a href="#system">
-                System
-            </a>
-        </li>
-
-        <li>
             <a href="#faq">
                 FAQ
             </a>
@@ -1707,7 +1249,7 @@ footer strong {
         <li>
             <a
                 href="#download"
-                class="nav-button"
+                class="nav-download"
             >
                 Download
             </a>
@@ -1718,17 +1260,15 @@ footer strong {
 </nav>
 
 
-<!-- =========================================================
-     HERO
-========================================================= -->
+<!-- HERO -->
 
 <header class="hero">
 
-    <div class="hero-content reveal">
+    <div class="hero-inner reveal">
 
-        <div class="eyebrow">
+        <div class="status">
 
-            <span class="live-dot"></span>
+            <span class="status-dot"></span>
 
             ZERO ONE OS
             •
@@ -1736,84 +1276,56 @@ footer strong {
 
         </div>
 
-
         <h1>
             ZERO ONE
         </h1>
 
-
-        <div class="hero-subtitle">
+        <div class="hero-tagline">
             The future is open.
         </div>
-
 
         <p class="hero-description">
 
             A modern Linux-based operating system
-            engineered for performance, freedom and
-            a completely new desktop experience.
+            built around speed, freedom and a
+            completely new desktop experience.
 
         </p>
 
-
-        <div class="hero-actions">
+        <div class="buttons">
 
             <a
                 href="#versions"
-                class="button button-primary"
+                class="btn btn-primary"
             >
-                ↓ Explore ZERO ONE
+                Explore ZERO ONE
             </a>
 
             <a
                 href="https://github.com/mateimalai3-sys/zero-one-os.github.io"
                 target="_blank"
-                class="button button-secondary"
+                class="btn btn-secondary"
             >
-                ◈ View on GitHub
+                View on GitHub
             </a>
 
         </div>
 
+        <div class="stats">
 
-        <div class="hero-info">
-
-            <div class="hero-stat">
-
-                <strong>
-                    Linux
-                </strong>
-
-                <span>
-                    POWERED BY
-                </span>
-
+            <div class="stat">
+                <strong>Linux</strong>
+                <small>POWERED BY</small>
             </div>
 
-
-            <div class="hero-stat">
-
-                <strong>
-                    x86_64
-                </strong>
-
-                <span>
-                    ARCHITECTURE
-                </span>
-
+            <div class="stat">
+                <strong>x86_64</strong>
+                <small>ARCHITECTURE</small>
             </div>
 
-
-            <div class="hero-stat">
-
-                <strong>
-                    4 Builds
-                </strong>
-
-                <span>
-                    AVAILABLE
-                </span>
-
+            <div class="stat">
+                <strong>4 Builds</strong>
+                <small>AVAILABLE</small>
             </div>
 
         </div>
@@ -1823,28 +1335,26 @@ footer strong {
 </header>
 
 
-<!-- =========================================================
-     FEATURES
-========================================================= -->
+<!-- FEATURES -->
 
 <section
     class="section"
     id="features"
 >
 
-    <div class="section-header center reveal">
+    <div class="section-heading center reveal">
 
         <div class="kicker">
-            WHY ZERO ONE
+            ZERO ONE
         </div>
 
         <h2>
-            Built for what comes next.
+            Made different.
         </h2>
 
         <p>
-            ZERO ONE OS combines the freedom of Linux
-            with a modern experience designed from the ground up.
+            Everything you need from an operating
+            system, without unnecessary complexity.
         </p>
 
     </div>
@@ -1852,87 +1362,67 @@ footer strong {
 
     <div class="features">
 
+        <article class="card reveal">
 
-        <article class="feature reveal">
-
-            <div class="feature-icon">
+            <div class="icon">
                 ⚡
             </div>
 
             <h3>
-                Performance
+                Fast
             </h3>
 
             <p>
                 A lightweight foundation designed
-                to keep your desktop fast,
-                responsive and smooth.
+                to stay responsive while you work,
+                create and play.
             </p>
 
         </article>
 
 
-        <article class="feature reveal">
+        <article class="card reveal">
 
-            <div class="feature-icon">
+            <div class="icon">
                 ◈
             </div>
 
             <h3>
-                Modern UI
+                Modern
             </h3>
 
             <p>
-                A futuristic visual experience
-                without sacrificing the flexibility
-                of a traditional Linux desktop.
+                A clean futuristic interface with
+                a focus on simplicity, usability
+                and visual quality.
             </p>
 
         </article>
 
 
-        <article class="feature reveal">
+        <article class="card reveal">
 
-            <div class="feature-icon">
-                🔒
+            <div class="icon">
+                ∞
             </div>
 
             <h3>
-                Control
+                Freedom
             </h3>
 
             <p>
-                Your computer belongs to you.
-                Customize the system and decide
-                how it works.
+                Built on the Linux ecosystem,
+                giving you control over your own
+                computer.
             </p>
 
         </article>
 
 
-        <article class="feature reveal">
+        <article class="card reveal">
 
-            <div class="feature-icon">
-                🐧
-            </div>
-
-            <h3>
-                Linux
-            </h3>
-
-            <p>
-                Access the massive Linux ecosystem,
-                open-source software and powerful
-                command-line tools.
-            </p>
-
-        </article>
-
-
-        <article class="feature reveal">
-
-            <div class="feature-icon">
-                    ⚙
+            <div class="icon">
+                ⚙
             </div>
 
             <h3>
@@ -1940,17 +1430,36 @@ footer strong {
             </h3>
 
             <p>
-                Configure your desktop,
-                applications and workflow
-                exactly the way you want.
+                Change the desktop, applications
+                and workflow to make ZERO ONE
+                truly yours.
             </p>
 
         </article>
 
 
-        <article class="feature reveal">
+        <article class="card reveal">
 
-            <div class="feature-icon">
+            <div class="icon">
+                🔒
+            </div>
+
+            <h3>
+                Private
+            </h3>
+
+            <p>
+                Your system should work for you,
+                with privacy and control at the
+                center of the experience.
+            </p>
+
+        </article>
+
+
+        <article class="card reveal">
+
+            <div class="icon">
                 🚀
             </div>
 
@@ -1959,42 +1468,37 @@ footer strong {
             </h3>
 
             <p>
-                ZERO ONE is continuously evolving
-                through new builds, features
-                and improvements.
+                ZERO ONE continues evolving through
+                new builds, improvements and ideas.
             </p>
 
         </article>
-
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
-     VERSIONS
-========================================================= -->
+<!-- VERSIONS -->
 
 <section
     class="section"
     id="versions"
 >
 
-    <div class="section-header reveal">
+    <div class="section-heading center reveal">
 
         <div class="kicker">
             RELEASES
         </div>
 
         <h2>
-            Four versions.<br>
-            One vision.
+            Choose your build.
         </h2>
 
         <p>
-            Test the experimental builds or install
-            the stable Release for everyday use.
+            Four stages of ZERO ONE OS development.
+            Test the future or install the stable release.
         </p>
 
     </div>
@@ -2007,45 +1511,28 @@ footer strong {
 
         <article class="version reveal">
 
-            <div class="version-top">
-
-                <div class="version-title">
-                    Alpha 1
-                </div>
-
-                <div class="badge">
-                    ALPHA
-                </div>
-
+            <div class="version-number">
+                01
             </div>
 
-            <p class="version-description">
+            <div class="version-name">
+                ALPHA 1
+            </div>
 
-                The beginning of ZERO ONE OS.
-                An experimental build for testing
-                the first system concepts.
+            <div class="badge">
+                ALPHA
+            </div>
 
+            <p>
+                The first experimental ZERO ONE OS
+                build and the beginning of the project.
             </p>
-
-            <div class="version-tags">
-
-                <span class="version-tag">
-                    x86_64
-                </span>
-
-                <span class="version-tag">
-                    Experimental
-                </span>
-
-            </div>
-
-            <!-- PUT YOUR ALPHA 1 LINK HERE -->
 
             <a
                 href="YOUR_ALPHA_1_ISO_LINK"
-                class="version-download"
+                class="version-link"
             >
-                ↓ Download Alpha 1
+                Download
             </a>
 
         </article>
@@ -2055,44 +1542,28 @@ footer strong {
 
         <article class="version reveal">
 
-            <div class="version-top">
-
-                <div class="version-title">
-                    Alpha 2
-                </div>
-
-                <div class="badge">
-                    ALPHA
-                </div>
-
+            <div class="version-number">
+                02
             </div>
 
-            <p class="version-description">
+            <div class="version-name">
+                ALPHA 2
+            </div>
 
-                A more advanced experimental build
-                with improvements over the first Alpha.
+            <div class="badge">
+                ALPHA
+            </div>
 
+            <p>
+                An improved experimental build with
+                more features and system improvements.
             </p>
-
-            <div class="version-tags">
-
-                <span class="version-tag">
-                    x86_64
-                </span>
-
-                <span class="version-tag">
-                    Development
-                </span>
-
-            </div>
-
-            <!-- PUT YOUR ALPHA 2 LINK HERE -->
 
             <a
                 href="YOUR_ALPHA_2_ISO_LINK"
-                class="version-download"
+                class="version-link"
             >
-                ↓ Download Alpha 2
+                Download
             </a>
 
         </article>
@@ -2102,45 +1573,28 @@ footer strong {
 
         <article class="version reveal">
 
-            <div class="version-top">
-
-                <div class="version-title">
-                    Beta 1
-                </div>
-
-                <div class="badge">
-                    BETA
-                </div>
-
+            <div class="version-number">
+                β1
             </div>
 
-            <p class="version-description">
+            <div class="version-name">
+                BETA 1
+            </div>
 
-                A significantly more mature build
-                created for wider testing before
-                the stable release.
+            <div class="badge">
+                BETA
+            </div>
 
+            <p>
+                A more mature build prepared for
+                wider testing before the final release.
             </p>
-
-            <div class="version-tags">
-
-                <span class="version-tag">
-                    x86_64
-                </span>
-
-                <span class="version-tag">
-                    Testing
-                </span>
-
-            </div>
-
-            <!-- PUT YOUR BETA LINK HERE -->
 
             <a
                 href="YOUR_BETA_1_ISO_LINK"
-                class="version-download"
+                class="version-link"
             >
-                ↓ Download Beta 1
+                Download
             </a>
 
         </article>
@@ -2148,51 +1602,30 @@ footer strong {
 
         <!-- RELEASE -->
 
-        <article class="version stable reveal">
+        <article class="version release reveal">
 
-            <div class="version-top">
-
-                <div class="version-title">
-                    Release
-                </div>
-
-                <div class="badge stable-badge">
-                    STABLE
-                </div>
-
+            <div class="version-number">
+                1.0
             </div>
 
-            <p class="version-description">
+            <div class="version-name">
+                RELEASE
+            </div>
 
-                The recommended version of ZERO ONE OS.
-                Built for everyday use and the best
-                overall experience.
+            <div class="badge">
+                STABLE
+            </div>
 
+            <p>
+                The recommended ZERO ONE OS version
+                for everyday use.
             </p>
-
-            <div class="version-tags">
-
-                <span class="version-tag">
-                    x86_64
-                </span>
-
-                <span class="version-tag">
-                    Stable
-                </span>
-
-                <span class="version-tag">
-                    Recommended
-                </span>
-
-            </div>
-
-            <!-- PUT YOUR RELEASE LINK HERE -->
 
             <a
                 href="YOUR_RELEASE_ISO_LINK"
-                class="version-download"
+                class="version-link"
             >
-                ↓ Download Release
+                Download Release
             </a>
 
         </article>
@@ -2203,134 +1636,35 @@ footer strong {
 </section>
 
 
-<!-- =========================================================
-     TERMINAL
-========================================================= -->
+<!-- SHOWCASE -->
 
 <section class="section">
 
-    <div class="section-header center reveal">
+    <div class="showcase reveal">
 
-        <div class="kicker">
-            UNDER THE HOOD
-        </div>
+        <div class="showcase-content">
 
-        <h2>
-            Linux power.
-        </h2>
-
-        <p>
-            When you need complete control,
-            the terminal is always there.
-        </p>
-
-    </div>
-
-
-    <div class="terminal reveal">
-
-        <div class="terminal-header">
-
-            <div class="terminal-dots">
-                <i></i>
-                <i></i>
-                <i></i>
-            </div>
-
-            <div class="terminal-name">
-                zero-one@system — bash
-            </div>
-
-        </div>
-
-
-        <div class="terminal-body">
-
-            <div class="terminal-line">
-
-                <span class="prompt">
-                    zero-one@system
-                </span>:~$
-
-                <span class="command">
-                    fastfetch
-                </span>
-
-            </div>
-
-
-            <div class="terminal-line green">
+            <div class="showcase-label">
                 ZERO ONE OS
             </div>
 
+            <h2>
+                Built for tomorrow.
+            </h2>
 
-            <div class="terminal-line">
-                ─────────────────────────────
-            </div>
+            <p>
+                A new operating system experience,
+                continuously evolving with every release.
+            </p>
 
+            <div class="buttons">
 
-            <div class="terminal-line">
-
-                OS:
-                <span class="command">
-                    ZERO ONE OS
-                </span>
-
-            </div>
-
-
-            <div class="terminal-line">
-
-                Kernel:
-                <span class="command">
-                    Linux
-                </span>
-
-            </div>
-
-
-            <div class="terminal-line">
-
-                Architecture:
-                <span class="command">
-                    x86_64
-                </span>
-
-            </div>
-
-
-            <div class="terminal-line">
-
-                Desktop:
-                <span class="command">
-                    KDE Plasma
-                </span>
-
-            </div>
-
-
-            <div class="terminal-line">
-
-                Status:
-                <span class="green">
-                    ONLINE
-                </span>
-
-            </div>
-
-
-            <br>
-
-
-            <div>
-
-                <span class="prompt">
-                    zero-one@system
-                </span>:~$
-
-                <span class="command">
-                    _
-                </span>
+                <a
+                    href="#versions"
+                    class="btn btn-primary"
+                >
+                    Get ZERO ONE
+                </a>
 
             </div>
 
@@ -2341,277 +1675,62 @@ footer strong {
 </section>
 
 
-<!-- =========================================================
-     SYSTEM
-========================================================= -->
+<!-- SPECS -->
 
-<section
-    class="section"
-    id="system"
->
+<section class="section">
 
-    <div class="section-header center reveal">
+    <div class="section-heading center reveal">
 
         <div class="kicker">
             SYSTEM
         </div>
 
         <h2>
-            Ready to run.
+            Simple requirements.
         </h2>
 
         <p>
-            ZERO ONE OS is designed to run on
-            modern 64-bit computers.
+            Designed to run on modern 64-bit computers.
         </p>
 
     </div>
 
 
-    <div class="system-panel">
+    <div class="specs">
 
-
-        <div class="panel reveal">
-
-            <h3>
-                Minimum requirements
-            </h3>
-
-            <p class="panel-description">
-                Recommended baseline hardware
-                for a comfortable desktop experience.
-            </p>
-
-
-            <div class="requirements">
-
-                <div class="requirement">
-
-                    <span>
-                        Processor
-                    </span>
-
-                    <strong>
-                        64-bit CPU
-                    </strong>
-
-                </div>
-
-
-                <div class="requirement">
-
-                    <span>
-                        Memory
-                    </span>
-
-                    <strong>
-                        4 GB RAM+
-                    </strong>
-
-                </div>
-
-
-                <div class="requirement">
-
-                    <span>
-                        Storage
-                    </span>
-
-                    <strong>
-                        20 GB+
-                    </strong>
-
-                </div>
-
-
-                <div class="requirement">
-
-                    <span>
-                        Graphics
-                    </span>
-
-                    <strong>
-                        OpenGL GPU
-                    </strong>
-
-                </div>
-
-
-                <div class="requirement">
-
-                    <span>
-                        Architecture
-                    </span>
-
-                    <strong>
-                        x86_64
-                    </strong>
-
-                </div>
-
-            </div>
-
+        <div class="spec reveal">
+            <strong>64-bit</strong>
+            <span>CPU ARCHITECTURE</span>
         </div>
 
-
-        <div class="panel reveal">
-
-            <h3>
-                Current release
-            </h3>
-
-            <div class="big-version">
-                1.0
-            </div>
-
-            <div class="stable-text">
-                STABLE RELEASE
-            </div>
-
-            <p class="panel-description">
-                The recommended build for users
-                who want the most stable ZERO ONE
-                OS experience.
-            </p>
-
+        <div class="spec reveal">
+            <strong>4 GB+</strong>
+            <span>RAM</span>
         </div>
 
+        <div class="spec reveal">
+            <strong>20 GB+</strong>
+            <span>STORAGE</span>
+        </div>
+
+        <div class="spec reveal">
+            <strong>x86_64</strong>
+            <span>PLATFORM</span>
+        </div>
 
     </div>
 
 </section>
 
 
-<!-- =========================================================
-     CHANGELOG
-========================================================= -->
-
-<section class="section">
-
-    <div class="section-header center reveal">
-
-        <div class="kicker">
-            EVOLUTION
-        </div>
-
-        <h2>
-            The ZERO ONE journey.
-        </h2>
-
-        <p>
-            From the first experimental build
-            to the stable release.
-        </p>
-
-    </div>
-
-
-    <div class="timeline">
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-date">
-                ALPHA 1
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    The beginning
-                </h3>
-
-                <p>
-                    The first ZERO ONE OS experimental
-                    build and the foundation of the project.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-date">
-                ALPHA 2
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    Growing the system
-                </h3>
-
-                <p>
-                    Improvements, new components and
-                    continued development of the OS.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-date">
-                BETA 1
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    Wider testing
-                </h3>
-
-                <p>
-                    A more mature system prepared
-                    for broader testing and feedback.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="timeline-item reveal">
-
-            <div class="timeline-date">
-                RELEASE
-            </div>
-
-            <div class="timeline-content">
-
-                <h3>
-                    ZERO ONE OS goes stable
-                </h3>
-
-                <p>
-                    The stable release becomes the
-                    recommended version for everyday use.
-                </p>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- =========================================================
-     FAQ
-========================================================= -->
+<!-- FAQ -->
 
 <section
     class="section"
     id="faq"
 >
 
-    <div class="section-header center reveal">
+    <div class="section-heading center reveal">
 
         <div class="kicker">
             FAQ
@@ -2622,7 +1741,8 @@ footer strong {
         </h2>
 
         <p>
-            A few quick answers about ZERO ONE OS.
+            Everything you need to know about
+            ZERO ONE OS.
         </p>
 
     </div>
@@ -2637,18 +1757,18 @@ footer strong {
 
                 What is ZERO ONE OS?
 
-                <span class="faq-plus">
+                <span class="plus">
                     +
                 </span>
 
             </button>
 
-            <div class="faq-answer">
+            <div class="answer">
 
                 <p>
                     ZERO ONE OS is a Linux-based operating
-                    system project focused on a modern,
-                    customizable desktop experience.
+                    system project focused on creating a
+                    modern and customizable desktop experience.
                 </p>
 
             </div>
@@ -2660,20 +1780,20 @@ footer strong {
 
             <button class="faq-question">
 
-                Which version should I install?
+                Which version should I use?
 
-                <span class="faq-plus">
+                <span class="plus">
                     +
                 </span>
 
             </button>
 
-            <div class="faq-answer">
+            <div class="answer">
 
                 <p>
-                    The Release version is recommended
-                    for everyday use. Alpha and Beta
-                    builds are intended for testing.
+                    The Release version is recommended for
+                    normal everyday use. Alpha and Beta builds
+                    are intended primarily for testing.
                 </p>
 
             </div>
@@ -2685,20 +1805,20 @@ footer strong {
 
             <button class="faq-question">
 
-                Is ZERO ONE OS Linux?
+                Can I modify ZERO ONE OS?
 
-                <span class="faq-plus">
+                <span class="plus">
                     +
                 </span>
 
             </button>
 
-            <div class="faq-answer">
+            <div class="answer">
 
                 <p>
-                    Yes. ZERO ONE OS is based on the
-                    Linux ecosystem and uses Linux
-                    technologies underneath the desktop.
+                    ZERO ONE is built around the flexibility
+                    of the Linux ecosystem, allowing you to
+                    customize your environment.
                 </p>
 
             </div>
@@ -2710,19 +1830,20 @@ footer strong {
 
             <button class="faq-question">
 
-                Where can I find the source code?
+                Where is the project hosted?
 
-                <span class="faq-plus">
+                <span class="plus">
                     +
                 </span>
 
             </button>
 
-            <div class="faq-answer">
+            <div class="answer">
 
                 <p>
-                    The project source code is available
-                    through the ZERO ONE OS GitHub repository.
+                    The ZERO ONE OS project is hosted on
+                    GitHub together with the website and
+                    project files.
                 </p>
 
             </div>
@@ -2735,41 +1856,41 @@ footer strong {
 </section>
 
 
-<!-- =========================================================
-     DOWNLOAD CTA
-========================================================= -->
+<!-- CTA -->
 
 <section
     class="cta reveal"
     id="download"
 >
 
+    <div class="kicker">
+        ZERO ONE OS
+    </div>
+
     <h2>
-        Ready for ZERO ONE?
+        The future is open.
     </h2>
 
     <p>
-        Choose the stable Release or explore
-        the experimental builds and become part
-        of the journey.
+        Choose a build, explore the project and
+        experience ZERO ONE OS.
     </p>
 
-
-    <div class="hero-actions">
+    <div class="buttons">
 
         <a
             href="#versions"
-            class="button button-primary"
+            class="btn btn-primary"
         >
-            ↓ Download ZERO ONE OS
+            Download ZERO ONE
         </a>
 
         <a
             href="https://github.com/mateimalai3-sys/zero-one-os.github.io"
             target="_blank"
-            class="button button-secondary"
+            class="btn btn-secondary"
         >
-            ◈ GitHub
+            GitHub
         </a>
 
     </div>
@@ -2777,9 +1898,7 @@ footer strong {
 </section>
 
 
-<!-- =========================================================
-     FOOTER
-========================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -2794,74 +1913,68 @@ footer strong {
 </footer>
 
 
-<!-- =========================================================
-     JAVASCRIPT
-========================================================= -->
-
 <script>
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+/* ================= NAV ================= */
 
 const nav =
     document.getElementById("nav");
 
-window.addEventListener("scroll", () => {
+window.addEventListener("scroll",()=>{
 
-    if (window.scrollY > 40) {
+    if(window.scrollY > 30){
         nav.classList.add("scrolled");
-    } else {
+    }else{
         nav.classList.remove("scrolled");
     }
 
 });
 
 
-/* =========================================================
-   SCROLL PROGRESS
-========================================================= */
+/* ================= PARTICLES ================= */
 
-const progress =
-    document.getElementById("progress");
+const particles =
+    document.getElementById("particles");
 
-window.addEventListener("scroll", () => {
+for(let i=0;i<35;i++){
 
-    const scrollTop =
-        window.scrollY;
+    const p =
+        document.createElement("div");
 
-    const height =
-        document.documentElement.scrollHeight
-        - window.innerHeight;
+    p.className="particle";
 
-    const percentage =
-        (scrollTop / height) * 100;
+    p.style.left =
+        Math.random()*100+"%";
 
-    progress.style.width =
-        percentage + "%";
+    p.style.animationDuration =
+        (10+Math.random()*20)+"s";
 
-});
+    p.style.animationDelay =
+        (-Math.random()*20)+"s";
+
+    p.style.opacity =
+        (.1+Math.random()*.35);
+
+    particles.appendChild(p);
+
+}
 
 
-/* =========================================================
-   REVEAL ANIMATION
-========================================================= */
+/* ================= REVEAL ================= */
 
-const revealObserver =
+const observer =
     new IntersectionObserver(
-        entries => {
+        entries=>{
 
-            entries.forEach(entry => {
+            entries.forEach(entry=>{
 
-                if (
-                    entry.isIntersecting
-                ) {
+                if(entry.isIntersecting){
 
                     entry.target.classList.add(
-                        "visible"
+                        "show"
                     );
 
-                    revealObserver.unobserve(
+                    observer.unobserve(
                         entry.target
                     );
 
@@ -2871,56 +1984,44 @@ const revealObserver =
 
         },
         {
-            threshold: .12
+            threshold:.12
         }
     );
 
 
 document
     .querySelectorAll(".reveal")
-    .forEach(element => {
-
-        revealObserver.observe(element);
-
+    .forEach(el=>{
+        observer.observe(el);
     });
 
 
-/* =========================================================
-   FAQ
-========================================================= */
+/* ================= FAQ ================= */
 
 document
     .querySelectorAll(".faq-question")
-    .forEach(button => {
+    .forEach(button=>{
 
         button.addEventListener(
             "click",
-            () => {
+            ()=>{
 
                 const item =
                     button.parentElement;
 
-                const alreadyOpen =
+                const wasOpen =
                     item.classList.contains("open");
 
 
                 document
                     .querySelectorAll(".faq-item")
-                    .forEach(other => {
-
-                        other.classList.remove(
-                            "open"
-                        );
-
+                    .forEach(other=>{
+                        other.classList.remove("open");
                     });
 
 
-                if (!alreadyOpen) {
-
-                    item.classList.add(
-                        "open"
-                    );
-
+                if(!wasOpen){
+                    item.classList.add("open");
                 }
 
             }
@@ -2929,34 +2030,27 @@ document
     });
 
 
-/* =========================================================
-   BUTTON PRESS EFFECT
-========================================================= */
+/* ================= BUTTON EFFECT ================= */
 
 document
-    .querySelectorAll(
-        ".button, .version-download"
-    )
-    .forEach(button => {
+    .querySelectorAll(".btn,.version-link")
+    .forEach(button=>{
 
         button.addEventListener(
             "click",
-            () => {
+            ()=>{
 
                 button.animate(
                     [
                         {
-                            transform:
-                                "scale(.96)"
+                            transform:"scale(.96)"
                         },
                         {
-                            transform:
-                                "scale(1)"
+                            transform:"scale(1)"
                         }
                     ],
                     {
-                        duration: 160,
-                        easing: "ease-out"
+                        duration:150
                     }
                 );
 
@@ -2966,28 +2060,19 @@ document
     });
 
 
-/* =========================================================
-   TAB TITLE
-========================================================= */
+/* ================= PAGE TITLE ================= */
 
-const originalTitle =
+const title =
     document.title;
 
 document.addEventListener(
     "visibilitychange",
-    () => {
+    ()=>{
 
-        if (document.hidden) {
-
-            document.title =
-                "ZERO ONE OS • Come back";
-
-        } else {
-
-            document.title =
-                originalTitle;
-
-        }
+        document.title =
+            document.hidden
+            ? "ZERO ONE OS • Come back"
+            : title;
 
     }
 );

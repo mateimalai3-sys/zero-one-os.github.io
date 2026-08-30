@@ -6,18 +6,23 @@
 
 <title>ZERO ONE OS</title>
 
-<meta name="description" content="ZERO ONE OS — The future is open.">
-
 <style>
-
-/* =========================================================
-   ZERO ONE OS — COMPLETE WEBSITE
-   ========================================================= */
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    text-decoration: none !important;
+}
+
+:root {
+    --blue: #08a9ff;
+    --blue2: #006cff;
+    --cyan: #00d9ff;
+    --text: #f4f9ff;
+    --muted: #718697;
+    --bg: #02070d;
+    --card: rgba(5, 15, 25, .78);
+    --border: rgba(0, 170, 255, .18);
 }
 
 html {
@@ -27,34 +32,31 @@ html {
 body {
     min-height: 100vh;
     overflow-x: hidden;
-
-    font-family:
-        Inter,
-        -apple-system,
-        BlinkMacSystemFont,
-        "Segoe UI",
-        sans-serif;
-
-    color: #f4f9ff;
-
+    color: var(--text);
     background:
         radial-gradient(
-            circle at 50% -10%,
-            rgba(0, 140, 255, .20),
+            circle at 50% -15%,
+            rgba(0, 145, 255, .22),
             transparent 38%
         ),
         radial-gradient(
-            circle at 0% 50%,
-            rgba(0, 80, 255, .08),
+            circle at 0% 60%,
+            rgba(0, 90, 255, .08),
             transparent 35%
         ),
-        #02060b;
+        var(--bg);
+
+    font-family:
+        Inter,
+        Arial,
+        Helvetica,
+        sans-serif;
 }
 
 
-/* =========================================================
+/* ================================
    BACKGROUND
-   ========================================================= */
+================================ */
 
 .background {
     position: fixed;
@@ -69,12 +71,12 @@ body {
 
     background-image:
         linear-gradient(
-            rgba(0, 160, 255, .035) 1px,
+            rgba(0, 170, 255, .035) 1px,
             transparent 1px
         ),
         linear-gradient(
             90deg,
-            rgba(0, 160, 255, .035) 1px,
+            rgba(0, 170, 255, .035) 1px,
             transparent 1px
         );
 
@@ -91,53 +93,50 @@ body {
 .glow {
     position: absolute;
 
-    width: 450px;
-    height: 450px;
+    width: 500px;
+    height: 500px;
 
     border-radius: 50%;
 
-    filter: blur(120px);
+    filter: blur(130px);
 
-    opacity: .10;
+    opacity: .12;
 
-    background: #008cff;
+    background: var(--blue);
 
-    animation: floatGlow 10s ease-in-out infinite;
+    animation: glowMove 12s ease-in-out infinite;
 }
 
 .glow.one {
-    top: -220px;
-    left: -180px;
+    top: -280px;
+    left: -220px;
 }
 
 .glow.two {
-    right: -200px;
-    top: 40%;
+    right: -250px;
+    top: 45%;
 
-    background: #00c8ff;
+    background: var(--cyan);
 
-    animation-delay: -4s;
+    animation-delay: -5s;
 }
 
-@keyframes floatGlow {
+@keyframes glowMove {
     50% {
-        transform: translateY(60px) scale(1.12);
+        transform: translateY(70px) scale(1.1);
     }
 }
 
 
-/* =========================================================
+/* ================================
    PARTICLES
-   ========================================================= */
+================================ */
 
 #particles {
     position: fixed;
     inset: 0;
-
-    pointer-events: none;
-
     overflow: hidden;
-
+    pointer-events: none;
     z-index: -5;
 }
 
@@ -149,15 +148,14 @@ body {
 
     border-radius: 50%;
 
-    background: #00bfff;
+    background: var(--cyan);
 
     opacity: .25;
 
-    animation:
-        particleMove linear infinite;
+    animation: particleUp linear infinite;
 }
 
-@keyframes particleMove {
+@keyframes particleUp {
     from {
         transform: translateY(105vh);
     }
@@ -168,9 +166,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    NAVBAR
-   ========================================================= */
+================================ */
 
 .navbar {
     position: fixed;
@@ -180,29 +178,22 @@ body {
 
     transform: translateX(-50%);
 
-    width:
-        min(
-            1150px,
-            calc(100% - 30px)
-        );
+    width: min(1150px, calc(100% - 30px));
 
     height: 64px;
 
-    padding:
-        0 10px 0 18px;
+    padding: 0 12px 0 16px;
 
     display: flex;
     align-items: center;
     justify-content: space-between;
 
-    border:
-        1px solid
-        rgba(0, 180, 255, .14);
+    border: 1px solid var(--border);
 
     border-radius: 18px;
 
     background:
-        rgba(3, 10, 17, .65);
+        rgba(2, 9, 16, .70);
 
     backdrop-filter: blur(25px);
 
@@ -213,82 +204,79 @@ body {
 
 .navbar.scrolled {
     background:
-        rgba(2, 8, 14, .92);
+        rgba(2, 8, 14, .94);
 
     border-color:
-        rgba(0, 180, 255, .27);
+        rgba(0, 180, 255, .3);
 
     box-shadow:
-        0 20px 70px
-        rgba(0, 0, 0, .35);
+        0 20px 70px rgba(0, 0, 0, .4);
 }
 
 
-/* =========================================================
+/* ================================
    LOGO
-   ========================================================= */
+================================ */
 
 .logo {
     display: flex;
     align-items: center;
-
     gap: 10px;
+
+    color: var(--blue);
 
     font-size: 11px;
     font-weight: 900;
-
     letter-spacing: 2px;
 }
 
 .logo-mark {
-    width: 38px;
-    height: 38px;
+    width: 40px;
+    height: 40px;
 
     display: grid;
     place-items: center;
 
-    border-radius: 11px;
+    border-radius: 12px;
 
     color: white;
-
-    font-size: 11px;
-    font-weight: 900;
 
     background:
         linear-gradient(
             135deg,
-            #09b9ff,
-            #0062ff
+            #0abaff,
+            #0063ff
         );
 
     box-shadow:
-        0 0 28px
-        rgba(0, 140, 255, .35);
+        0 0 30px rgba(0, 145, 255, .38);
+
+    font-size: 11px;
+    font-weight: 900;
 }
 
 .logo-one {
-    color: #00bfff;
+    color: var(--blue);
 }
 
 
-/* =========================================================
-   NAV LINKS
-   ========================================================= */
+/* ================================
+   NAVIGATION
+================================ */
 
 .nav-links {
     display: flex;
     align-items: center;
-
-    gap: 28px;
+    gap: 25px;
 
     list-style: none;
 }
 
 .nav-links a {
-    color: #6f8492;
+    color: #78909f;
 
     font-size: 10px;
-    font-weight: 700;
+    font-weight: 800;
 
     transition: .2s;
 }
@@ -298,25 +286,24 @@ body {
 }
 
 .nav-download {
-    padding:
-        10px 15px;
+    padding: 10px 15px;
 
     border-radius: 10px;
 
-    color: #a8eaff !important;
+    color: #9ce5ff !important;
 
     background:
         rgba(0, 150, 255, .07);
 
     border:
         1px solid
-        rgba(0, 180, 255, .20);
+        rgba(0, 180, 255, .2);
 }
 
 
-/* =========================================================
+/* ================================
    HERO
-   ========================================================= */
+================================ */
 
 .hero {
     min-height: 100vh;
@@ -325,33 +312,25 @@ body {
     justify-content: center;
     align-items: center;
 
-    padding:
-        150px 20px
-        100px;
+    padding: 150px 20px 100px;
 
     text-align: center;
 }
 
 .hero-content {
-    width:
-        min(
-            1000px,
-            100%
-        );
+    width: min(1000px, 100%);
 }
 
 .status {
     display: inline-flex;
     align-items: center;
-
     gap: 9px;
 
-    padding:
-        8px 13px;
+    padding: 8px 13px;
 
     border-radius: 999px;
 
-    color: #75ddff;
+    color: #73dcff;
 
     background:
         rgba(0, 150, 255, .05);
@@ -362,7 +341,6 @@ body {
 
     font-size: 9px;
     font-weight: 900;
-
     letter-spacing: 2px;
 }
 
@@ -372,51 +350,45 @@ body {
 
     border-radius: 50%;
 
-    background: #00ddff;
+    background: var(--cyan);
 
     box-shadow:
-        0 0 16px
-        #00ddff;
+        0 0 16px var(--cyan);
 
-    animation:
-        statusPulse 1.5s infinite;
+    animation: pulse 1.5s infinite;
 }
 
-@keyframes statusPulse {
+@keyframes pulse {
     50% {
-        transform: scale(.55);
+        transform: scale(.5);
         opacity: .35;
     }
 }
 
 
-/* =========================================================
+/* ================================
    HERO TITLE
-   ========================================================= */
+================================ */
 
 .hero h1 {
     margin-top: 32px;
 
     font-size:
-        clamp(
-            68px,
-            14vw,
-            155px
-        );
+        clamp(60px, 14vw, 150px);
 
     line-height: .82;
 
-    font-weight: 900;
+    font-weight: 950;
 
-    letter-spacing: -10px;
+    letter-spacing: -9px;
 
     background:
         linear-gradient(
             180deg,
-            #ffffff 0%,
-            #e9f9ff 30%,
-            #6bdcff 65%,
-            #0065ff 100%
+            #ffffff,
+            #dff8ff 35%,
+            #51d4ff 70%,
+            #0065ff
         );
 
     -webkit-background-clip: text;
@@ -427,7 +399,7 @@ body {
     filter:
         drop-shadow(
             0 0 35px
-            rgba(0, 150, 255, .16)
+            rgba(0, 150, 255, .15)
         );
 }
 
@@ -435,28 +407,21 @@ body {
     margin-top: 30px;
 
     font-size:
-        clamp(
-            20px,
-            4vw,
-            31px
-        );
+        clamp(20px, 4vw, 30px);
 
-    color: #d8f3ff;
-
-    font-weight: 500;
+    color: #dcefff;
 }
 
 .tagline span {
-    color: #00c6ff;
+    color: var(--blue);
 }
 
 .description {
     max-width: 650px;
 
-    margin:
-        20px auto 0;
+    margin: 20px auto 0;
 
-    color: #647b8b;
+    color: #687e8d;
 
     font-size: 13px;
 
@@ -464,9 +429,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    BUTTONS
-   ========================================================= */
+================================ */
 
 .hero-buttons {
     margin-top: 32px;
@@ -482,35 +447,32 @@ body {
 .button {
     min-width: 160px;
 
-    padding:
-        14px 22px;
+    padding: 14px 22px;
 
     display: inline-flex;
-
     align-items: center;
     justify-content: center;
 
     border-radius: 12px;
 
     font-size: 10px;
-    font-weight: 800;
+    font-weight: 900;
 
     transition: .3s ease;
 }
 
 .button:hover {
-    transform:
-        translateY(-4px);
+    transform: translateY(-4px);
 }
 
-.button-primary {
+.primary {
     color: white;
 
     background:
         linear-gradient(
             135deg,
-            #08aaff,
-            #005cff
+            #09aeff,
+            #005dff
         );
 
     border:
@@ -522,37 +484,32 @@ body {
         rgba(0, 110, 255, .25);
 }
 
-.button-primary:hover {
+.primary:hover {
     box-shadow:
-        0 20px 60px
-        rgba(0, 140, 255, .42);
+        0 20px 65px
+        rgba(0, 140, 255, .45);
 }
 
-.button-secondary {
-    color: #a5c7d8;
+.secondary {
+    color: #a8c9d8;
 
     background:
         rgba(0, 140, 255, .04);
 
     border:
         1px solid
-        rgba(0, 160, 255, .17);
+        rgba(0, 160, 255, .18);
 }
 
 
-/* =========================================================
+/* ================================
    STATS
-   ========================================================= */
+================================ */
 
 .stats {
-    width:
-        min(
-            750px,
-            100%
-        );
+    width: min(750px, 100%);
 
-    margin:
-        65px auto 0;
+    margin: 65px auto 0;
 
     display: grid;
 
@@ -568,7 +525,7 @@ body {
     overflow: hidden;
 
     background:
-        rgba(5, 13, 22, .55);
+        rgba(5, 13, 22, .6);
 
     backdrop-filter: blur(15px);
 }
@@ -605,21 +562,16 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    SECTIONS
-   ========================================================= */
+================================ */
 
 .section {
-    width:
-        min(
-            1120px,
-            calc(100% - 40px)
-        );
+    width: min(1120px, calc(100% - 40px));
 
     margin: auto;
 
-    padding:
-        120px 0;
+    padding: 120px 0;
 }
 
 .section-title {
@@ -629,7 +581,7 @@ body {
 }
 
 .kicker {
-    color: #00cfff;
+    color: var(--cyan);
 
     font-size: 9px;
     font-weight: 900;
@@ -641,11 +593,7 @@ body {
     margin-top: 12px;
 
     font-size:
-        clamp(
-            40px,
-            6vw,
-            65px
-        );
+        clamp(40px, 6vw, 65px);
 
     line-height: .95;
 
@@ -655,8 +603,7 @@ body {
 .section-title p {
     max-width: 600px;
 
-    margin:
-        18px auto 0;
+    margin: 18px auto 0;
 
     color: #607684;
 
@@ -666,9 +613,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    FEATURES
-   ========================================================= */
+================================ */
 
 .features {
     display: grid;
@@ -680,8 +627,6 @@ body {
 }
 
 .feature {
-    position: relative;
-
     min-height: 235px;
 
     padding: 30px;
@@ -697,20 +642,22 @@ body {
     background:
         linear-gradient(
             145deg,
-            rgba(9, 24, 39, .72),
-            rgba(3, 9, 15, .72)
+            rgba(9, 24, 39, .75),
+            rgba(3, 9, 15, .75)
         );
 
-    transition:
-        .35s ease;
+    transition: .35s ease;
 }
 
 .feature:hover {
-    transform:
-        translateY(-8px);
+    transform: translateY(-8px);
 
     border-color:
         rgba(0, 190, 255, .4);
+
+    box-shadow:
+        0 25px 70px
+        rgba(0, 100, 255, .08);
 }
 
 .feature-icon {
@@ -722,14 +669,14 @@ body {
 
     border-radius: 14px;
 
-    color: #00cfff;
+    color: var(--cyan);
 
     background:
         rgba(0, 150, 255, .07);
 
     border:
         1px solid
-        rgba(0, 180, 255, .20);
+        rgba(0, 180, 255, .2);
 
     font-size: 19px;
 }
@@ -751,9 +698,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    VERSIONS
-   ========================================================= */
+================================ */
 
 .versions {
     display: grid;
@@ -780,27 +727,21 @@ body {
     border-radius: 22px;
 
     background:
-        rgba(5, 14, 23, .75);
+        rgba(5, 14, 23, .78);
 
-    transition:
-        .35s ease;
+    transition: .35s ease;
 }
 
 .version:hover {
-    transform:
-        translateY(-9px);
+    transform: translateY(-9px);
 
     border-color:
-        rgba(0, 190, 255, .38);
-
-    box-shadow:
-        0 25px 70px
-        rgba(0, 100, 255, .07);
+        rgba(0, 190, 255, .4);
 }
 
 .version.release {
     border-color:
-        rgba(0, 210, 255, .34);
+        rgba(0, 210, 255, .35);
 
     background:
         radial-gradient(
@@ -814,7 +755,7 @@ body {
 .version-number {
     font-size: 42px;
 
-    font-weight: 900;
+    font-weight: 950;
 
     letter-spacing: -3px;
 }
@@ -835,8 +776,7 @@ body {
 
     margin-top: 20px;
 
-    padding:
-        6px 10px;
+    padding: 6px 10px;
 
     border-radius: 7px;
 
@@ -847,7 +787,7 @@ body {
 
     border:
         1px solid
-        rgba(0, 170, 255, .20);
+        rgba(0, 170, 255, .2);
 
     font-size: 8px;
     font-weight: 900;
@@ -856,7 +796,7 @@ body {
 }
 
 .release .badge {
-    color: #00efff;
+    color: var(--cyan);
 
     border-color:
         rgba(0, 230, 255, .3);
@@ -882,8 +822,7 @@ body {
     right: 26px;
     bottom: 26px;
 
-    padding:
-        12px;
+    padding: 12px;
 
     text-align: center;
 
@@ -908,7 +847,7 @@ body {
     color: white;
 
     background:
-        rgba(0, 150, 255, .12);
+        rgba(0, 150, 255, .13);
 
     border-color:
         rgba(0, 190, 255, .35);
@@ -929,9 +868,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    SHOWCASE
-   ========================================================= */
+================================ */
 
 .showcase {
     position: relative;
@@ -993,29 +932,17 @@ body {
 
 .showcase-content {
     position: relative;
+
     z-index: 2;
 
     padding: 40px;
-}
-
-.showcase-label {
-    color: #00dfff;
-
-    font-size: 9px;
-    font-weight: 900;
-
-    letter-spacing: 3px;
 }
 
 .showcase h2 {
     margin-top: 18px;
 
     font-size:
-        clamp(
-            42px,
-            7vw,
-            76px
-        );
+        clamp(42px, 7vw, 76px);
 
     letter-spacing: -5px;
 }
@@ -1023,8 +950,7 @@ body {
 .showcase p {
     max-width: 600px;
 
-    margin:
-        17px auto 0;
+    margin: 17px auto 0;
 
     color: #617584;
 
@@ -1034,9 +960,9 @@ body {
 }
 
 
-/* =========================================================
-   SYSTEM REQUIREMENTS
-   ========================================================= */
+/* ================================
+   REQUIREMENTS
+================================ */
 
 .requirements {
     display: grid;
@@ -1063,8 +989,7 @@ body {
 }
 
 .requirement:hover {
-    transform:
-        translateY(-5px);
+    transform: translateY(-5px);
 
     border-color:
         rgba(0, 180, 255, .3);
@@ -1090,9 +1015,9 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    FAQ
-   ========================================================= */
+================================ */
 
 .faq {
     max-width: 850px;
@@ -1119,6 +1044,7 @@ body {
     width: 100%;
 
     display: flex;
+
     justify-content: space-between;
     align-items: center;
 
@@ -1130,16 +1056,16 @@ body {
 
     background: none;
 
-    text-align: left;
-
     cursor: pointer;
+
+    text-align: left;
 
     font-size: 11px;
     font-weight: 700;
 }
 
 .faq-plus {
-    color: #00cfff;
+    color: var(--cyan);
 
     font-size: 18px;
 
@@ -1166,28 +1092,22 @@ body {
     line-height: 1.8;
 }
 
-.faq-item.open
-.faq-answer {
+.faq-item.open .faq-answer {
     max-height: 180px;
 }
 
-.faq-item.open
-.faq-plus {
-    transform:
-        rotate(45deg);
+.faq-item.open .faq-plus {
+    transform: rotate(45deg);
 }
 
 
-/* =========================================================
-   DOWNLOAD CTA
-   ========================================================= */
+/* ================================
+   CTA
+================================ */
 
 .cta {
     width:
-        min(
-            1050px,
-            calc(100% - 40px)
-        );
+        min(1050px, calc(100% - 40px));
 
     margin:
         50px auto 120px;
@@ -1216,11 +1136,7 @@ body {
     margin-top: 12px;
 
     font-size:
-        clamp(
-            42px,
-            7vw,
-            72px
-        );
+        clamp(42px, 7vw, 72px);
 
     letter-spacing: -5px;
 }
@@ -1239,13 +1155,12 @@ body {
 }
 
 
-/* =========================================================
+/* ================================
    FOOTER
-   ========================================================= */
+================================ */
 
 footer {
-    padding:
-        45px 20px;
+    padding: 45px 20px;
 
     text-align: center;
 
@@ -1259,19 +1174,18 @@ footer {
 }
 
 footer strong {
-    color: #009dff;
+    color: var(--blue);
 }
 
 
-/* =========================================================
-   REVEAL
-   ========================================================= */
+/* ================================
+   ANIMATION REVEAL
+================================ */
 
 .reveal {
     opacity: 0;
 
-    transform:
-        translateY(30px);
+    transform: translateY(30px);
 
     transition:
         opacity .8s ease,
@@ -1281,14 +1195,13 @@ footer strong {
 .reveal.visible {
     opacity: 1;
 
-    transform:
-        translateY(0);
+    transform: translateY(0);
 }
 
 
-/* =========================================================
+/* ================================
    MOBILE
-   ========================================================= */
+================================ */
 
 @media (max-width: 950px) {
 
@@ -1306,9 +1219,7 @@ footer strong {
         grid-template-columns:
             repeat(2, 1fr);
     }
-
 }
-
 
 @media (max-width: 650px) {
 
@@ -1369,13 +1280,9 @@ footer strong {
         padding:
             70px 20px;
     }
-
 }
 
-
-@media (
-    prefers-reduced-motion: reduce
-) {
+@media (prefers-reduced-motion: reduce) {
 
     *,
     *::before,
@@ -1383,36 +1290,23 @@ footer strong {
         animation: none !important;
         transition: none !important;
     }
-
 }
-
 </style>
 </head>
 
 
 <body>
 
-
-<!-- =======================================================
-     BACKGROUND
-     ======================================================= -->
-
 <div class="background">
-
     <div class="grid"></div>
-
     <div class="glow one"></div>
-
     <div class="glow two"></div>
-
 </div>
 
 <div id="particles"></div>
 
 
-<!-- =======================================================
-     NAVBAR
-     ======================================================= -->
+<!-- NAVBAR -->
 
 <nav class="navbar" id="navbar">
 
@@ -1422,10 +1316,7 @@ footer strong {
             01
         </div>
 
-        ZERO
-        <span class="logo-one">
-            ONE
-        </span>
+        ZERO ONE
 
     </a>
 
@@ -1457,10 +1348,7 @@ footer strong {
         </li>
 
         <li>
-            <a
-                href="#versions"
-                class="nav-download"
-            >
+            <a href="#versions" class="nav-download">
                 Download
             </a>
         </li>
@@ -1470,9 +1358,7 @@ footer strong {
 </nav>
 
 
-<!-- =======================================================
-     HERO
-     ======================================================= -->
+<!-- HERO -->
 
 <header class="hero">
 
@@ -1515,14 +1401,14 @@ footer strong {
 
             <a
                 href="#versions"
-                class="button button-primary"
+                class="button primary"
             >
                 Explore ZERO ONE
             </a>
 
             <a
                 href="#download"
-                class="button button-secondary"
+                class="button secondary"
             >
                 Download OS
             </a>
@@ -1577,14 +1463,9 @@ footer strong {
 </header>
 
 
-<!-- =======================================================
-     FEATURES
-     ======================================================= -->
+<!-- FEATURES -->
 
-<section
-    class="section"
-    id="features"
->
+<section class="section" id="features">
 
     <div class="section-title reveal">
 
@@ -1607,7 +1488,6 @@ footer strong {
 
     <div class="features">
 
-
         <article class="feature reveal">
 
             <div class="feature-icon">
@@ -1619,9 +1499,9 @@ footer strong {
             </h3>
 
             <p>
-                A lightweight foundation that
-                keeps your computer responsive
-                while you work, play and create.
+                A lightweight foundation that keeps
+                your computer responsive while you
+                work, play and create.
             </p>
 
         </article>
@@ -1658,8 +1538,7 @@ footer strong {
 
             <p>
                 Built around the Linux ecosystem,
-                giving you control over your
-                own computer.
+                giving you control over your own computer.
             </p>
 
         </article>
@@ -1676,9 +1555,8 @@ footer strong {
             </h3>
 
             <p>
-                Customize your desktop,
-                applications and workflow
-                however you want.
+                Customize your desktop, applications
+                and workflow however you want.
             </p>
 
         </article>
@@ -1696,8 +1574,7 @@ footer strong {
 
             <p>
                 Your computer belongs to you.
-                ZERO ONE focuses on control
-                and privacy.
+                ZERO ONE focuses on control and privacy.
             </p>
 
         </article>
@@ -1714,27 +1591,20 @@ footer strong {
             </h3>
 
             <p>
-                ZERO ONE keeps evolving with
-                new builds, improvements and
-                ideas.
+                ZERO ONE keeps evolving with new
+                builds, improvements and ideas.
             </p>
 
         </article>
-
 
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     VERSIONS
-     ======================================================= -->
+<!-- VERSIONS -->
 
-<section
-    class="section"
-    id="versions"
->
+<section class="section" id="versions">
 
     <div class="section-title reveal">
 
@@ -1757,7 +1627,7 @@ footer strong {
     <div class="versions">
 
 
-        <!-- ALPHA 1 -->
+        <!-- A1 -->
 
         <article class="version reveal">
 
@@ -1788,7 +1658,7 @@ footer strong {
         </article>
 
 
-        <!-- ALPHA 2 -->
+        <!-- A2 -->
 
         <article class="version reveal">
 
@@ -1820,7 +1690,7 @@ footer strong {
         </article>
 
 
-        <!-- BETA 1 -->
+        <!-- BETA -->
 
         <article class="version reveal">
 
@@ -1881,15 +1751,12 @@ footer strong {
 
         </article>
 
-
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     SHOWCASE
-     ======================================================= -->
+<!-- SHOWCASE -->
 
 <section class="section">
 
@@ -1897,7 +1764,7 @@ footer strong {
 
         <div class="showcase-content">
 
-            <div class="showcase-label">
+            <div class="kicker">
                 ZERO ONE OS
             </div>
 
@@ -1914,7 +1781,7 @@ footer strong {
 
                 <a
                     href="#versions"
-                    class="button button-primary"
+                    class="button primary"
                 >
                     Get ZERO ONE
                 </a>
@@ -1928,14 +1795,9 @@ footer strong {
 </section>
 
 
-<!-- =======================================================
-     SYSTEM REQUIREMENTS
-     ======================================================= -->
+<!-- REQUIREMENTS -->
 
-<section
-    class="section"
-    id="requirements"
->
+<section class="section" id="requirements">
 
     <div class="section-title reveal">
 
@@ -1956,7 +1818,6 @@ footer strong {
 
 
     <div class="requirements">
-
 
         <div class="requirement reveal">
 
@@ -2009,20 +1870,14 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     FAQ
-     ======================================================= -->
+<!-- FAQ -->
 
-<section
-    class="section"
-    id="faq"
->
+<section class="section" id="faq">
 
     <div class="section-title reveal">
 
@@ -2085,9 +1940,9 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-                    The Release version is recommended
-                    for everyday use. Alpha and Beta
-                    versions are mainly intended for testing.
+                    Release 1.0 is recommended for
+                    everyday use. Alpha and Beta builds
+                    are intended mainly for testing.
                 </p>
 
             </div>
@@ -2110,8 +1965,8 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-                    The current system requirements list
-                    3 GB or more of RAM.
+                    The current system requirements
+                    list 3 GB or more of RAM.
                 </p>
 
             </div>
@@ -2134,7 +1989,7 @@ footer strong {
             <div class="faq-answer">
 
                 <p>
-                    There are four builds:
+                    Four builds are available:
                     Alpha 1, Alpha 2, Beta 1
                     and Release 1.0.
                 </p>
@@ -2143,20 +1998,14 @@ footer strong {
 
         </div>
 
-
     </div>
 
 </section>
 
 
-<!-- =======================================================
-     DOWNLOAD
-     ======================================================= -->
+<!-- DOWNLOAD CTA -->
 
-<section
-    class="cta reveal"
-    id="download"
->
+<section class="cta reveal" id="download">
 
     <div class="kicker">
         ZERO ONE OS
@@ -2174,7 +2023,7 @@ footer strong {
 
         <a
             href="#versions"
-            class="button button-primary"
+            class="button primary"
         >
             Download ZERO ONE
         </a>
@@ -2184,9 +2033,7 @@ footer strong {
 </section>
 
 
-<!-- =======================================================
-     FOOTER
-     ======================================================= -->
+<!-- FOOTER -->
 
 <footer>
 
@@ -2203,35 +2050,32 @@ footer strong {
 
 <script>
 
-/* =========================================================
+/* ================================
    NAVBAR
-   ========================================================= */
+================================ */
 
 const navbar =
     document.getElementById("navbar");
 
-window.addEventListener(
-    "scroll",
-    () => {
+window.addEventListener("scroll", () => {
 
-        if (window.scrollY > 30) {
-            navbar.classList.add("scrolled");
-        } else {
-            navbar.classList.remove("scrolled");
-        }
-
+    if (window.scrollY > 30) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
     }
-);
+
+});
 
 
-/* =========================================================
+/* ================================
    PARTICLES
-   ========================================================= */
+================================ */
 
 const particles =
     document.getElementById("particles");
 
-for (let i = 0; i < 45; i++) {
+for (let i = 0; i < 50; i++) {
 
     const particle =
         document.createElement("div");
@@ -2255,36 +2099,32 @@ for (let i = 0; i < 45; i++) {
 }
 
 
-/* =========================================================
+/* ================================
    SCROLL REVEAL
-   ========================================================= */
+================================ */
 
 const revealElements =
     document.querySelectorAll(".reveal");
 
 const observer =
     new IntersectionObserver(
-        (entries) => {
+        entries => {
 
-            entries.forEach(
-                (entry) => {
+            entries.forEach(entry => {
 
-                    if (
-                        entry.isIntersecting
-                    ) {
+                if (entry.isIntersecting) {
 
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    observer.unobserve(
                         entry.target
-                            .classList
-                            .add("visible");
-
-                        observer.unobserve(
-                            entry.target
-                        );
-
-                    }
+                    );
 
                 }
-            );
+
+            });
 
         },
         {
@@ -2292,107 +2132,54 @@ const observer =
         }
     );
 
-revealElements.forEach(
-    (element) => {
+revealElements.forEach(element => {
 
-        observer.observe(element);
+    observer.observe(element);
 
-    }
-);
+});
 
 
-/* =========================================================
+/* ================================
    FAQ
-   ========================================================= */
+================================ */
 
-const faqQuestions =
+const questions =
     document.querySelectorAll(
         ".faq-question"
     );
 
-faqQuestions.forEach(
-    (question) => {
+questions.forEach(question => {
 
-        question.addEventListener(
-            "click",
-            () => {
+    question.addEventListener(
+        "click",
+        () => {
 
-                const item =
-                    question.parentElement;
+            const item =
+                question.parentElement;
 
-                const alreadyOpen =
-                    item.classList.contains(
-                        "open"
-                    );
+            const wasOpen =
+                item.classList.contains("open");
 
 
-                document
-                    .querySelectorAll(
-                        ".faq-item"
-                    )
-                    .forEach(
-                        (other) => {
+            document
+                .querySelectorAll(".faq-item")
+                .forEach(other => {
 
-                            other.classList.remove(
-                                "open"
-                            );
+                    other.classList.remove("open");
 
-                        }
-                    );
+                });
 
 
-                if (!alreadyOpen) {
+            if (!wasOpen) {
 
-                    item.classList.add(
-                        "open"
-                    );
-
-                }
+                item.classList.add("open");
 
             }
-        );
-
-    }
-);
-
-
-/* =========================================================
-   BUTTON PRESS EFFECT
-   ========================================================= */
-
-document
-    .querySelectorAll(
-        ".button, .version-button"
-    )
-    .forEach(
-        (button) => {
-
-            button.addEventListener(
-                "click",
-                () => {
-
-                    button.animate(
-                        [
-                            {
-                                transform:
-                                    "scale(.96)"
-                            },
-                            {
-                                transform:
-                                    "scale(1)"
-                            }
-                        ],
-                        {
-                            duration: 160
-                        }
-                    );
-
-                }
-            );
 
         }
     );
 
+});
 
 </script>
 

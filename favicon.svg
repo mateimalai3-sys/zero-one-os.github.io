@@ -2,17 +2,17 @@
 
   <defs>
 
-    <!-- BLUE BACKGROUND -->
-    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#39B1F5"/>
-      <stop offset="55%" stop-color="#269FEA"/>
-      <stop offset="100%" stop-color="#168DDA"/>
+    <!-- WHITE FRONT -->
+    <linearGradient id="front" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="50%" stop-color="#F8FAFC"/>
+      <stop offset="100%" stop-color="#DCE5EA"/>
     </linearGradient>
 
-    <!-- WHITE -->
-    <linearGradient id="white" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFFFFF"/>
-      <stop offset="100%" stop-color="#F4F6F8"/>
+    <!-- 3D SIDE -->
+    <linearGradient id="side" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#B8C2C8"/>
+      <stop offset="100%" stop-color="#65727A"/>
     </linearGradient>
 
     <!-- SHADOW -->
@@ -25,32 +25,86 @@
     >
       <feDropShadow
         dx="0"
-        dy="9"
-        stdDeviation="7"
-        flood-color="#000000"
-        flood-opacity=".42"
+        dy="12"
+        stdDeviation="8"
+        flood-color="#003B62"
+        flood-opacity=".50"
       />
     </filter>
 
-  <!-- BACKGROUND -->
+  </defs>
+
+
+  <!-- ========================= -->
+  <!-- BLUE BACKGROUND -->
+  <!-- ========================= -->
 
   <rect
     width="512"
     height="512"
-    fill="url(#bg)"
+    fill="#269FEA"
   />
 
 
-  <!-- LOGO -->
+  <!-- ========================= -->
+  <!-- 3D BACK / EXTRUSION -->
+  <!-- ========================= -->
 
   <g
-    fill="url(#white)"
-    stroke="#888888"
+    fill="url(#side)"
+    stroke="#65727A"
+    stroke-width="3"
+    stroke-linejoin="miter"
+  >
+
+    <!-- 0 -->
+
+    <path
+      fill-rule="evenodd"
+      d="
+        M105 145
+        H285
+        V387
+        H105
+        Z
+
+        M155 190
+        V342
+        H235
+        V190
+        Z
+      "
+    />
+
+    <!-- 1 -->
+
+    <path
+      d="
+        M350 145
+        H410
+        V387
+        H355
+        V200
+        H325
+        V145
+        Z
+      "
+    />
+
+  </g>
+
+
+  <!-- ========================= -->
+  <!-- FRONT 01 -->
+  <!-- ========================= -->
+
+  <g
+    fill="url(#front)"
+    stroke="#89959C"
     stroke-width="3"
     stroke-linejoin="miter"
     stroke-linecap="square"
     filter="url(#shadow)"
-    mask="url(#centerCut)"
   >
 
     <!-- 0 -->
@@ -72,7 +126,6 @@
       "
     />
 
-
     <!-- 1 -->
 
     <path
@@ -89,5 +142,38 @@
     />
 
   </g>
+
+
+  <!-- CENTER LINE LIGHT -->
+
+  <rect
+    x="100"
+    y="247"
+    width="315"
+    height="4"
+    fill="#55C7FF"
+    opacity=".85"
+  />
+
+
+  <!-- ========================= -->
+  <!-- TOP HIGHLIGHTS -->
+  <!-- ========================= -->
+
+  <path
+    d="M112 140 H278"
+    stroke="#FFFFFF"
+    stroke-width="5"
+    stroke-linecap="square"
+    opacity=".65"
+  />
+
+  <path
+    d="M357 140 H404"
+    stroke="#FFFFFF"
+    stroke-width="5"
+    stroke-linecap="square"
+    opacity=".65"
+  />
 
 </svg>

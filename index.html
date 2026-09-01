@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <title>ZERO ONE OS — Official Website</title>
@@ -13,6 +14,7 @@
 
     <meta name="robots" content="index, follow">
 
+    <!-- Google / Browser icon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
 
     <style>
@@ -20,18 +22,6 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            text-decoration: none !important;
-        }
-
-        :root {
-            --blue: #08a9ff;
-            --blue2: #0068ff;
-            --cyan: #00d9ff;
-            --bg: #02070d;
-            --card: rgba(7, 17, 28, .72);
-            --border: rgba(0, 174, 255, .16);
-            --text: #f4f9ff;
-            --muted: #708594;
         }
 
         html {
@@ -40,565 +30,365 @@
 
         body {
             min-height: 100vh;
-            overflow-x: hidden;
-
-            font-family:
-                Inter,
-                Arial,
-                Helvetica,
-                sans-serif;
-
-            color: var(--text);
-
             background:
                 radial-gradient(
                     circle at 50% -10%,
-                    rgba(0, 145, 255, .22),
+                    rgba(0, 145, 255, 0.18),
                     transparent 38%
                 ),
-                radial-gradient(
-                    circle at 100% 60%,
-                    rgba(0, 100, 255, .09),
-                    transparent 30%
-                ),
-                #02070d;
+                #02070c;
+
+            color: #f4f8ff;
+
+            font-family:
+                Inter,
+                ui-sans-serif,
+                system-ui,
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                sans-serif;
+
+            overflow-x: hidden;
         }
 
-        /* BACKGROUND */
-
-        .background {
+        body::before {
+            content: "";
             position: fixed;
             inset: 0;
-            pointer-events: none;
-            z-index: -10;
-        }
 
-        .grid {
-            position: absolute;
-            inset: 0;
+            pointer-events: none;
 
             background-image:
                 linear-gradient(
-                    rgba(0, 170, 255, .035) 1px,
+                    rgba(0, 150, 255, 0.035) 1px,
                     transparent 1px
                 ),
                 linear-gradient(
                     90deg,
-                    rgba(0, 170, 255, .035) 1px,
+                    rgba(0, 150, 255, 0.035) 1px,
                     transparent 1px
                 );
 
-            background-size: 65px 65px;
+            background-size: 48px 48px;
 
-            mask-image:
-                linear-gradient(
-                    to bottom,
-                    black,
-                    transparent 92%
-                );
+            mask-image: linear-gradient(
+                to bottom,
+                black,
+                transparent 75%
+            );
         }
 
-        .glow {
-            position: absolute;
+        /* =========================
+           NAVBAR
+        ========================= */
 
-            width: 500px;
-            height: 500px;
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 100;
 
-            border-radius: 50%;
+            width: 100%;
 
-            background: var(--blue);
+            border-bottom: 1px solid rgba(0, 170, 255, 0.12);
 
-            filter: blur(140px);
+            background:
+                rgba(2, 8, 14, 0.78);
 
-            opacity: .11;
-
-            animation:
-                glowMove 12s ease-in-out infinite;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
         }
 
-        .glow.one {
-            left: -250px;
-            top: -250px;
-        }
+        .nav-inner {
+            width: min(1180px, calc(100% - 40px));
+            height: 82px;
 
-        .glow.two {
-            right: -250px;
-            top: 45%;
-
-            background: var(--cyan);
-
-            animation-delay: -5s;
-        }
-
-        @keyframes glowMove {
-            50% {
-                transform:
-                    translateY(70px)
-                    scale(1.1);
-            }
-        }
-
-        /* PARTICLES */
-
-        #particles {
-            position: fixed;
-            inset: 0;
-
-            overflow: hidden;
-
-            pointer-events: none;
-
-            z-index: -5;
-        }
-
-        .particle {
-            position: absolute;
-
-            width: 2px;
-            height: 2px;
-
-            border-radius: 50%;
-
-            background: var(--cyan);
-
-            opacity: .2;
-
-            animation:
-                particleMove linear infinite;
-        }
-
-        @keyframes particleMove {
-            from {
-                transform: translateY(105vh);
-            }
-
-            to {
-                transform: translateY(-10vh);
-            }
-        }
-
-        /* NAVBAR */
-
-        .navbar {
-            position: fixed;
-
-            top: 18px;
-            left: 50%;
-
-            transform: translateX(-50%);
-
-            width:
-                min(1150px, calc(100% - 30px));
-
-            height: 66px;
-
-            padding:
-                0 15px 0 17px;
+            margin: auto;
 
             display: flex;
             align-items: center;
             justify-content: space-between;
-
-            border:
-                1px solid
-                var(--border);
-
-            border-radius: 19px;
-
-            background:
-                rgba(2, 9, 16, .72);
-
-            backdrop-filter: blur(25px);
-
-            z-index: 1000;
-
-            transition: .3s ease;
         }
 
-        .navbar.scrolled {
-            background:
-                rgba(2, 8, 14, .95);
-
-            border-color:
-                rgba(0, 190, 255, .28);
-
-            box-shadow:
-                0 20px 70px
-                rgba(0, 0, 0, .4);
-        }
-
-        /* LOGO */
-
-        .logo {
+        .brand {
             display: flex;
             align-items: center;
-            gap: 11px;
+            gap: 14px;
 
-            color: var(--blue);
-
-            font-size: 11px;
-
-            font-weight: 950;
-
-            letter-spacing: 2px;
+            text-decoration: none;
+            color: white;
         }
 
-        .logo-icon {
-            width: 42px;
-            height: 42px;
+        .brand-logo {
+            width: 48px;
+            height: 48px;
 
-            display: grid;
-            place-items: center;
+            object-fit: cover;
 
             border-radius: 13px;
 
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #09b8ff,
-                    #005eff
-                );
-
             box-shadow:
-                0 0 32px
-                rgba(0, 145, 255, .42);
-
-            font-size: 12px;
-
-            font-weight: 950;
+                0 0 25px rgba(0, 150, 255, 0.25);
         }
 
-        /* NAV LINKS */
+        .brand-name {
+            font-size: 14px;
+            font-weight: 900;
+
+            letter-spacing: 3px;
+
+            color: #ffffff;
+        }
 
         .nav-links {
             display: flex;
-            align-items: center;
-            gap: 25px;
-
-            list-style: none;
+            gap: 30px;
         }
 
         .nav-links a {
-            color: #78909f;
+            color: #7890a1;
 
-            font-size: 10px;
+            text-decoration: none;
 
+            font-size: 11px;
             font-weight: 800;
 
-            transition: .2s ease;
+            letter-spacing: 1px;
+
+            transition: 0.25s ease;
         }
 
         .nav-links a:hover {
-            color: white;
+            color: #25baff;
         }
 
-        .nav-download {
-            padding:
-                10px 15px;
-
-            border-radius: 10px;
-
-            color: #9ce5ff !important;
-
-            background:
-                rgba(0, 150, 255, .07);
-
-            border:
-                1px solid
-                rgba(0, 180, 255, .2);
-        }
-
-        /* HERO */
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
-            min-height: 100vh;
+            width: min(1180px, calc(100% - 40px));
+
+            min-height: 680px;
+
+            margin: auto;
 
             display: flex;
-
             align-items: center;
             justify-content: center;
 
-            padding:
-                150px 20px 100px;
-
             text-align: center;
+
+            position: relative;
+        }
+
+        .hero::before {
+            content: "";
+
+            position: absolute;
+
+            width: 520px;
+            height: 520px;
+
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 150, 255, 0.12),
+                    transparent 68%
+                );
+
+            filter: blur(15px);
+
+            pointer-events: none;
         }
 
         .hero-content {
-            width: min(1000px, 100%);
+            position: relative;
+            z-index: 2;
         }
 
         .hero-logo {
-            width: 88px;
-            height: 88px;
+            width: 105px;
+            height: 105px;
 
-            margin:
-                0 auto 32px;
+            object-fit: cover;
 
-            display: grid;
-            place-items: center;
+            border-radius: 27px;
 
-            border-radius: 25px;
-
-            color: white;
-
-            background:
-                linear-gradient(
-                    135deg,
-                    #09b8ff,
-                    #005eff
-                );
-
-            font-size: 25px;
-
-            font-weight: 950;
+            margin-bottom: 35px;
 
             box-shadow:
-                0 0 65px
-                rgba(0, 145, 255, .38);
+                0 0 0 1px rgba(100, 210, 255, 0.25),
+                0 20px 70px rgba(0, 125, 255, 0.3);
+
+            transition: 0.4s ease;
         }
 
-        .hero h1 {
-            font-size:
-                clamp(60px, 14vw, 150px);
+        .hero-logo:hover {
+            transform: translateY(-5px) scale(1.03);
+        }
 
-            line-height: .82;
+        .eyebrow {
+            margin-bottom: 18px;
 
-            letter-spacing: -9px;
+            color: #19c9ff;
+
+            font-size: 10px;
+            font-weight: 900;
+
+            letter-spacing: 5px;
+        }
+
+        h1 {
+            font-size: clamp(54px, 9vw, 105px);
+
+            line-height: 0.9;
+
+            letter-spacing: -6px;
 
             font-weight: 950;
 
             background:
                 linear-gradient(
                     180deg,
-                    #ffffff,
-                    #dff8ff 38%,
-                    #52d5ff 70%,
-                    #0064ff
+                    #ffffff 0%,
+                    #d9eaff 55%,
+                    #7190a9 100%
                 );
 
             -webkit-background-clip: text;
             background-clip: text;
-
             color: transparent;
         }
 
-        .tagline {
-            margin-top: 30px;
-
-            color: #dcefff;
-
-            font-size:
-                clamp(20px, 4vw, 30px);
-
-            font-weight: 700;
-        }
-
-        .tagline span {
-            color: var(--blue);
-        }
-
-        .description {
+        .hero-subtitle {
             max-width: 650px;
 
-            margin:
-                20px auto 0;
+            margin: 30px auto 0;
 
-            color: var(--muted);
+            color: #71899b;
 
-            font-size: 13px;
+            font-size: 15px;
 
             line-height: 1.8;
         }
 
-        /* BUTTONS */
-
-        .buttons {
-            margin-top: 32px;
+        .hero-buttons {
+            margin-top: 38px;
 
             display: flex;
-
             justify-content: center;
-
             gap: 12px;
 
             flex-wrap: wrap;
         }
 
         .button {
-            min-width: 165px;
+            padding: 14px 24px;
 
-            padding:
-                14px 23px;
+            border-radius: 10px;
 
-            display: inline-flex;
+            text-decoration: none;
 
-            align-items: center;
-            justify-content: center;
-
-            border-radius: 12px;
-
-            font-size: 10px;
-
+            font-size: 11px;
             font-weight: 900;
 
-            transition: .3s ease;
+            letter-spacing: 0.5px;
+
+            transition: 0.3s ease;
         }
 
-        .button:hover {
-            transform: translateY(-4px);
-        }
-
-        .primary {
+        .button-primary {
             color: white;
 
             background:
                 linear-gradient(
                     135deg,
-                    #09aeff,
-                    #005dff
+                    #079fff,
+                    #0064ff
                 );
 
-            border:
-                1px solid
-                rgba(190, 245, 255, .45);
+            border: 1px solid rgba(170, 235, 255, 0.4);
 
             box-shadow:
-                0 15px 45px
-                rgba(0, 110, 255, .25);
+                0 10px 35px rgba(0, 110, 255, 0.22);
         }
 
-        .primary:hover {
+        .button-primary:hover {
+            transform: translateY(-3px);
+
             box-shadow:
-                0 20px 65px
-                rgba(0, 140, 255, .45);
+                0 15px 45px rgba(0, 130, 255, 0.35);
         }
 
-        .secondary {
-            color: #a8c9d8;
+        .button-secondary {
+            color: #8aa4b7;
 
-            background:
-                rgba(0, 140, 255, .04);
+            border: 1px solid rgba(0, 160, 255, 0.18);
 
-            border:
-                1px solid
-                rgba(0, 160, 255, .18);
+            background: rgba(0, 120, 255, 0.035);
         }
 
-        /* STATS */
+        .button-secondary:hover {
+            color: white;
 
-        .stats {
-            width: min(750px, 100%);
+            border-color: rgba(0, 190, 255, 0.4);
 
-            margin:
-                65px auto 0;
-
-            display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(0, 160, 255, .12);
-
-            border-radius: 18px;
-
-            background:
-                rgba(5, 13, 22, .62);
-
-            backdrop-filter: blur(15px);
+            background: rgba(0, 130, 255, 0.08);
         }
 
-        .stat {
-            padding: 23px;
+        /* =========================
+           SECTION
+        ========================= */
 
-            border-right:
-                1px solid
-                rgba(0, 150, 255, .08);
+        section {
+            width: min(1180px, calc(100% - 40px));
+
+            margin: 0 auto;
+
+            padding: 100px 0;
         }
 
-        .stat:last-child {
-            border-right: none;
+        .section-header {
+            margin-bottom: 45px;
         }
 
-        .stat strong {
-            display: block;
+        .section-label {
+            color: #16c7ff;
 
-            font-size: 17px;
-        }
+            font-size: 9px;
+            font-weight: 900;
 
-        .stat small {
-            display: block;
+            letter-spacing: 4px;
 
-            margin-top: 6px;
-
-            color: #526775;
-
-            font-size: 8px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.5px;
-        }
-
-        /* SECTIONS */
-
-        .section {
-            width:
-                min(1120px, calc(100% - 40px));
-
-            margin: auto;
-
-            padding:
-                120px 0;
+            margin-bottom: 12px;
         }
 
         .section-title {
-            margin-bottom: 55px;
+            font-size: clamp(34px, 5vw, 58px);
 
-            text-align: center;
+            letter-spacing: -3px;
+
+            font-weight: 950;
         }
 
-        .kicker {
-            color: var(--cyan);
+        .section-description {
+            margin-top: 15px;
 
-            font-size: 9px;
-
-            font-weight: 900;
-
-            letter-spacing: 3px;
-        }
-
-        .section-title h2 {
-            margin-top: 12px;
-
-            font-size:
-                clamp(40px, 6vw, 65px);
-
-            line-height: .95;
-
-            letter-spacing: -4px;
-        }
-
-        .section-title p {
             max-width: 600px;
 
-            margin:
-                18px auto 0;
+            color: #607789;
 
-            color: #607684;
-
-            font-size: 12px;
+            font-size: 13px;
 
             line-height: 1.8;
         }
 
-        /* FEATURES */
+        /* =========================
+           FEATURES
+        ========================= */
 
         .features {
             display: grid;
@@ -606,80 +396,71 @@
             grid-template-columns:
                 repeat(3, 1fr);
 
-            gap: 15px;
+            gap: 14px;
         }
 
         .feature {
-            min-height: 230px;
+            min-height: 220px;
 
-            padding: 30px;
+            padding: 28px;
 
-            border:
-                1px solid
-                rgba(0, 160, 255, .13);
-
-            border-radius: 24px;
+            border: 1px solid rgba(0, 160, 255, 0.13);
 
             background:
                 linear-gradient(
                     145deg,
-                    rgba(9, 24, 39, .75),
-                    rgba(3, 9, 15, .75)
+                    rgba(7, 19, 30, 0.95),
+                    rgba(3, 10, 16, 0.82)
                 );
 
-            transition: .35s ease;
+            border-radius: 18px;
+
+            transition: 0.35s ease;
+
+            box-shadow:
+                inset 0 1px rgba(255,255,255,0.025);
         }
 
         .feature:hover {
-            transform: translateY(-8px);
+            transform: translateY(-7px);
 
             border-color:
-                rgba(0, 190, 255, .4);
+                rgba(0, 190, 255, 0.38);
 
             box-shadow:
-                0 25px 70px
-                rgba(0, 100, 255, .08);
+                0 25px 60px rgba(0, 90, 180, 0.12);
         }
 
-        .feature-icon {
-            width: 48px;
-            height: 48px;
+        .feature-number {
+            color: #16bfff;
 
-            display: grid;
+            font-size: 10px;
+            font-weight: 900;
 
-            place-items: center;
-
-            border-radius: 14px;
-
-            color: var(--cyan);
-
-            background:
-                rgba(0, 150, 255, .07);
-
-            border:
-                1px solid
-                rgba(0, 180, 255, .2);
-
-            font-size: 19px;
+            letter-spacing: 2px;
         }
 
         .feature h3 {
-            margin-top: 22px;
+            margin-top: 25px;
 
-            font-size: 16px;
+            font-size: 22px;
+
+            letter-spacing: -1px;
         }
 
         .feature p {
-            margin-top: 10px;
+            margin-top: 12px;
 
-            color: #607482;
+            color: #637b8c;
 
-            font-size: 11px;
+            font-size: 12px;
 
             line-height: 1.8;
         }
 
-        /* VERSIONS */
+        /* =========================
+           VERSIONS
+        ========================= */
 
         .versions {
             display: grid;
@@ -693,42 +474,68 @@
         .version {
             position: relative;
 
-            min-height: 355px;
+            min-height: 365px;
 
-            padding: 26px;
+            padding: 27px;
 
             overflow: hidden;
 
             border:
                 1px solid
-                rgba(0, 160, 255, .13);
+                rgba(0, 160, 255, 0.14);
 
-            border-radius: 22px;
+            border-radius: 20px;
 
             background:
-                rgba(5, 14, 23, .78);
+                linear-gradient(
+                    145deg,
+                    rgba(6, 17, 27, 0.96),
+                    rgba(2, 9, 15, 0.9)
+                );
 
-            transition: .35s ease;
+            transition: 0.35s ease;
+
+            box-shadow:
+                inset 0 1px rgba(255,255,255,0.025);
+        }
+
+        .version::before {
+            content: "";
+
+            position: absolute;
+
+            width: 180px;
+            height: 180px;
+
+            top: -100px;
+            right: -100px;
+
+            background:
+                radial-gradient(
+                    circle,
+                    rgba(0, 180, 255, 0.1),
+                    transparent 70%
+                );
         }
 
         .version:hover {
             transform: translateY(-9px);
 
             border-color:
-                rgba(0, 190, 255, .4);
+                rgba(0, 190, 255, 0.4);
         }
 
         .version.release {
             border-color:
-                rgba(0, 210, 255, .35);
+                rgba(0, 210, 255, 0.35);
 
             background:
                 radial-gradient(
                     circle at 100% 0%,
-                    rgba(0, 220, 255, .12),
+                    rgba(0, 220, 255, 0.12),
                     transparent 52%
                 ),
-                rgba(5, 15, 24, .82);
+                rgba(5, 15, 24, 0.92);
         }
 
         .version-number {
@@ -763,11 +570,11 @@
             color: #73dcff;
 
             background:
-                rgba(0, 150, 255, .06);
+                rgba(0, 150, 255, 0.06);
 
             border:
                 1px solid
-                rgba(0, 170, 255, .2);
+                rgba(0, 170, 255, 0.2);
 
             font-size: 8px;
 
@@ -777,13 +584,13 @@
         }
 
         .release .badge {
-            color: var(--cyan);
+            color: #00eaff;
 
             border-color:
-                rgba(0, 230, 255, .3);
+                rgba(0, 230, 255, 0.3);
 
             background:
-                rgba(0, 220, 255, .08);
+                rgba(0, 220, 255, 0.08);
         }
 
         .version p {
@@ -796,12 +603,24 @@
             line-height: 1.8;
         }
 
+        .ram {
+            margin-top: 13px;
+
+            color: #20c8ff;
+
+            font-size: 10px;
+
+            font-weight: 900;
+
+            letter-spacing: 1px;
+        }
+
         .version-button {
             position: absolute;
 
-            left: 26px;
-            right: 26px;
-            bottom: 26px;
+            left: 27px;
+            right: 27px;
+            bottom: 27px;
 
             padding: 12px;
 
@@ -812,27 +631,29 @@
             color: #9edff2;
 
             background:
-                rgba(0, 140, 255, .05);
+                rgba(0, 140, 255, 0.05);
 
             border:
                 1px solid
-                rgba(0, 150, 255, .16);
+                rgba(0, 150, 255, 0.16);
 
             font-size: 9px;
 
             font-weight: 800;
 
-            transition: .25s;
+            text-decoration: none;
+
+            transition: 0.25s;
         }
 
         .version-button:hover {
             color: white;
 
             background:
-                rgba(0, 150, 255, .13);
+                rgba(0, 150, 255, 0.13);
 
             border-color:
-                rgba(0, 190, 255, .35);
+                rgba(0, 190, 255, 0.35);
         }
 
         .release .version-button {
@@ -846,387 +667,98 @@
                 );
 
             border-color:
-                rgba(180, 245, 255, .45);
+                rgba(180, 245, 255, 0.45);
         }
 
-        /* REQUIREMENTS */
-
-        .requirements {
-            display: grid;
-
-            grid-template-columns:
-                repeat(4, 1fr);
-
-            gap: 12px;
-        }
-
-        .requirement {
-            padding: 25px;
-
-            border:
-                1px solid
-                rgba(0, 150, 255, .12);
-
-            border-radius: 18px;
-
-            background:
-                rgba(5, 13, 22, .62);
-
-            transition: .3s;
-        }
-
-        .requirement:hover {
-            transform: translateY(-5px);
-
-            border-color:
-                rgba(0, 180, 255, .3);
-        }
-
-        .requirement strong {
-            display: block;
-
-            font-size: 21px;
-        }
-
-        .requirement span {
-            display: block;
-
-            margin-top: 7px;
-
-            color: #596e7c;
-
-            font-size: 8px;
-
-            font-weight: 800;
-
-            letter-spacing: 1.2px;
-        }
-
-        /* SHOWCASE */
-
-        .showcase {
-            position: relative;
-
-            min-height: 400px;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: center;
-
-            overflow: hidden;
-
-            text-align: center;
-
-            border:
-                1px solid
-                rgba(0, 160, 255, .15);
-
-            border-radius: 30px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(0, 130, 255, .16),
-                    transparent 55%
-                ),
-                rgba(5, 13, 22, .72);
-        }
-
-        .showcase-content {
-            position: relative;
-
-            z-index: 2;
-
-            padding: 40px;
-        }
-
-        .showcase h2 {
-            margin-top: 18px;
-
-            font-size:
-                clamp(42px, 7vw, 76px);
-
-            letter-spacing: -5px;
-        }
-
-        .showcase p {
-            max-width: 600px;
-
-            margin:
-                17px auto 0;
-
-            color: #617584;
-
-            font-size: 12px;
-
-            line-height: 1.8;
-        }
-
-        /* FAQ */
-
-        .faq {
-            max-width: 850px;
-
-            margin: auto;
-        }
-
-        .faq-item {
-            margin-bottom: 9px;
-
-            overflow: hidden;
-
-            border:
-                1px solid
-                rgba(0, 150, 255, .12);
-
-            border-radius: 14px;
-
-            background:
-                rgba(5, 13, 22, .55);
-        }
-
-        .faq-question {
-            width: 100%;
-
-            display: flex;
-
-            align-items: center;
-            justify-content: space-between;
-
-            padding: 19px;
-
-            border: none;
-
-            color: white;
-
-            background: transparent;
-
-            cursor: pointer;
-
-            text-align: left;
-
-            font-size: 11px;
-
-            font-weight: 700;
-        }
-
-        .faq-plus {
-            color: var(--cyan);
-
-            font-size: 18px;
-
-            transition: .3s;
-        }
-
-        .faq-answer {
-            max-height: 0;
-
-            overflow: hidden;
-
-            transition:
-                max-height .35s ease;
-        }
-
-        .faq-answer p {
-            padding:
-                0 19px 19px;
-
-            color: #607482;
-
-            font-size: 11px;
-
-            line-height: 1.8;
-        }
-
-        .faq-item.open
-        .faq-answer {
-            max-height: 180px;
-        }
-
-        .faq-item.open
-        .faq-plus {
-            transform: rotate(45deg);
-        }
-
-        /* CTA */
-
-        .cta {
-            width:
-                min(1050px, calc(100% - 40px));
-
-            margin:
-                50px auto 120px;
-
-            padding:
-                95px 30px;
-
-            text-align: center;
-
-            border:
-                1px solid
-                rgba(0, 180, 255, .24);
-
-            border-radius: 30px;
-
-            background:
-                radial-gradient(
-                    circle at 50% 0%,
-                    rgba(0, 150, 255, .17),
-                    transparent 60%
-                ),
-                rgba(4, 12, 20, .8);
-        }
-
-        .cta h2 {
-            margin-top: 12px;
-
-            font-size:
-                clamp(42px, 7vw, 72px);
-
-            letter-spacing: -5px;
-        }
-
-        .cta p {
-            max-width: 570px;
-
-            margin:
-                18px auto 0;
-
-            color: #607482;
-
-            font-size: 12px;
-
-            line-height: 1.8;
-        }
-
-        /* FOOTER */
+        /* =========================
+           FOOTER
+        ========================= */
 
         footer {
-            padding:
-                45px 20px;
+            width: min(1180px, calc(100% - 40px));
 
-            text-align: center;
+            margin: auto;
+
+            padding: 45px 0;
 
             border-top:
                 1px solid
-                rgba(0, 150, 255, .08);
+                rgba(0, 150, 255, 0.1);
 
-            color: #405360;
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            color: #536b7b;
 
             font-size: 10px;
         }
 
         footer strong {
-            color: var(--blue);
+            color: #8ba4b5;
+
+            letter-spacing: 2px;
         }
 
-        /* REVEAL */
-
-        .reveal {
-            opacity: 0;
-
-            transform: translateY(25px);
-
-            transition:
-                opacity .8s ease,
-                transform .8s ease;
-        }
-
-        .reveal.visible {
-            opacity: 1;
-
-            transform: translateY(0);
-        }
-
-        /* MOBILE */
+        /* =========================
+           RESPONSIVE
+        ========================= */
 
         @media (max-width: 950px) {
-
-            .features {
-                grid-template-columns:
-                    repeat(2, 1fr);
-            }
-
             .versions {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
 
-            .requirements {
+            .features {
                 grid-template-columns:
                     repeat(2, 1fr);
             }
         }
 
         @media (max-width: 650px) {
-
-            .navbar {
-                height: 60px;
+            .nav-inner {
+                height: 70px;
             }
 
             .nav-links {
-                gap: 5px;
-            }
-
-            .nav-links li {
                 display: none;
             }
 
-            .nav-links li:last-child {
-                display: block;
+            .hero {
+                min-height: 600px;
             }
 
-            .hero h1 {
-                letter-spacing: -6px;
+            .hero-logo {
+                width: 85px;
+                height: 85px;
             }
 
-            .stats {
-                grid-template-columns: 1fr;
+            h1 {
+                letter-spacing: -4px;
             }
 
-            .stat {
-                border-right: none;
-
-                border-bottom:
-                    1px solid
-                    rgba(0, 150, 255, .08);
+            section {
+                padding: 70px 0;
             }
 
-            .stat:last-child {
-                border-bottom: none;
-            }
-
-            .features,
             .versions,
-            .requirements {
+            .features {
                 grid-template-columns: 1fr;
             }
 
-            .section {
-                width:
-                    calc(100% - 30px);
-
-                padding:
-                    90px 0;
+            .version {
+                min-height: 350px;
             }
 
-            .cta {
-                width:
-                    calc(100% - 30px);
+            footer {
+                flex-direction: column;
 
-                padding:
-                    70px 20px;
-            }
-        }
+                gap: 12px;
 
-        @media (prefers-reduced-motion: reduce) {
-
-            *,
-            *::before,
-            *::after {
-                animation: none !important;
-                transition: none !important;
+                text-align: center;
             }
         }
     </style>
@@ -1234,149 +766,81 @@
 
 <body>
 
-    <div class="background">
-        <div class="grid"></div>
-        <div class="glow one"></div>
-        <div class="glow two"></div>
-    </div>
+    <!-- =========================
+         NAVIGATION
+    ========================== -->
 
-    <div id="particles"></div>
+    <nav>
+        <div class="nav-inner">
 
+            <a href="#" class="brand">
 
-    <!-- NAVBAR -->
+                <img
+                    src="favicon.svg"
+                    alt="ZERO ONE OS"
+                    class="brand-logo"
+                >
 
-    <nav class="navbar" id="navbar">
+                <span class="brand-name">
+                    ZERO ONE OS
+                </span>
 
-        <a href="#" class="logo">
+            </a>
 
-            <div class="logo-icon">
-                01
+            <div class="nav-links">
+                <a href="#features">FEATURES</a>
+                <a href="#versions">VERSIONS</a>
+                <a href="#download">DOWNLOAD</a>
             </div>
 
-            ZERO ONE OS
-
-        </a>
-
-        <ul class="nav-links">
-
-            <li>
-                <a href="#features">
-                    Features
-                </a>
-            </li>
-
-            <li>
-                <a href="#versions">
-                    Versions
-                </a>
-            </li>
-
-            <li>
-                <a href="#requirements">
-                    System
-                </a>
-            </li>
-
-            <li>
-                <a href="#faq">
-                    FAQ
-                </a>
-            </li>
-
-            <li>
-                <a
-                    href="#versions"
-                    class="nav-download"
-                >
-                    Download
-                </a>
-            </li>
-
-        </ul>
-
+        </div>
     </nav>
 
 
-    <!-- HERO -->
+    <!-- =========================
+         HERO
+    ========================== -->
 
-    <header class="hero">
+    <main>
 
-        <div class="hero-content reveal">
+        <div class="hero">
 
-            <div class="hero-logo">
-                01
-            </div>
+            <div class="hero-content">
 
-            <h1>
-                ZERO ONE
-            </h1>
-
-            <div class="tagline">
-                The future
-                <span>
-                    is open.
-                </span>
-            </div>
-
-            <p class="description">
-                A modern Linux-based operating system
-                designed for speed, freedom and a
-                completely new desktop experience.
-            </p>
-
-            <div class="buttons">
-
-                <a
-                    href="#versions"
-                    class="button primary"
+                <img
+                    src="favicon.svg"
+                    alt="ZERO ONE OS logo"
+                    class="hero-logo"
                 >
-                    Explore ZERO ONE
-                </a>
 
-                <a
-                    href="#download"
-                    class="button secondary"
-                >
-                    Download OS
-                </a>
-
-            </div>
-
-            <div class="stats">
-
-                <div class="stat">
-
-                    <strong>
-                        Linux
-                    </strong>
-
-                    <small>
-                        POWERED BY
-                    </small>
-
+                <div class="eyebrow">
+                    THE NEXT GENERATION
                 </div>
 
-                <div class="stat">
+                <h1>
+                    ZERO ONE OS
+                </h1>
 
-                    <strong>
-                        x86_64
-                    </strong>
+                <p class="hero-subtitle">
+                    A modern Linux-based operating system built for
+                    speed, freedom and customization.
+                </p>
 
-                    <small>
-                        ARCHITECTURE
-                    </small>
+                <div class="hero-buttons">
 
-                </div>
+                    <a
+                        href="#versions"
+                        class="button button-primary"
+                    >
+                        DOWNLOAD OS
+                    </a>
 
-                <div class="stat">
-
-                    <strong>
-                        4 Builds
-                    </strong>
-
-                    <small>
-                        AVAILABLE
-                    </small>
+                    <a
+                        href="#features"
+                        class="button button-secondary"
+                    >
+                        EXPLORE
+                    </a>
 
                 </div>
 
@@ -1384,178 +848,119 @@
 
         </div>
 
-    </header>
 
+        <!-- =========================
+             FEATURES
+        ========================== -->
 
-    <!-- FEATURES -->
+        <section id="features">
 
-    <section
-        class="section"
-        id="features"
-    >
+            <div class="section-header">
 
-        <div class="section-title reveal">
+                <div class="section-label">
+                    WHY ZERO ONE
+                </div>
 
-            <div class="kicker">
-                ZERO ONE
+                <div class="section-title">
+                    Built different.
+                </div>
+
+                <p class="section-description">
+                    ZERO ONE OS is designed around performance,
+                    customization and giving the user control.
+                </p>
+
             </div>
 
-            <h2>
-                Built different.
-            </h2>
 
-            <p>
-                A clean operating system experience
-                designed around performance,
-                customization and simplicity.
-            </p>
+            <div class="features">
 
-        </div>
+                <div class="feature">
 
+                    <div class="feature-number">
+                        01 / PERFORMANCE
+                    </div>
 
-        <div class="features">
+                    <h3>
+                        Fast by design
+                    </h3>
 
-            <article class="feature reveal">
+                    <p>
+                        A lightweight Linux foundation focused on
+                        responsive performance and a smooth desktop
+                        experience.
+                    </p>
 
-                <div class="feature-icon">
-                    ⚡
                 </div>
 
-                <h3>
-                    Fast
-                </h3>
 
-                <p>
-                    A lightweight foundation that
-                    keeps your computer responsive.
-                </p>
+                <div class="feature">
 
-            </article>
+                    <div class="feature-number">
+                        02 / FREEDOM
+                    </div>
 
+                    <h3>
+                        Your system.
+                    </h3>
 
-            <article class="feature reveal">
+                    <p>
+                        Customize your environment and make ZERO ONE
+                        OS work the way you want.
+                    </p>
 
-                <div class="feature-icon">
-                    ◈
                 </div>
 
-                <h3>
-                    Modern
-                </h3>
 
-                <p>
-                    A futuristic desktop experience
-                    with a clean visual style.
-                </p>
+                <div class="feature">
 
-            </article>
+                    <div class="feature-number">
+                        03 / LINUX
+                    </div>
 
+                    <h3>
+                        Linux powered
+                    </h3>
 
-            <article class="feature reveal">
+                    <p>
+                        Built on the power and flexibility of Linux,
+                        with a modern experience on top.
+                    </p>
 
-                <div class="feature-icon">
-                    ∞
                 </div>
 
-                <h3>
-                    Freedom
-                </h3>
-
-                <p>
-                    Built around Linux and designed
-                    to give you control.
-                </p>
-
-            </article>
-
-
-            <article class="feature reveal">
-
-                <div class="feature-icon">
-                    ⚙
-                </div>
-
-                <h3>
-                    Customizable
-                </h3>
-
-                <p>
-                    Customize your desktop and
-                    workflow however you want.
-                </p>
-
-            </article>
-
-
-            <article class="feature reveal">
-
-                <div class="feature-icon">
-                    🔒
-                </div>
-
-                <h3>
-                    Private
-                </h3>
-
-                <p>
-                    Your computer belongs to you.
-                    Keep control of your system.
-                </p>
-
-            </article>
-
-
-            <article class="feature reveal">
-
-                <div class="feature-icon">
-                    🚀
-                </div>
-
-                <h3>
-                    Future Ready
-                </h3>
-
-                <p>
-                    ZERO ONE keeps evolving with
-                    every new release.
-                </p>
-
-            </article>
-
-        </div>
-
-    </section>
-
-
-    <!-- VERSIONS -->
-
-    <section
-        class="section"
-        id="versions"
-    >
-
-        <div class="section-title reveal">
-
-            <div class="kicker">
-                RELEASES
             </div>
 
-            <h2>
-                Choose your build.
-            </h2>
-
-            <p>
-                Four ZERO ONE OS builds,
-                from early testing to stable release.
-            </p>
-
-        </div>
+        </section>
 
 
-        <div class="versions">
+        <!-- =========================
+             VERSIONS
+        ========================== -->
+
+        <section id="versions">
+
+            <div class="section-header">
+
+                <div class="section-label">
+                    RELEASES
+                </div>
+
+                <div class="section-title">
+                    Versions
+                </div>
+
+                <p class="section-description">
+                    Choose a ZERO ONE OS build and start exploring.
+                </p>
+
+            </div>
 
 
-            <!-- ALPHA 1 -->
+            <div class="versions">
+
+
+                      <!-- ALPHA 1 -->
 
             <article class="version reveal">
 
@@ -1685,462 +1090,56 @@
     </section>
 
 
-    <!-- SHOWCASE -->
+        <!-- =========================
+             DOWNLOAD
+        ========================== -->
 
-    <section class="section">
+        <section id="download">
 
-        <div class="showcase reveal">
+            <div class="section-header">
 
-            <div class="showcase-content">
-
-                <div class="kicker">
+                <div class="section-label">
                     ZERO ONE OS
                 </div>
 
-                <h2>
-                    Built for tomorrow.
-                </h2>
+                <div class="section-title">
+                    Ready to start?
+                </div>
 
-                <p>
-                    A modern operating system experience
-                    continuously evolving with every release.
+                <p class="section-description">
+                    Download the latest stable release and experience
+                    ZERO ONE OS.
                 </p>
 
-                <div class="buttons">
-
-                    <a
-                        href="#versions"
-                        class="button primary"
-                    >
-                        Get ZERO ONE
-                    </a>
-
-                </div>
-
             </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- REQUIREMENTS -->
-
-    <section
-        class="section"
-        id="requirements"
-    >
-
-        <div class="section-title reveal">
-
-            <div class="kicker">
-                SYSTEM
-            </div>
-
-            <h2>
-                Simple requirements.
-            </h2>
-
-            <p>
-                ZERO ONE OS is designed to run
-                on modern 64-bit computers.
-            </p>
-
-        </div>
-
-
-        <div class="requirements">
-
-            <div class="requirement reveal">
-
-                <strong>
-                    64-bit
-                </strong>
-
-                <span>
-                    CPU ARCHITECTURE
-                </span>
-
-            </div>
-
-
-            <div class="requirement reveal">
-
-                <strong>
-                    3 GB+
-                </strong>
-
-                <span>
-                    RAM
-                </span>
-
-            </div>
-
-
-            <div class="requirement reveal">
-
-                <strong>
-                    20 GB+
-                </strong>
-
-                <span>
-                    STORAGE
-                </span>
-
-            </div>
-
-
-            <div class="requirement reveal">
-
-                <strong>
-                    x86_64
-                </strong>
-
-                <span>
-                    PLATFORM
-                </span>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- FAQ -->
-
-    <section
-        class="section"
-        id="faq"
-    >
-
-        <div class="section-title reveal">
-
-            <div class="kicker">
-                FAQ
-            </div>
-
-            <h2>
-                Questions?
-            </h2>
-
-            <p>
-                Some quick answers about ZERO ONE OS.
-            </p>
-
-        </div>
-
-
-        <div class="faq">
-
-            <div class="faq-item reveal">
-
-                <button class="faq-question">
-
-                    What is ZERO ONE OS?
-
-                    <span class="faq-plus">
-                        +
-                    </span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    <p>
-                        ZERO ONE OS is a Linux-based
-                        operating system project focused
-                        on a modern desktop experience.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item reveal">
-
-                <button class="faq-question">
-
-                    Which version should I use?
-
-                    <span class="faq-plus">
-                        +
-                    </span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    <p>
-                        Release 1.0 is recommended
-                        for everyday use.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item reveal">
-
-                <button class="faq-question">
-
-                    How much RAM does it need?
-
-                    <span class="faq-plus">
-                        +
-                    </span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    <p>
-                        The current requirements list
-                        3 GB or more of RAM.
-                    </p>
-
-                </div>
-
-            </div>
-
-
-            <div class="faq-item reveal">
-
-                <button class="faq-question">
-
-                    How many versions are available?
-
-                    <span class="faq-plus">
-                        +
-                    </span>
-
-                </button>
-
-                <div class="faq-answer">
-
-                    <p>
-                        Four builds are available:
-                        Alpha 1, Alpha 2, Beta 1
-                        and Release 1.0.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- DOWNLOAD -->
-
-    <section
-        class="cta reveal"
-        id="download"
-    >
-
-        <div class="kicker">
-            ZERO ONE OS
-        </div>
-
-        <h2>
-            The future is open.
-        </h2>
-
-        <p>
-            Choose your build and experience
-            ZERO ONE OS.
-        </p>
-
-        <div class="buttons">
 
             <a
-                href="#versions"
-                class="button primary"
+                href="YOUR_RELEASE_ISO_LINK"
+                class="button button-primary"
             >
-                Download ZERO ONE
+                DOWNLOAD ZERO ONE OS 1.0
             </a>
 
-        </div>
+        </section>
 
-    </section>
+    </main>
 
 
-    <!-- FOOTER -->
+    <!-- =========================
+         FOOTER
+    ========================== -->
 
     <footer>
-
-        © 2026
 
         <strong>
             ZERO ONE OS
         </strong>
 
-        — The future is open.
+        <span>
+            © 2026 ZERO ONE OS. Built with Linux.
+        </span>
 
     </footer>
-
-
-    <script>
-
-        /* NAVBAR */
-
-        const navbar =
-            document.getElementById("navbar");
-
-        window.addEventListener(
-            "scroll",
-            () => {
-
-                if (window.scrollY > 30) {
-
-                    navbar.classList.add(
-                        "scrolled"
-                    );
-
-                } else {
-
-                    navbar.classList.remove(
-                        "scrolled"
-                    );
-
-                }
-
-            }
-        );
-
-
-        /* PARTICLES */
-
-        const particles =
-            document.getElementById(
-                "particles"
-            );
-
-        for (let i = 0; i < 55; i++) {
-
-            const particle =
-                document.createElement("div");
-
-            particle.className =
-                "particle";
-
-            particle.style.left =
-                Math.random() * 100 + "%";
-
-            particle.style.animationDuration =
-                10 + Math.random() * 25 + "s";
-
-            particle.style.animationDelay =
-                -Math.random() * 25 + "s";
-
-            particles.appendChild(
-                particle
-            );
-        }
-
-
-        /* SCROLL ANIMATION */
-
-        const elements =
-            document.querySelectorAll(
-                ".reveal"
-            );
-
-        const observer =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                entry.target
-                                    .classList
-                                    .add("visible");
-
-                                observer.unobserve(
-                                    entry.target
-                                );
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: .12
-                }
-            );
-
-        elements.forEach(
-            element => {
-
-                observer.observe(
-                    element
-                );
-
-            }
-        );
-
-
-        /* FAQ */
-
-        const questions =
-            document.querySelectorAll(
-                ".faq-question"
-            );
-
-        questions.forEach(
-            question => {
-
-                question.addEventListener(
-                    "click",
-                    () => {
-
-                        const item =
-                            question.parentElement;
-
-                        const open =
-                            item.classList
-                                .contains("open");
-
-                        document
-                            .querySelectorAll(
-                                ".faq-item"
-                            )
-                            .forEach(
-                                other => {
-
-                                    other.classList
-                                        .remove(
-                                            "open"
-                                        );
-
-                                }
-                            );
-
-                        if (!open) {
-
-                            item.classList
-                                .add("open");
-
-                        }
-
-                    }
-                );
-
-            }
-        );
-
-    </script>
 
 </body>
 </html>

@@ -32,28 +32,6 @@
       />
     </filter>
 
-    <!-- CENTER BLUE LINE -->
-    <mask id="centerCut">
-
-      <rect
-        width="512"
-        height="512"
-        fill="white"
-      />
-
-      <rect
-        x="90"
-        y="247"
-        width="330"
-        height="18"
-        fill="black"
-      />
-
-    </mask>
-
-  </defs>
-
-
   <!-- BACKGROUND -->
 
   <rect
